@@ -26,12 +26,22 @@ html {
     position: relative; 
 }
 
+
+@font-face {
+               font-family: catalunya;
+               src: url(catalunya.ttf);
+            }
+
 .small-heading {
     font-size: 100%;
     color: #000000;
     margin-left: 2%;
     margin: 1.5%;
     display: inline-block;
+}
+
+.text{
+    font-family: sans-serif;
 }
 
 /* -----------------------------------------------*/
