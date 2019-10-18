@@ -110,13 +110,14 @@ html {
     background: cover;
 }
 
+.browsing{
+    margin: 3% 6%;
+}
+
 .search-font{
     font-weight: 300;
     font-size: 130%;
-    padding: 3% 6%;
-
 }
-
 
 
 .search {
@@ -154,9 +155,14 @@ html {
 /*Resize the wrap to see the search bar change!*/
 .wrap{
     width: 40%;
-    margin: 0 6%
-  
+    margin: 2% 0;
 }
+
+.genre-links{
+    padding: 4% 0;
+}
+
+
 /* -----------------------------------------------*/
 /* RIGHT COLUMN */
 /* -----------------------------------------------*/
