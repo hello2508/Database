@@ -40,9 +40,6 @@ html {
 
 .nav-bar{
     vertical-align: top;
-    border-bottom: 1px;
-    border-bottom-style: solid;
-    border-bottom-color: #ebebeb; 
     background-color: rgba(72, 217, 212, 0.56)
     
 }
@@ -55,4 +52,15 @@ html {
     font-family: 'catalunya';
 }
 
-.
+
+.background-image{
+    background: url(res/images/header.jpg);
+    background-size: cover;
+    height: 250px;
+    margin-top: -14.5px
+    
+}
+
+.column-left {
+   padding: 
+}
