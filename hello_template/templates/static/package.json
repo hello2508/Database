@@ -1,0 +1,15 @@
+{
+  "name": "static",
+  "version": "1.0.0",
+  "description": "A template for creating a full stack app with Flask and React",
+  "main": "index.js",
+  "dependencies": {
+    "semantic-ui-react": "^0.84.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bertha Han",
+  "license": "ISC"
+}
