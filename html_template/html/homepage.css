@@ -166,13 +166,17 @@ html {
 /* -----------------------------------------------*/
 /* RIGHT COLUMN */
 /* -----------------------------------------------*/
+.top-colour{
+    background-color: #749D8F;
+}
 
 .top-picks{
     font-size: 200%;
     color: #000000;
     font-weight: 200;
     font-family: 'catalunya';
-    margin-left: 30%
+    margin-left: 30%;
+    
 }
 
 
