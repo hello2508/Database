@@ -227,3 +227,16 @@ html {
 .specificbook{
     margin: 2% 5%;
 }
+
+.book-detail-img{
+    height: 250px;
+}
+
+.book-img{
+    margin: 8% 20%
+}
+
+.book-description{
+    float:right;
+
+}
