@@ -200,16 +200,30 @@ html {
     
 }
 
-
-.book-image{
-    margin:5%;
-    
-}
-.top-picks-bg{
-    background-color: rgba(72, 217, 212, 0.56);
-    background: cover;
-    margin-left: -5%;
-    margin-top: -5%;
+.imgcol1{
+    padding: 10% 5%;
 }
 
+.book-inbetween{
+    padding-bottom: 40%
+}
 
+.book-inbetween2{
+    padding-bottom: 41%
+}
+
+/* -----------------------------------------------*/
+/* REVIEW PAGE */
+/* -----------------------------------------------*/
+
+.book-details{
+   
+}
+
+.review-rating{
+    float: right;
+}
+
+.specificbook{
+    margin: 2% 5%;
+}
