@@ -166,8 +166,22 @@ html {
 
 .genre-links{
     margin: 2% 0;
-    font-size: 85%
+    font-size: 85%;
     padding: 5% 0;
+}
+
+.genre-links a{
+    text-decoration: none;
+    color: darkcyan;
+}
+
+.genre-links a:link,
+.genre-links a:visited{
+    color: darkcyan;
+
+}
+.genre-links a:hover{
+    color:#000000;
 }
 
 
@@ -175,10 +189,7 @@ html {
 /* -----------------------------------------------*/
 /* RIGHT COLUMN */
 /* -----------------------------------------------*/
-.top-colour{
-    background-color: #749D8F;
-    
-}
+
 
 .top-picks{
     font-size: 200%;
@@ -187,6 +198,18 @@ html {
     font-family: 'catalunya';
     margin-left: 30%;
     
+}
+
+
+.book-image{
+    margin:5%;
+    
+}
+.top-picks-bg{
+    background-color: rgba(72, 217, 212, 0.56);
+    background: cover;
+    margin-left: -5%;
+    margin-top: -5%;
 }
 
 
