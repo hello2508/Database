@@ -152,6 +152,10 @@ html {
   font-size: 20px;
 }
 
+.review{
+    font-size: 100%;
+}
+
 /*Resize the wrap to see the search bar change!*/
 .wrap{
     width: 40%;
@@ -160,6 +164,7 @@ html {
 
 .genre-links{
     padding: 4% 0;
+    font-size: 80%;
 }
 
 
