@@ -101,7 +101,7 @@ html {
     background: url(res/images/header.jpg);
     background-size: cover;
     height: 140px;
-    margin-top: -12px;
+    margin-top: -13.5px;
     
 }
 
@@ -110,9 +110,10 @@ html {
     background: cover;
 }
 
-.browsing{
-    margin: 3% 6%;
+.searchbar{
+    margin: 3% 4%;
 }
+
 
 .search-font{
     font-weight: 300;
@@ -158,9 +159,13 @@ html {
     margin: 2% 0;
 }
 
+
 .genre-links{
-    padding: 4% 0;
+    padding: 5% 0;
+    margin: 2% 0;
+    font-size: 85%
 }
+
 
 
 /* -----------------------------------------------*/
@@ -168,6 +173,7 @@ html {
 /* -----------------------------------------------*/
 .top-colour{
     background-color: #749D8F;
+    
 }
 
 .top-picks{
