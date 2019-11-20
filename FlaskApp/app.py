@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
 import yaml
 
@@ -25,13 +25,25 @@ def index():
 		book_title = userDetails['book_title']
 		review = userDetails['review']
 		cur = mysql.connection.cursor()
-		cur.execute("INSERT INTO test(reviewerName,booktitle,reviewText) VALUES(%s, %s, %s)",(name,book_title,review) )
+		# Create a database called test and create necessary tables
+		cur.execute("INSERT INTO test(reviewerName,booktitle,reviewText) VALUES(%s, %s, %s)",(name,book_title,review))
 		# Save changes into the database
 		mysql.connection.commit()
 		cur.close()
-		return 'success'
+		return 'update successful'
+		# return redirect('/users')
 	return render_template('home.html')
 
 
+@app.route('/users')
+# Display data onto the web browser
+def users():
+	cur = mysql.connection.cursor()
+	display = cur.execute("SELECT reviewerName FROM kindle_reviews LIMIT 2")
+	# if display > 0:
+	userDetails = cur.fetchall()
+	return render_template('users.html', userDetails=userDetails)
+
+
 if __name__ == "__main__":
-	app.run(debug=True)
+	app.run(host="0.0.0.0", port=27017,debug=True)
