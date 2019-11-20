@@ -230,13 +230,17 @@ html {
 
 .book-detail-img{
     height: 250px;
+
+    display:inline
 }
 
 .book-img{
-    margin: 8% 20%
+    margin: 8% 20%;
+    display:inline
+    
 }
 
 .book-description{
-    float:right;
+    display: inline
 
 }
