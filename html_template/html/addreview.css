@@ -110,82 +110,6 @@ html {
     background: cover;
 }
 
-.searchbar{
-    margin: 3% 4%;
-}
-
-
-.search-font{
-    font-weight: 300;
-    font-size: 130%;
-}
-
-
-.search {
-  width: 100%;
-  display: flex;
-}
-
-.searchTerm {
-  width: 100%;
-  border: 3px solid #00B4CC;
-  border-right: none;
-  padding: 5px;
-  height: 36px;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #9DBFAF;
-}
-
-.searchTerm:focus{
-  color: #00B4CC;
-}
-
-.searchButton {
-  width: 40px;
-  height: 36px;
-  border: 1px solid #00B4CC;
-  background: #00B4CC;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-.review{
-    font-size: 100%;
-}
-
-/*Resize the wrap to see the search bar change!*/
-.wrap{
-    width: 40%;
-    margin: 2% 0;
-}
-
-
-.genre-links{
-    margin: 2% 0;
-    font-size: 85%;
-    padding: 5% 0;
-}
-
-.genre-links a{
-    text-decoration: none;
-    color: darkcyan;
-}
-
-.genre-links a:link,
-.genre-links a:visited{
-    color: darkcyan;
-
-}
-.genre-links a:hover{
-    color:#000000;
-}
-
-
-
 /* -----------------------------------------------*/
 /* RIGHT COLUMN */
 /* -----------------------------------------------*/
@@ -213,8 +137,7 @@ html {
 .more-toppicks{
     text-align: center;
     font-family: 'catalunya';
-    font-size: 110%;
-    
+    font-size: 120%
 }
 
 .button{
@@ -237,7 +160,6 @@ html {
     text-decoration: none;
     border-radius: 10px;
 }
-
 /* -----------------------------------------------*/
 /* REVIEW PAGE */
 /* -----------------------------------------------*/
