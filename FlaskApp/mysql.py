@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
+from flask_pymongo import PyMongo
 import yaml
 
 app = Flask(__name__)
@@ -13,6 +14,7 @@ app.config['MYSQL_DB'] = db['mysql_db']
 
 # instantiate an object for MySQL
 mysql = MySQL(app)
+
 
 # GET request- display orm to the user
 # POSt request - store details onto the database
@@ -43,6 +45,13 @@ def users():
 	# if display > 0:
 	userDetails = cur.fetchall()
 	return render_template('users.html', userDetails=userDetails)
+
+# For Mongo
+@app.route('/mango')
+def mango():
+    online_users = mongo.db.users.find({"online": True})
+    return render_template("home.html",
+        online_users=online_users)
 
 
 if __name__ == "__main__":
