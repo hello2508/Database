@@ -2,6 +2,6 @@
 mysql_host: '18.141.90.224'
 # mysql_host: '202.94.70.51'
 mysql_port: 'tcp://18.141.90.224:27017'
-mysql_user: 'root'
+mysql_user: 'ubuntu'
 mysql_password: 'sutd1234'
 mysql_db: 'dbds'
