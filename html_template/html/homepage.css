@@ -81,6 +81,7 @@ html {
     float: none;
     display: block;
   }
+    
 }
 
 .company-name{
@@ -269,4 +270,5 @@ html {
 .book-description{
     display: inline
 
-}
+
+
