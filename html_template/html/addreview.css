@@ -194,6 +194,10 @@ html {
 /* ADD REVIEW PAGE */
 /* -----------------------------------------------*/
 
+
+.writeareview{
+    display: block;
+}
 .pop-up{
     background-color: #fff5e7;
     background: cover;
@@ -246,5 +250,31 @@ html {
     color: #414141;
     text-align: center;
     margin: 18.5px 80px;
-    width: 100%;
+    width: 70%;
+}
+
+.form-fields{
+    display: block;
+}
+
+
+.submit-button a:link,
+.submit-button a:visited{
+    color: rgb(0, 0, 0);
+
+}
+.submit-button a:hover{
+    background-color: rgba(72, 217, 212, 0.77);
+}
+
+
+.more-button{
+    background-color: rgba(72, 217, 212, 0.56);
+    padding: 3%;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+.submit-button{
+    display: block;
 }
