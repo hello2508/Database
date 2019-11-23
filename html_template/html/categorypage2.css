@@ -110,15 +110,14 @@ html {
 
 .side-panel{
     border-left: 1px solid #6d6d6d;
-    height: cover;
+    height: 750px; /*change this to cover when the page is more or less settled*/
     width: 25%;
-    display: inline-block;
-    margin-left: 5%;
-    padding: 2%
+    padding: 2%;
+    float:right;
 }
 
 .category-portion{
-    float:left;
+    display: inline-block;
 }
 
 .section-space{
@@ -128,28 +127,43 @@ html {
 .category-heading{
     font-weight: 200;
     font-family: 'catalunya';
-    margin-left: 58%;
-    margin-bottom: 7%;
+    margin-left: 65%;
+    margin-bottom: 2%;
 }
 
 .category-heading:after{
-    display: block;
+    /*display: block;
     height: 3px;
     background-color: #414141;
     content: " ";
     width: 60px;
-    margin-left: 6%;
+    margin-left: 6%;*/
+    display:block;
+    height: 1px;
+    background-color: #6d6d6d;
+    content: " ";
+    width: 320%;
+    margin-top:7%;
+    margin-left: -145%;
 }
 
 
 .category-book-row{
-    margin-left: 30%
+    margin-left: 14%;
+    width: 120%;
 }
 
 .write-review{
     background-color: #f4faff;
     padding: 5%;
+    margin-bottom: 10%;
 }
+
+.enjoyed-books-section{
+    height: cover;
+    margin-bottom: 20%;
+}
+
 
 .book-img{
     padding: 3px;
@@ -183,5 +197,30 @@ html {
     font-size: 80%;
     padding: 2% 0;
     line-height: 25px
+    
+}
+
+
+
+.review-heading{
+    font-size: 100%;
+}
+
+.reader-enjoy-heading{
+    font-size: 80%;
+    text-transform: uppercase 
+}
+
+.enjoyed-books{
+    margin-top: 5%;
+    margin-right: 3%;
+    height: 120px;
+    padding-left: 3%
+}
+
+.similar-books{
+    font-size: 90%;
+    float:right;
+    padding: 2%;
     
 }
