@@ -185,3 +185,38 @@ html {
     line-height: 25px
     
 }
+
+
+.review-heading{
+    font-size: 100%;
+}
+
+.reader-enjoy-heading{
+    font-size: 80%;
+    text-transform: uppercase 
+}
+
+.enjoyed-books{
+    margin-top: 5%;
+    margin-right: 3%;
+    height: 120px;
+    padding-left: 3%
+}
+
+.similar-books{
+    font-size: 90%;
+    float:right;
+    padding: 2%;
+    
+}
+
+.write-review{
+    background-color: #f4faff;
+    padding: 5%;
+    margin-bottom: 10%;
+}
+
+.enjoyed-books-section{
+    height: cover;
+    margin-bottom: 20%;
+}

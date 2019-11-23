@@ -153,16 +153,6 @@ html {
     width: 120%;
 }
 
-.write-review{
-    background-color: #f4faff;
-    padding: 5%;
-    margin-bottom: 10%;
-}
-
-.enjoyed-books-section{
-    height: cover;
-    margin-bottom: 20%;
-}
 
 
 .book-img{
@@ -200,6 +190,16 @@ html {
     
 }
 
+.write-review{
+    background-color: #f4faff;
+    padding: 5%;
+    margin-bottom: 10%;
+}
+
+.enjoyed-books-section{
+    height: cover;
+    margin-bottom: 20%;
+}
 
 
 .review-heading{
