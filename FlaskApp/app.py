@@ -41,17 +41,10 @@ def index():
 # Display data onto the web browser
 def users():
 	cur = mysql.connection.cursor()
-	display = cur.execute("SELECT reviewerName FROM kindle_reviews LIMIT 2")
-	# if display > 0:
-	userDetails = cur.fetchall()
-	return render_template('users.html', userDetails=userDetails)
+	cur.execute("SELECT reviewerName FROM kindle_reviews LIMIT 2")
+	display = cur.fetchall()
+	return render_template('users.html', data = display)
 
-# For Mongo
-@app.route('/mango')
-def mango():
-    online_users = mongo.db.users.find({"online": True})
-    return render_template("home.html",
-        online_users=online_users)
 
 
 if __name__ == "__main__":
