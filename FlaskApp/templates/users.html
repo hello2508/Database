@@ -1,8 +1,18 @@
-<table border = 1>
-	{% for user in userDetails %}
-	<tr>
-		<td> {{user[0]}} </td>
-		<td> {{user[1]}} </td>
-	</tr>
-	(% endfor %)
-</table>
+<!DOCTYPE html>
+<html>
+<head>
+	<title>User Login</title>
+</head>
+<body>
+	<h1>User Login</h1>
+	<div>
+		<form method="POST" action="">
+			Username: <input type="text" name="Username:">
+			<br>
+			Password: <input type="text" name="Password:">
+			<br>
+			<input type="Login">
+		</form>
+	</div>
+</body>
+</html>
