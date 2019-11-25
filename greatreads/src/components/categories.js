@@ -1,5 +1,6 @@
 import React from 'react';
 import './categories.css';
+import { NavLink } from 'react-router-dom';
 
 class Cat extends React.Component {
   render (){
@@ -11,10 +12,9 @@ class Cat extends React.Component {
                     <p className="company-name">
                     Great Reads 
                     </p>
-  
-                    <a className="nactive" href="#"><i className="fa fa-fw fa-user"></i> Login</a>
-                    <a className="nactive" href="#"><i className="fa fa-fw fa-search"></i> Search</a> 
-                    <a className="active" href="hompage.html"><i className="fa fa-fw fa-home"></i> Home</a> 
+                    <NavLink to="/categories"><a className="active" href="#"><i className="fa fa-fw fa-user"></i> Categories</a></NavLink>
+                    <NavLink to="/addreview"><a className="nactive" href="#"><i className="fa fa-fw fa-user"></i> Review</a></NavLink> 
+                    <NavLink to="/"><a className="nactive" href="#"><i className="fa fa-fw fa-user"></i> Home</a></NavLink>
                 </div>
                 </nav>
             </header>
