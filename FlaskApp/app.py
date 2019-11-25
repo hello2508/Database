@@ -24,11 +24,11 @@ def index():
 		name = userDetails['name']
 		book_title = userDetails['book_title']
 		review = userDetails['review']
-		asin = userDetails['asin']
+		summary = userDetails['summary']
 		overall = userDetails['overall']
 		cur = mysql.connection.cursor()
 		# Create a database called test and create necessary tables
-		cur.execute("INSERT INTO test(reviewerName,booktitle,reviewText,asin,overall) VALUES(%s, %s, %s)",(name,book_title,review))
+		cur.execute("INSERT INTO test(reviewerName,booktitle,reviewText,summary,overall) VALUES(%s, %s, %s,%s,%d)",(name,book_title,review,summary,overall))
 		# Save changes into the database
 		mysql.connection.commit()
 		cur.close()
