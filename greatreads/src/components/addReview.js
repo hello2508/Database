@@ -17,7 +17,7 @@ class Review extends React.Component {
                     <NavLink to="/"><a className="nactive" href="#"><i className="fa fa-fw fa-user"></i> Home</a></NavLink>
                 </div>
                 <div className="pop-up">
-                        <img src="UI/39832183._SX98_.png" className="review-img" align="left"/>
+                        <img src="img/39832183._SX98_.png" className="review-img" align="left"/>
                         <div className="review-deets">
                         <h1 className="review-heading">Write a Review!</h1>
                         <p className="book-details">Name of Book:</p>

@@ -28,8 +28,8 @@ class Cat extends React.Component {
                     <div className="category-portion">
                         <h1 className="category-heading">Category</h1>
                         <div className="row category-book-row">
-                            <a href=""><img src="UI/1713426._SX98_.png" className="book-img"/></a>
-                            <a href=""><img src="UI/1713426._SX98_.png" className="book-img"/></a><a href=""><img src="UI/1713426._SX98_.png" className="book-img"/></a><a href=""><img src="UI/1713426._SX98_.png" className="book-img"/></a><a href=""><img src="UI/1713426._SX98_.png" className="book-img"/></a><a href=""><img src="UI/1713426._SX98_.png" className="book-img"/></a><a href=""><img src="UI/1713426._SX98_.png" className="book-img"/></a>
+                            <a href=""><img src="img/1713426._SX98_.png" className="book-img"/></a>
+                            <a href=""><img src="img/1713426._SX98_.png" className="book-img"/></a><a href=""><img src="img/1713426._SX98_.png" className="book-img"/></a><a href=""><img src="img/1713426._SX98_.png" className="book-img"/></a><a href=""><img src="img/1713426._SX98_.png" className="book-img"/></a><a href=""><img src="img/1713426._SX98_.png" className="book-img"/></a><a href=""><img src="img/1713426._SX98_.png" className="book-img"/></a>
                             
                             <div className="hover-over-description">
                                 <h1 className="bookname">Predictably Irrational</h1>
@@ -41,9 +41,9 @@ class Cat extends React.Component {
                     <div className="side-panel">
                         <div className="enjoyed-books-section">
                             <h2 className="reader-enjoy-heading">Readers also enjoyed:</h2>
-                            <img src="UI/929._SX98_.png" className="enjoyed-books"/>
-                            <img src="UI/2776527._SX98_.png" className="enjoyed-books"/>
-                            <img src="UI/2776527._SX98_.png" className="enjoyed-books"/>
+                            <img src="img/929._SX98_.png" className="enjoyed-books"/>
+                            <img src="img/2776527._SX98_.png" className="enjoyed-books"/>
+                            <img src="img/2776527._SX98_.png" className="enjoyed-books"/>
                             <h3 className="similar-books">See similar books...</h3>
                         </div>
                         <div className="write-review">
