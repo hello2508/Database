@@ -124,9 +124,6 @@ html {
     margin-bottom: 30%;
 }
 
-.imgcol1{
-   
-}
 
 .book-inbetween{
     height: 130px;
@@ -194,11 +191,15 @@ html {
 /* ADD REVIEW PAGE */
 /* -----------------------------------------------*/
 
+
+.writeareview{
+    display: block;
+}
 .pop-up{
     background-color: #fff5e7;
     background: cover;
     width: 700px;
-    height: 600px
+    height: 700px
 }
 
 .review-img{
@@ -234,8 +235,6 @@ html {
     margin-left: 30%
 }
 
-.top-field{
-}
 
 .small-input-field{
     background-color: #ffffff;
@@ -245,6 +244,27 @@ html {
     font-size: 60%;
     color: #414141;
     text-align: center;
-    margin: 18.5px 80px;
-    width: 100%;
+    margin: 16.5px 80px;
+    width: 70%;
 }
+
+
+.submit-button a:link,
+.submit-button a:visited{
+    color: rgb(0, 0, 0);
+
+}
+.submit-button a:hover{
+    background-color: rgba(72, 217, 212, 0.77);
+}
+
+
+
+.submitclickbutton{
+    background-color: rgba(72, 217, 212, 0.56);
+    padding: 2% 6%;
+    text-decoration: none;
+    border-radius: 10px;
+    margin-left: 35%;
+}
+
