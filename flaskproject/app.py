@@ -41,5 +41,9 @@ def mongostuff():
 
     return dumps(demons)
 
+@app.route('/category')
+def categorypage():
+    return render_template('categorypage2.html')
+
 if __name__ == "__main__":
     app.run(debug=True)
