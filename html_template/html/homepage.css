@@ -99,7 +99,7 @@ html {
 
 
 .background-image{
-    background: url({{ url_for('static', filename='header.jpg')}});
+    background: url(res/images/header.jpg);
     background-size: cover;
     height: 140px;
     margin-top: -13.5px;

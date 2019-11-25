@@ -99,8 +99,8 @@ html {
 
 
 .background-image{
-    background: url(res/images/header.jpg);
-    background-size: cover;
+    background-image: url(img/header.jpg);
+
     height: 140px;
     margin-top: -13.5px;
     
