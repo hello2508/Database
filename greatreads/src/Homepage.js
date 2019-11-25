@@ -31,7 +31,7 @@ class Home extends React.Component {
                       </h2>
                       <div className="wrap">
                          <div className="search">
-                            <input type="text" className="searchTerm" placeholder="What are you looking for?">
+                            <input type="text" className="searchTerm" placeholder="What are you looking for?"/>
                             <button type="submit" className="searchButton">
                               <i className="fa fa-search"></i>
                            </button>
@@ -87,35 +87,35 @@ class Home extends React.Component {
                       <div className="top-picks-col">
                           <div className="col span-1-of-3 imgcol1">
                               <a href="">
-                                  <img src="UI/1713426._SX98_.png" className="book-inbetween">
+                                  <img src="UI/1713426._SX98_.png" className="book-inbetween"/>
                               </a>
                               <a href="">
-                                  <img src="UI/43641._SX98_.png" className="book-inbetween">
+                                  <img src="UI/43641._SX98_.png" className="book-inbetween"/>
                               </a>
                               <a href="">
-                                  <img src="UI/1713426._SX98_.png" className="book-inbetween">
+                                  <img src="UI/1713426._SX98_.png" className="book-inbetween"/>
                               </a>
                           </div>
                       <div className="col span-1-of-3 imgcol1">
                           <a href="">
-                              <img src="UI/929._SX98_.png" className="book-inbetween">
+                              <img src="UI/929._SX98_.png" className="book-inbetween"/>
                           </a>
                           <a href="">
-                              <img src="UI/39832183._SX98_.png" className="book-inbetween">
+                              <img src="UI/39832183._SX98_.png" className="book-inbetween"/>
                           </a>
                           <a href="">
-                              <img src="UI/1713426._SX98_.png" className="book-inbetween">
+                              <img src="UI/1713426._SX98_.png" className="book-inbetween"/>
                           </a>
                       </div>
                       <div className="col span-1-of-3 imgcol1">
                           <a href="">
-                              <img src="UI/43641._SX98_.png" className="book-inbetween">
+                              <img src="UI/43641._SX98_.png" className="book-inbetween"/>
                           </a>
                           <a href="">
-                              <img src="UI/929._SX98_.png" className="book-inbetween">
+                              <img src="UI/929._SX98_.png" className="book-inbetween"/>
                           </a>
                           <a href="">
-                              <img src="UI/1713426._SX98_.png" className="book-inbetween">
+                              <img src="UI/1713426._SX98_.png" className="book-inbetween"/>
                           </a>
                       </div>
                       <div className="button">
@@ -131,5 +131,6 @@ class Home extends React.Component {
       </div>
     );
   }
+}
 
 export default Home;

@@ -1,0 +1,270 @@
+.row{
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+@font-face {
+    font-family: catalunya;
+    src: url(/fonts/catalunya.ttf);
+            }
+
+.small-heading {
+    font-size: 100%;
+    color: #000000;
+    margin-left: 2%;
+    margin: 1.5%;
+    display: inline-block;
+}
+
+.text{
+    font-family: sans-serif;
+}
+
+/* -----------------------------------------------*/
+/* NAVIGATION BAR */
+/* -----------------------------------------------*/
+
+.nav-bar{
+    height: 100%;
+    vertical-align: top;
+    background-color: rgba(72, 217, 212, 0.56);
+}
+
+.nav-bar a {
+  float: right;
+  padding: 1% 1%;
+
+    height: auto;
+  text-decoration: none;
+  font-size: 110%;
+    font-family: 'catalunya';
+
+}
+.nactive{
+    color: #FFF;
+}
+.nav-bar a:hover {
+  background-color: #FFF;
+  color: #000;
+}
+
+.active {
+  color: darkcyan;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+
+}
+
+.company-name{
+    font-weight: 40;
+    padding: 0.5% 2%;
+    color:#FFF;
+    font-size: 170%;
+    font-family: 'catalunya';
+    float:left;
+}
+
+/* -----------------------------------------------*/
+/* LEFT COLUMN */
+/* -----------------------------------------------*/
+
+
+.background-image{
+    background: url(img/header.jpg);
+    background-size: cover;
+    height: 140px;
+    margin-top: -13.5px;
+
+}
+
+.column-left{
+    background-color: rgba(230, 230, 230, 0.34);
+    height: 900px
+}
+
+
+/* -----------------------------------------------*/
+/* SEARCH BAR */
+/* -----------------------------------------------*/
+
+
+.searchbar{
+    margin: 3% 4%;
+}
+
+
+.search-font{
+    font-weight: 300;
+    font-size: 130%;
+}
+
+
+.search {
+  width: 100%;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #00B4CC;
+  border-right: none;
+  padding: 5px;
+  height: 36px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #00B4CC;
+}
+
+.searchButton {
+  width: 40px;
+  height: 36px;
+  border: 1px solid #00B4CC;
+  background: #00B4CC;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+.review{
+    font-size: 100%;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+    width: 40%;
+    margin: 2% 0;
+}
+
+/* ------------*/
+
+.top-cat{
+    font-size: 110%;
+    color: #047777;
+    margin-bottom: 0;
+    margin-top: 5%;
+
+}
+
+.genre-links{
+    margin: 2% 0;
+    font-size: 85%;
+    padding: 5% 0;
+}
+
+.genre-links a{
+    text-decoration: none;
+    color: darkcyan;
+}
+
+.genre-links a:link,
+.genre-links a:visited{
+    color: darkcyan;
+
+}
+.genre-links a:hover{
+    color:#000000;
+}
+
+.more-genres{
+    text-decoration: underline;
+}
+
+
+/* -----------------------------------------------*/
+/* RIGHT COLUMN */
+/* -----------------------------------------------*/
+
+
+.top-picks{
+    font-size: 180%;
+    color: #000000;
+    font-weight: 200;
+    font-family: 'catalunya';
+    margin-left: 30%;
+    margin-bottom: 30%;
+}
+
+
+.book-inbetween{
+    height: 130px;
+    margin-bottom: 70%;
+    padding: 2px;
+    border: 1px solid #acacac; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+}
+
+/* Add a hover effect (blue shadow) */
+.book-inbetween:hover {
+    box-shadow: 0 0 2px 1px #585858;
+}
+
+
+.more-toppicks{
+    text-align: center;
+    font-size: 90%;
+    text-transform: uppercase;
+    font-weight: 400
+}
+
+.button{
+    margin-left: 32%
+}
+
+.button a:link,
+.button a:visited{
+    color: rgb(0, 0, 0);
+
+}
+.button a:hover{
+    background-color: rgba(72, 217, 212, 0.77);
+}
+
+
+.more-button{
+    background-color: rgba(72, 217, 212, 0.56);
+    padding: 3%;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+/* -----------------------------------------------*/
+/* REVIEW PAGE */
+/* -----------------------------------------------*/
+
+
+.review-rating{
+    float: right;
+}
+
+.specificbook{
+    margin: 2% 5%;
+}
+
+.book-detail-img{
+    height: 250px;
+
+    display:inline
+}
+
+.book-img{
+    margin: 8% 20%;
+    display:inline
+
+}
+
+.book-description{
+    display: inline
+}
