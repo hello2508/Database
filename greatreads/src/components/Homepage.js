@@ -12,9 +12,9 @@ class Home extends React.Component {
               <p className="company-name">
               Great Reads
               </p>
-              <NavLink to="/categories"><a className="nactive" href="#"><i className="fa fa-fw fa-user"></i> Categories</a></NavLink>
-              <NavLink to="/addreview"><a className="nactive" href="#"><i className="fa fa-fw fa-user"></i> Review</a></NavLink> 
-              <NavLink to="/"><a className="active" href="#"><i className="fa fa-fw fa-user"></i> Home</a></NavLink>
+              <NavLink to="/categories"><a className="nactive" href="#"><i className="fa fa-fw fa-search"></i>Categories</a></NavLink>
+              <NavLink to="/addreview"><a className="nactive" href="#"><i className="fa fa-fw fa-user"></i>Review</a></NavLink> 
+              <NavLink to="/"><a className="active" href="#"><i className="fa fa-fw fa-home"></i>Home</a></NavLink>
           </div>
 
 

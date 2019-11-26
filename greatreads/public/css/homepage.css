@@ -1,29 +1,7 @@
-/* -----------------------------------------------*/
-/* BASIC SETUP */
-/* -----------------------------------------------*/
-* {
-    margin : 0; 
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Lato', 'Arial', sans-serif;
-}
-
-html {
-    background-color: #FFF;
-    color: #414141;
-    font-family: 'Lato', 'Arial', sans-serif;
-    font-weight: 300;
-    font-size: 20px;
-    text-rendering: optimizeLegibility;
-}
-
-/* -----------------------------------------------*/
-/* REUSABLE COMPONENTS */
-/* -----------------------------------------------*/
 .row{
     max-width: 100%;
     margin: 0 auto;
-    position: relative; 
+    position: relative;
 }
 
 
@@ -57,12 +35,11 @@ html {
 .nav-bar a {
   float: right;
   padding: 1% 1%;
-  
-    height: auto;
+  height: auto;
   text-decoration: none;
   font-size: 110%;
-    font-family: 'catalunya';
-        
+  font-family: 'catalunya';
+
 }
 .nactive{
     color: #FFF;
@@ -81,15 +58,15 @@ html {
     float: none;
     display: block;
   }
-    
+
 }
 
 .company-name{
     font-weight: 40;
-    padding: 0.5% 2%;
+    padding: 10% 30%;
     color:#FFF;
-    font-size: 170%;
-    font-family: 'catalunya';
+    font-size: 150%;
+    font-family: "catalunya";
     float:left;
 }
 
@@ -99,11 +76,11 @@ html {
 
 
 .background-image{
-    background: url(res/images/header.jpg);
+    background: url(./img/header.jpg);
     background-size: cover;
     height: 140px;
     margin-top: -13.5px;
-    
+
 }
 
 .column-left{
@@ -177,7 +154,7 @@ html {
     color: #047777;
     margin-bottom: 0;
     margin-top: 5%;
-    
+
 }
 
 .genre-links{
@@ -266,6 +243,7 @@ html {
 /* REVIEW PAGE */
 /* -----------------------------------------------*/
 
+
 .review-rating{
     float: right;
 }
@@ -275,7 +253,6 @@ html {
 }
 
 .book-detail-img{
-    height: 250px;
 
     display:inline
 }
@@ -283,5 +260,9 @@ html {
 .book-img{
     margin: 8% 20%;
     display:inline
-    
+
+}
+
+.book-description{
+    display: inline
 }

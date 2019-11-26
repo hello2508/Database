@@ -172,6 +172,7 @@ html {
 }
 
 .book-detail-img{
+    height: 250px;
 
     display:inline
 }
