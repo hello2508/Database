@@ -18,21 +18,24 @@
             <nav>
                 <div class="row nav-bar">
                     <p class="company-name">
-                    Great Reads 
+                    Great Reads
                     </p>
   
                     <a class="nactive" href="#"><i class="fa fa-fw fa-user"></i> Login</a>
                     <a class="nactive" href="#"><i class="fa fa-fw fa-search"></i> Search</a> 
-                    <a class="active" href="hompage.html"><i class="fa fa-fw fa-home"></i> Home</a> 
+                    <a class="active" href="/"><i class="fa fa-fw fa-home"></i> Home</a> 
                 </div>
                 </nav>
             </header>
             <section class="section-space">
                 <!--<img src="res/images/header.jpg" name="header-image" width="90%" height="200px">-->
-                
-                    <div class="">
-                        <img src="{{ url_for('static', filename='header.jpg')}}" class="background-image">
+                    <div class="background-image">
+                            <!--<img src="{{ url_for('static', filename='header.jpg')}}">-->
+                            <p>&nbsp;</p>
                         </div>
+                    <!--<div class="">
+                        <img src="{{ url_for('static', filename='header.jpg')}}" class="background-image" width="1440px">
+                        </div>-->
                 <div class="row">
                     <div class="category-portion">
                         <h1 class="category-heading">Category</h1>
@@ -50,10 +53,9 @@
                     <div class="side-panel">
                         <div class="enjoyed-books-section">
                             <h2 class="reader-enjoy-heading">Readers also enjoyed:</h2>
-                            <img src="UI/929._SX98_.png" class="enjoyed-books">
-                            <img src="UI/2776527._SX98_.png" class="enjoyed-books">
-                            <img src="UI/2776527._SX98_.png" class="enjoyed-books">
-                            <h3 class="similar-books">See similar books...</h3>
+                            <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="enjoyed-books">
+                            <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="enjoyed-books">
+                            <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="enjoyed-books">
                         </div>
                         <div class="write-review">
                             <h1 class="review-heading">Want to write a review?</h1>

@@ -48,6 +48,7 @@ html {
 /* NAVIGATION BAR */
 /* -----------------------------------------------*/
 
+
 .nav-bar{
     height: 100%;
     vertical-align: top;
@@ -93,14 +94,16 @@ html {
     float:left;
 }
 
+
 /* -----------------------------------------------*/
 /* TOP BACKGROUND */
 /* -----------------------------------------------*/
 
 
 .background-image{
+    background-image: url(header.jpg);
     height: 140px;
-    
+
 }
 /* -----------------------------------------------*/
 /* CATEGORIES */
@@ -213,7 +216,7 @@ html {
     margin-top: 5%;
     margin-right: 3%;
     height: 120px;
-    padding-left: 3%
+    padding-left: 1%
 }
 
 .similar-books{
