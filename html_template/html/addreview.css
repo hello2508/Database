@@ -191,6 +191,12 @@ html {
 /* ADD REVIEW PAGE */
 /* -----------------------------------------------*/
 
+.exit{
+    float:right;
+    margin-right: 2%;
+    text-decoration: none;
+}
+
 
 .writeareview{
     display: block;
@@ -249,6 +255,10 @@ html {
 }
 
 
+.submit-button{
+    margin-top:50%;
+}
+
 .submit-button a:link,
 .submit-button a:visited{
     color: rgb(0, 0, 0);
@@ -257,7 +267,6 @@ html {
 .submit-button a:hover{
     background-color: rgba(72, 217, 212, 0.77);
     display: block;
-    margin-top:10%;
 }
 
 
