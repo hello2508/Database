@@ -4,8 +4,8 @@ from bson.json_util import dumps
 
 app = Flask(__name__)  #creates an app
 
-# mongo_store = PyMongo(app, uri="mongodb://18.141.0.98/goodread")
-mongo_store = PyMongo(app, uri="mongodb://localhost:27017/nezukodb")
+mongo_store = PyMongo(app, uri="mongodb://18.141.0.98/goodread")
+#mongo_store = PyMongo(app, uri="mongodb://localhost:27017/nezukodb")
 metadata = mongo_store.db.metadata
 # logs = mongo_store.logs
 
@@ -23,7 +23,7 @@ def monstercat(category):
     # demons = nezuko.distinct('categories')
 
     newarr = []
-
+    print('hello world')
     # categories = metadata.find({'categories': {"$elemMatch": {"$elemMatch": {"$eq": category} } }}, {'asin': 1, '_id': 0 })
     categories = metadata.find({'categories': {"$elemMatch": {"$elemMatch": {"$eq": category} } }}, {'imUrl': 1, '_id': 0 })
 

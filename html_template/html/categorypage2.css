@@ -99,7 +99,7 @@ html {
 
 
 .background-image{
-    background: url(res/images/header.jpg);
+    background: url(img/header.jpg);
     background-size: cover;
     height: 160px;
 }

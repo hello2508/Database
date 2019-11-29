@@ -97,14 +97,11 @@ html {
 /* TOP BACKGROUND */
 /* -----------------------------------------------*/
 
-.background-image{
-    background-image: url(img/header.jpg);
 
+.background-image{
     height: 140px;
-    margin-top: -13.5px;
     
 }
-
 /* -----------------------------------------------*/
 /* CATEGORIES */
 /* -----------------------------------------------*/
