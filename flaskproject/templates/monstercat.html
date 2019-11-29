@@ -3,14 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='categorypage2.css')}}">
+    <link href="https://fonts.googleapis.com/css?family=Catalunya&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='grid.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css')}}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
 </head>
 <body>
-    <section class="row">
+    <h2 class="row">
       {% for category in categories %}
-        <section>
-            <img src="{{category.imUrl}}">
-        </section>
+        <img src="{{category.imUrl}}">
+        < "{{category.asin}}">
       {% endfor %}
-    </section>
+    </h2>
 </body>
 </html>

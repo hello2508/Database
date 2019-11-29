@@ -25,7 +25,7 @@ def monstercat(category):
     newarr = []
     print('hello world')
     # categories = metadata.find({'categories': {"$elemMatch": {"$elemMatch": {"$eq": category} } }}, {'asin': 1, '_id': 0 })
-    categories = metadata.find({'categories': {"$elemMatch": {"$elemMatch": {"$eq": category} } }}, {'imUrl': 1, '_id': 0 })
+    categories = metadata.find({'categories': {"$elemMatch": {"$elemMatch": {"$eq": category} } }}, {'imUrl': 1, 'asin': 1, '_id': 0 })
 
     # for x in categories:
     #     newarr.append(x['asin'])
