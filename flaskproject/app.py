@@ -13,42 +13,40 @@ metadata = mongo_store.db.metadata
 def webprint():
     return render_template('hompage.html')
 
-@app.route("/monstercat/<category>")
-def monstercat(category):
-    # name = standuser.find_one({"name": "Giss"})
-    # results = standuser.find({"name": "some book"})
-    # demons = nezuko.distinct('categories')
-    # demons = nezuko.find('png')
-    # demons = nezuko.distinct('categories')
-    # demons = nezuko.distinct('categories')
+# @app.route("/monstercat/<category>")
+# def monstercat(category):
+#     # categories = metadata.find({'categories': {"$elemMatch": {"$elemMatch": {"$eq": category} } }}, {'asin': 1, '_id': 0 })
+#
+#     # for x in categories:
+#     #     newarr.append(x['asin'])
+#
+#     # Method 2 of printing Cursor stuff
+#     # blah = ""
+#     # for curse in demons:
+#     #     blah += str(curse)
+#
+#     # return str(blah)
+#     # Method 1 of printing Cursor Stuff
+#     # dump(results) to ddeal with Cursor
+#
+#
+#     #     f'''
+#     #     <h1>{category}</h1>
+#     #     <img src="{metadata[newarr[0]].imUrl}" >
+#     # '''
 
-    newarr = []
-    print('hello world')
-    # categories = metadata.find({'categories': {"$elemMatch": {"$elemMatch": {"$eq": category} } }}, {'asin': 1, '_id': 0 })
-    categories = metadata.find({'categories': {"$elemMatch": {"$elemMatch": {"$eq": category} } }}, {'imUrl': 1, 'asin': 1, '_id': 0 })
+@app.route('/category/<categoryname>')
+def categorypage(categoryname):
+    categories = metadata.find({'categories': {"$elemMatch": {"$elemMatch": {"$eq": categoryname} } }}, {'imUrl': 1, 'asin': 1, '_id': 0 })
 
-    # for x in categories:
-    #     newarr.append(x['asin'])
+    # return render_template('categorypage2.html')
+    return render_template('categorypage2.html', categories=categories)
 
-    # Method 2 of printing Cursor stuff
-    # blah = ""
-    # for curse in demons:
-    #     blah += str(curse)
-
-    # return str(blah)
-    # Method 1 of printing Cursor Stuff
-    # dump(results) to ddeal with Cursor
+#
+# @app.route('/category/<categoryname>')
+# def
 
 
-    return render_template('monstercat.html', categories=categories)
-    #     f'''
-    #     <h1>{category}</h1>
-    #     <img src="{metadata[newarr[0]].imUrl}" >
-    # '''
-
-@app.route('/category')
-def categorypage():
-    return render_template('categorypage2.html')
 
 if __name__ == "__main__":
     app.run(debug=True)
