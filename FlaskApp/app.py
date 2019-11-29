@@ -26,9 +26,14 @@ def index():
 		name = userDetails['name']
 		book_title = userDetails['book_title']
 		review = userDetails['review']
+		summary = userDetails['summary']
+		overall = request.form.get('overall')
+		reviewTime= request.form.get('reviewTime')
+		unixReviewTime= userDetails ['unixReviewTime']
 		cur = mysql.connection.cursor()
 		# Create a database called test and create necessary tables
-		cur.execute("INSERT INTO test(reviewerName,booktitle,reviewText) VALUES(%s, %s, %s)",(name,book_title,review))
+		cur.execute("INSERT INTO test(reviewerName,booktitle,reviewText,summary,overall,reviewTime,unixReviewTime) VALUES(%s, %s, %s,%s,%s,%s,%s)"
+                            ,(name,book_title,review,summary,overall,reviewTime,unixReviewTime))
 		# Save changes into the database
 		mysql.connection.commit()
 		cur.close()
@@ -48,4 +53,4 @@ def users():
 
 
 if __name__ == "__main__":
-	app.run(host="0.0.0.0", port=27017,debug=True)
+	app.run(debug=True)
