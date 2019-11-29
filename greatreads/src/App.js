@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
- 
+import axios from 'axios';
 import Home from './components/Homepage';
 import Review from './components/addReview';
 import Cat from './components/categories';
