@@ -119,6 +119,7 @@ html {
 
 .category-portion{
     display: inline-block;
+    width: 70%;
 }
 
 .section-space{
@@ -128,7 +129,7 @@ html {
 .category-heading{
     font-weight: 200;
     font-family: 'catalunya';
-    margin-left: 65%;
+    margin-left: 50%;
     margin-bottom: 2%;
 }
 
@@ -143,9 +144,9 @@ html {
     height: 1px;
     background-color: #6d6d6d;
     content: " ";
-    width: 320%;
+    width: 150%;
     margin-top:7%;
-    margin-left: -145%;
+    margin-left: -80%;
 }
 
 
@@ -154,13 +155,15 @@ html {
     width: 120%;
 }
 
-
+.category-books{
+    width: 70%;
+}
 
 .book-img{
     padding: 3px;
     border: 1px solid #acacac; /* Gray border */
     border-radius: 4px;  /* Rounded border */
-    margin-left: 3%;
+    margin-left: 1%;
     margin-bottom: 5%;
     height: 100px;
 }
