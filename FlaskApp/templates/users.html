@@ -14,5 +14,12 @@
 			<input type="Login">
 		</form>
 	</div>
+
+	<div>
+		{% for name in user %}
+		<p>{{user[0]}}</p>
+		<p>{{user[1]}}</p>
+		{% endfor %}
+	</div>
 </body>
 </html>

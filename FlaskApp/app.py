@@ -44,10 +44,16 @@ def index():
 # Display data onto the web browser
 def users():
 	cur = mysql.connection.cursor()
-	display = cur.execute("SELECT reviewerName FROM kindle_reviews LIMIT 2")
+	# display = cur.execute("SELECT reviewerName FROM kindle_reviews LIMIT 2")
+	# newtbl = cur.execute('''CREATE TABLE test1(id int UNIQUE AUTO_INCREMENT,reviewerName varchar(80),booktitle varchar(30),reviewText text(32767),asin varchar(10),reviewTime int(10),overall int(1))''')
+	# cur.execute('''INSERT INTO test1(reviewerName, booktitle, reviewText, asin, reviewTime, overall) VALUES ('Ariel', 'Little Mermaid', 'Ariel is pretty', 'B006784SZQ', 05092019, 4)''')
+	# mysql.connection.commit()
+	cur.execute('''SELECT * FROM test 1''')
+	return cur.fetchall()
 	# if display > 0:
-	userDetails = cur.fetchall()
-	return render_template('users.html', userDetails=userDetails)
+	# userDetails = cur.fetchall()
+	# print(userDetails)
+	# return render_template('users.html', userDetails=userDetails)
 
 
 if __name__ == "__main__":
