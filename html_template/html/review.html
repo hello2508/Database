@@ -47,16 +47,71 @@
                                     <p class="book-description">Nudge is a concept in behavioral science, political theory and behavioral economics which proposes positive reinforcement and indirect suggestions as ways to influence the behavior and decision making of groups or individuals.</p>
                                 </div>
                                 <div class="box">
-	                               <a class="button1" href="#popup1">Let me Pop up</a>
+	                               <a class="button1" href="#popup1">Add your Review</a>
                                 </div>
 
                                 <div id="popup1" class="overlay">
 	                               <div class="popup">
-		                              <h2>Here i am</h2>
+		                              <h2>Write a Review!</h2>
 		                              <a class="close" href="#">&times;</a>
 		                          <div class="content">
+                                        <form method="POST" action="">
+                                                Name: <input type="text" name="name"/>
+                                                <br>
+                                                Book title: <input type="text" name="book_title"/>
+                                                <br>
+                                                Review: <input type="text" name="review"/>
+                                                <br>
+                                                Summary.: <input type="text" name="summary"/>
+                                                <br>
+                                                Overall Rating(0-5):<BR>
+                                            <div class="rating">
+                                                <input type="radio" name="overall" value="0">0<BR>
+                                                <input type="radio" name="overall" value="1"/>1<BR>
+                                                <input type="radio" name="overall" value="2"/>2<BR>
+                                                <input type="radio" name="overall" value="3"/>3<BR>
+                                                <input type="radio" name="overall" value="4"/>4<BR>
+                                                <input type="radio" name="overall" value="5"/>5<BR>
+                                                <br>
+                                            </div>
+                                                <input type="hidden" name="reviewTime" id="reviewTime"/>
+                                                <script type="text/javascript">
+                                                    function getDate()
+                                                    {
+                                                        var today = new Date();
+                                                        var dd = today.getDate();
+                                                        var mm = today.getMonth()+1; //January is 0!
+                                                        var yyyy = today.getFullYear();
+                                                        if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm}
+                                                        reviewDate = dd+" "+mm+", "+yyyy;
+                                                        console.log(reviewDate)
+                                    
+                                                        document.getElementById("reviewTime").value = reviewDate;
+                                                    }
+                                    
+                                                    getDate();
+                                                </script>
+                                                <input type="hidden" name="unixReviewTime" id="unixReviewTime"/>
+                                                <script type="text/javascript">
+                                                    function getUnixTime(){
+                                                        var ts = Math.round((new Date()).getTime() / 1000);
+                                                        console.log(ts)
+                                                        document.getElementById("unixReviewTime").value = ts;
+                                                        // console.log(unixReviewTime)
+                                                    }
+                                                    getUnixTime();
+                                                </script>
+                                            
+                                            
+                                    
+                                            </form>
 			                             Thank to pop me out of that button, but now i'm done so you can close this window.
+                                            
+                                               
 		</div>
+                                            <a class2="close" href="#"><input type="submit"></a>
+                                            
+                                           
 	</div>
 </div>
                             </div>
