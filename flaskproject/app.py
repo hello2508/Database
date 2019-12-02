@@ -5,15 +5,9 @@ from bson.json_util import dumps
 
 app = Flask(__name__)  #creates an app
 
-# mongo_store = PyMongo(app, uri="mongodb://18.141.0.98/goodread")
-# mongo_store = PyMongo(app, uri="mongodb://localhost:27017/nezukodb")
-# metadata = mongo_store.db.metadata
-
-
-mongo_store = MongoClient("mongodb://localhost:27017")
-metadata = mongo_store.nezukodb.metadata
-logs = mongo_store.nezukodb.logs
-# logs = mongo_store.logs
+### Kenneth's EC2 instance
+mongo_store = MongoClient("mongodb://18.141.0.98/")
+metadata = mongo_store.goodread.metadata
 
 @app.route('/')
 def webprint():
@@ -29,6 +23,10 @@ def categorypage(categoryname):
     limit = 10
     # return render_template('categorypage2.html')
     return render_template('categorypage2.html', categories=categories[:limit])
+
+@app.route('/book/<asin>')
+def book(asin):
+    return
 
 
 if __name__ == "__main__":
