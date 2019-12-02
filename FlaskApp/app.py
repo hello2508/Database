@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect
 from flask_mysqldb import MySQL
-from flask_pymongo import PyMongo
 import yaml
 
 app = Flask(__name__)
@@ -14,7 +13,6 @@ app.config['MYSQL_DB'] = db['mysql_db']
 
 # instantiate an object for MySQL
 mysql = MySQL(app)
-
 
 # GET request- display orm to the user
 # POSt request - store details onto the database
@@ -46,10 +44,10 @@ def index():
 # Display data onto the web browser
 def users():
 	cur = mysql.connection.cursor()
-	cur.execute("SELECT reviewerName FROM kindle_reviews LIMIT 2")
-	display = cur.fetchall()
-	return render_template('users.html', data = display)
-
+	display = cur.execute("SELECT reviewerName FROM kindle_reviews LIMIT 2")
+	# if display > 0:
+	userDetails = cur.fetchall()
+	return render_template('users.html', userDetails=userDetails)
 
 
 if __name__ == "__main__":
