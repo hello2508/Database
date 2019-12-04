@@ -9,6 +9,12 @@ app = Flask(__name__)  #creates an app
 mongo_store = MongoClient("mongodb://18.141.0.98/")
 metadata = mongo_store.goodread.metadata
 
+### My own local
+# mongo_store = MongoClient("mongodb://localhost:27017")
+# metadata = mongo_store.db.metadata
+# logs = mongo_store.nezukodb.logs
+# logs = mongo_store.logs
+
 @app.route('/')
 def webprint():
     return render_template('hompage.html')
@@ -22,11 +28,15 @@ def categorypage(categoryname):
     # to set limit to how many you want to add
     limit = 10
     # return render_template('categorypage2.html')
-    return render_template('categorypage2.html', categories=categories[:limit])
+    return render_template('categorypage2.html', categories=categories[:limit], name=categoryname)
 
 @app.route('/book/<asin>')
 def book(asin):
-    return
+
+    ### THIS FUNCTION WILL USE BOTH MYSQL AND MONGO TO FILL UP THE BOOK PAGE 
+    reviews = metadata.find({'asin': asin})
+
+    return render_template('review.html', reviews=reviews)
 
 
 if __name__ == "__main__":

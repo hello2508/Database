@@ -356,19 +356,7 @@ background-color: #9AEAE7;
   color: #9AEAE7;
 }
 
-.popup .close2 {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  transition: all 200ms;
-  font-size: 30px;
-  font-weight: bold;
-  text-decoration: none;
-  color: #333;
-}
-.popup .close2:hover {
-  color: #9AEAE7;
-}
+
 
 .popup .content {
   max-height: 30%;
@@ -376,7 +364,8 @@ background-color: #9AEAE7;
     font-family: sans-serif;
 }
 .popup .content .rating {
-    margin-left: auto;
+    margin-left: 10px;
+    margin-top: 10px;
 }
 
 @media screen and (max-width: 1000px){
