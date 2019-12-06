@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GreatReads</title>
+</head>
+<body>
+	<h1>Welcome to GreatReads!</h1>
+	<!-- Add Review Form -->
+	<h1>Submit your review</h1>
+	<div>
+		<form method="POST" action="">
+			Name: <input type="text" name="name">
+			<br>
+			Book Asin Number (E.g B000F83SZQ) : <input type="text" name="asin">
+			<br>
+			Review: <input type="text" name="review">
+			<br>
+			Summary.: <input type="text" name="summary">
+			<br>
+			Overall Rating(0-5):<BR>
+			<input type="radio" name="Overall Rating:" value="  0">0<BR>
+			<input type="radio" name="Overall Rating:" value="  1">1<BR>
+			<input type="radio" name="Overall Rating:" value="  2">2<BR>
+			<input type="radio" name="Overall Rating:" value="  3">3<BR>
+			<input type="radio" name="Overall Rating:" value="  4">4<BR>
+			<input type="radio" name="Overall Rating:" value="  5">5<BR>
+			<br>
+			<input type="" name="">
+			<input type="hidden" name="reviewTime" id="reviewTime"/>
+			<script type="text/javascript">
+				function getDate()
+				{
+    				var today = new Date();
+    				var dd = today.getDate();
+    				var mm = today.getMonth()+1; //January is 0!
+    				var yyyy = today.getFullYear();
+    				if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm}
+    				reviewDate = dd+" "+mm+", "+yyyy;
+    				console.log(reviewDate)
+
+    				document.getElementById("reviewTime").value = reviewDate;
+    			}
+
+    			getDate();
+    		</script>
+    		<input type="hidden" name="unixReviewTime" id="unixReviewTime"/>
+			<script type="text/javascript">
+				function getUnixTime(){
+					var ts = Math.round((new Date()).getTime() / 1000);
+					console.log(ts)
+					document.getElementById("unixReviewTime").value = ts;
+					console.log(unixReviewTime)
+				}
+				getUnixTime();
+			</script>
+			<input type="submit">
+		</form>
+	</div>
+
+	<!-- Displaying reviews -->
+	<div>
+		<!-- {% for asin in bookasin %}
+			{{ asin[0] }}
+		{% endfor %} -->
+		<table border = 1>
+			{% for id in data %}
+				<p>Book ASIN: {{ id[0] }}</p>
+				<li>Reviewer: {{ id[1] }}</li>
+				<li>{{ id[2] }}</li>
+			{% endfor %}
+		</table>
+	</div>
+</body>
+</html>
