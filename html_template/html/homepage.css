@@ -266,13 +266,13 @@ html {
 /* REVIEW PAGE */
 /* -----------------------------------------------*/
 
-.book-details{
+.book-name{
+    margin: 2% 5%;
+    font-family: 'catalunya';
+    font-size: 230%;
    
 }
 
-.review-rating{
-    float: right;
-}
 
 .specificbook{
     margin: 2% 5%;
@@ -289,9 +289,12 @@ html {
     display:inline
     
 }
+.book-description{
+    margin-left: 10%;
+}
 
 .box {
-
+margin-top: 30%;
   text-align: center;
 }
 
