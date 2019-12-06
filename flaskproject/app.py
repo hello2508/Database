@@ -28,6 +28,12 @@ app.config['MYSQL_DB'] = db['mysql_db']
 # instantiate an object for MySQL
 mysql = MySQL(app)
 
+### My own local
+# mongo_store = MongoClient("mongodb://localhost:27017")
+# metadata = mongo_store.db.metadata
+# logs = mongo_store.nezukodb.logs
+# logs = mongo_store.logs
+
 @app.route('/')
 def webprint():
     return render_template('hompage.html')
@@ -46,7 +52,7 @@ def categorypage(categoryname):
 @app.route('/book/<asin>')
 def book(asin):
 
-    ### THIS FUNCTION WILL USE BOTH MYSQL AND MONGO TO FILL UP THE BOOK PAGE
+    ### THIS FUNCTION WILL USE BOTH MYSQL AND MONGO TO FILL UP THE BOOK PAGE 
     reviews = metadata.find({'asin': asin})
 
     return render_template('review.html', reviews=reviews)
