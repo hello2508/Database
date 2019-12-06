@@ -156,7 +156,7 @@ html {
 }
 
 .category-books{
-    width: 70%;
+    width: 75%;
 }
 
 .book-img{
@@ -229,16 +229,13 @@ html {
     padding: 2%;    
 }
 
-.category-books:hover .asin{
-  display: inline-block;
-}
 
 .asin{
     border: 1px solid #ccc;
     background-color: #f4faff;
-    display: none;
-    margin-left: -5%;
+    display: inline-block;
     font-size: 60%;
     text-transform: uppercase;
     text-align: center;
+    padding: 1%;
 }
