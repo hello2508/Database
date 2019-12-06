@@ -57,26 +57,26 @@ def book(asin):
 
     return render_template('review.html', reviews=reviews)
 
-# @app.route('/reviews', methods=['GET','POST'])
-# def reviews():
-#     if request.method == 'POST':
-#         # Fetch form data
-#         userDetails = request.form
-#         name = userDetails['name']
-#         asin = userDetails['asin']
-#         review = userDetails['review']
-#         summary = userDetails['summary']
-#         overall = request.form.get['overall']
-#         reviewTime= request.form.get['reviewTime']
-#         unixReviewTime= userDetails ['unixReviewTime']
-#         cur = mysql.connection.cursor()
-#         # Create a database called test and create necessary tables
-#         cur.execute("INSERT INTO test(reviewerName,asin,reviewText,summary,overall,reviewTime,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s)"
-#                             ,(name,asin,review,summary,overall,reviewTime,unixReviewTime))
-#         # Save changes into the database
-#         mysql.connection.commit()
-#         cur.close()
-#         return 'update successful'
+@app.route('/reviews', methods=['GET','POST'])
+def reviews():
+    if request.method == 'POST':
+        # Fetch form data
+        userDetails = request.form
+        name = userDetails['name']
+        asin = userDetails['asin']
+        review = userDetails['review']
+        summary = userDetails['summary']
+        overall = request.form.get['overall']
+        reviewTime= request.form.get['reviewTime']
+        unixReviewTime= userDetails ['unixReviewTime']
+        cur = mysql.connection.cursor()
+        # Create a database called test and create necessary tables
+        cur.execute("INSERT INTO test(reviewerName,asin,reviewText,summary,overall,reviewTime,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s)"
+                            ,(name,asin,review,summary,overall,reviewTime,unixReviewTime))
+        # Save changes into the database
+        mysql.connection.commit()
+        cur.close()
+        return 'update successful'
     return render_template('')
 
 
