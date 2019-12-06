@@ -22,16 +22,18 @@ def index():
 		# Fetch form data
 		userDetails = request.form
 		name = userDetails['name']
-		book_title = userDetails['book_title']
+		asin = userDetails['asin']
 		review = userDetails['review']
 		summary = userDetails['summary']
-		overall = request.form.get('overall')
-		reviewTime= request.form.get('reviewTime')
+		overall = request.form.get['overall']
+		reviewTime= request.form.get['reviewTime']
 		unixReviewTime= userDetails ['unixReviewTime']
 		cur = mysql.connection.cursor()
 		# Create a database called test and create necessary tables
-		cur.execute("INSERT INTO test(reviewerName,booktitle,reviewText,summary,overall,reviewTime,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s)"
-                            ,(name,book_title,review,summary,overall,reviewTime,unixReviewTime))
+		# cur.execute("INSERT INTO test(reviewerName,asin,reviewText,summary,overall,reviewTime,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s)"
+                            # ,(name,asin,review,summary,overall,reviewTime,unixReviewTime))
+		cur.execute("INSERT INTO test1(asin,helpful,reviewerName,reviewText,summary,overall,reviewTime,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s)"
+                            ,(asin,name,review,summary,overall,reviewTime,unixReviewTime))
 		# Save changes into the database
 		mysql.connection.commit()
 		cur.close()
@@ -48,7 +50,6 @@ def users():
 	if result > 0:
 		data = cur.fetchall()
 		return render_template('home.html', data=data)
-
 
 
 if __name__ == "__main__":

@@ -11,20 +11,21 @@
 		<form method="POST" action="">
 			Name: <input type="text" name="name">
 			<br>
-			Book title: <input type="text" name="book_title">
+			Book Asin Number (E.g B000F83SZQ) : <input type="text" name="asin">
 			<br>
 			Review: <input type="text" name="review">
 			<br>
 			Summary.: <input type="text" name="summary">
 			<br>
 			Overall Rating(0-5):<BR>
-			<input type="radio" name="overall" value="0">0<BR>
-			<input type="radio" name="overall" value="1">1<BR>
-			<input type="radio" name="overall" value="2">2<BR>
-			<input type="radio" name="overall" value="3">3<BR>
-			<input type="radio" name="overall" value="4">4<BR>
-			<input type="radio" name="overall" value="5">5<BR>
+			<input type="radio" name="Overall Rating:" value="  0">0<BR>
+			<input type="radio" name="Overall Rating:" value="  1">1<BR>
+			<input type="radio" name="Overall Rating:" value="  2">2<BR>
+			<input type="radio" name="Overall Rating:" value="  3">3<BR>
+			<input type="radio" name="Overall Rating:" value="  4">4<BR>
+			<input type="radio" name="Overall Rating:" value="  5">5<BR>
 			<br>
+			<input type="" name="">
 			<input type="hidden" name="reviewTime" id="reviewTime"/>
 			<script type="text/javascript">
 				function getDate()
@@ -48,7 +49,7 @@
 					var ts = Math.round((new Date()).getTime() / 1000);
 					console.log(ts)
 					document.getElementById("unixReviewTime").value = ts;
-					// console.log(unixReviewTime)
+					console.log(unixReviewTime)
 				}
 				getUnixTime();
 			</script>
