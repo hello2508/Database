@@ -110,7 +110,13 @@ html {
     background-color: rgba(230, 230, 230, 0.34);
     height: 900px
 }
-
+.column-left-special{
+    background-color: #d6eceb;
+    height: 750px;
+    border: 2px solid #d6eceb;
+    border-radius: 10px/10px;
+    
+}
 
 /* -----------------------------------------------*/
 /* SEARCH BAR */
@@ -211,9 +217,7 @@ html {
 
 
 .top-picks{
-    font-size: 180%;
     color: #000000;
-    font-weight: 200;
     font-family: 'catalunya';
     margin-left: 30%;
     margin-bottom: 30%;
@@ -236,7 +240,8 @@ html {
 
 .more-toppicks{
     text-align: center;
-    font-size: 90%;
+    font-family: 'catalunya';
+    font-size: 100%;
     text-transform: uppercase;
     font-weight: 400
 }
@@ -372,3 +377,8 @@ background-color: #9AEAE7;
   .popup{
     width: 90%;
   }
+}
+.reviews{
+    
+    
+}
