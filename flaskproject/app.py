@@ -6,8 +6,8 @@ from bson.json_util import dumps
 app = Flask(__name__)  #creates an app
 
 ### Kenneth's EC2 instance
-# mongo_store = MongoClient("mongodb://18.141.0.98/")
-# metadata = mongo_store.goodread.metadata
+mongo_store = MongoClient("mongodb://18.141.0.98/")
+metadata = mongo_store.goodread.metadata
 
 ### My own local
 # mongo_store = MongoClient("mongodb://localhost:27017")
@@ -35,14 +35,14 @@ def categorypage(categoryname):
 
     categories = [i for i in categories]
     # to set limit to how many you want to add
-    limit = 10
+    limit = 50
     # return render_template('categorypage2.html')
     return render_template('categorypage2.html', categories=categories[:limit], name=categoryname)
 
 @app.route('/book/<asin>')
 def book(asin):
 
-    ### THIS FUNCTION WILL USE BOTH MYSQL AND MONGO TO FILL UP THE BOOK PAGE 
+    ### THIS FUNCTION WILL USE BOTH MYSQL AND MONGO TO FILL UP THE BOOK PAGE
     reviews = metadata.find({'asin': asin})
 
     return render_template('review.html', reviews=reviews)
