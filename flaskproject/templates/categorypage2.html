@@ -43,7 +43,7 @@
                                 <div class="category-books">
                                   {% for category in categories %}
                                     <div class="book_asin">
-                                    <a href="/book/{{category.asin}}">
+                                    <a href="/book/{{category.asin}}" onClick="console.log('{{category.asin}}')">
                                         <img class="book-img" src="{{category.imUrl}}">
                                     </a>
                                     <span class="asin">{{category.asin}}</span>
@@ -67,6 +67,7 @@
 
                     </div>
             </section>
+            
     </body>
 </html>
 
