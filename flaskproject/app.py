@@ -1,13 +1,32 @@
-from flask import Flask, render_template, jsonify, url_for
+from flask import Flask, render_template, jsonify, url_for, request, redirect
 # from flask_pymongo import PyMongo
 from pymongo import MongoClient
 from bson.json_util import dumps
+from flask_mysqldb import MySQL
+import yaml
 
 app = Flask(__name__)  #creates an app
 
 ### Kenneth's EC2 instance
-mongo_store = MongoClient("mongodb://18.141.0.98/")
-metadata = mongo_store.goodread.metadata
+# mongo_store = MongoClient("mongodb://18.141.0.98/")
+# metadata = mongo_store.goodread.metadata
+
+### My own local
+# mongo_store = MongoClient("mongodb://localhost:27017")
+# metadata = mongo_store.nezukodb.metadata
+# logs = mongo_store.nezukodb.logs
+# logs = mongo_store.logs
+
+#### mysql side
+# Configure db
+db = yaml.load(open('db.yaml'))
+app.config['MYSQL_HOST'] = db['mysql_host']
+app.config['MYSQL_USER'] = db['mysql_user']
+app.config['MYSQL_PASSWORD'] = db['mysql_password']
+app.config['MYSQL_DB'] = db['mysql_db']
+
+# instantiate an object for MySQL
+mysql = MySQL(app)
 
 @app.route('/')
 def webprint():
@@ -22,11 +41,15 @@ def categorypage(categoryname):
     # to set limit to how many you want to add
     limit = 10
     # return render_template('categorypage2.html')
-    return render_template('categorypage2.html', categories=categories[:limit])
+    return render_template('categorypage2.html', categories=categories[:limit], name=categoryname)
 
 @app.route('/book/<asin>')
 def book(asin):
-    return
+
+    ### THIS FUNCTION WILL USE BOTH MYSQL AND MONGO TO FILL UP THE BOOK PAGE
+    reviews = metadata.find({'asin': asin})
+
+    return render_template('review.html', reviews=reviews)
 
 
 if __name__ == "__main__":
