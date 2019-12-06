@@ -262,44 +262,37 @@ html {
     border-radius: 10px;
 }
 
-/* -----------------------------------------------*/
+/*-----------------------------------------------*/
 /* REVIEW PAGE */
 /* -----------------------------------------------*/
 
 .book-name{
-    margin: 2% 5%;
+    margin-top: 10%;
+    text-align: center;
+    margin-bottom: 10%;
     font-family: 'catalunya';
     font-size: 230%;
-   
-}
-
-
-.specificbook{
-    margin: 2% 5%;
 }
 
 .book-detail-img{
-    height: 250px;
-
+    height: 200px;
+    margin-left: 20%;
     display:inline
 }
 
-.book-img{
-    margin: 8% 20%;
-    display:inline
-    
-}
-.book-description{
-    margin-left: 10%;
+.book-img{   
+    display:inline;
 }
 
 .box {
-margin-top: 30%;
-  text-align: center;
+
+    margin-top:10%;
+    margin-left:15%;
+    
 }
 
 .button1 {
-  font-size: 1em;
+  font-size: 120%;
 font-family: 'catalunya';
   padding: 10px;
   color: #fff;
@@ -369,6 +362,7 @@ background-color: #9AEAE7;
 .popup .content .rating {
     margin-left: 10px;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 @media screen and (max-width: 1000px){
