@@ -129,7 +129,7 @@ html {
 .category-heading{
     font-weight: 200;
     font-family: 'catalunya';
-    margin-left: 50%;
+    margin-left: 40%;
     margin-bottom: 2%;
 }
 
@@ -146,26 +146,25 @@ html {
     content: " ";
     width: 150%;
     margin-top:7%;
-    margin-left: -69%;
+    margin-left: -55%;
 }
 
 
 .category-book-row{
-    margin-left: 14%;
+    margin-left: 12%;
     width: 120%;
 }
 
 .category-books{
-    width: 70%;
+    width: 75%;
 }
 
 .book-img{
-    padding: 3px;
     border: 1px solid #acacac; /* Gray border */
     border-radius: 4px;  /* Rounded border */
-    margin-left: 1%;
     margin-bottom: 5%;
     height: 100px;
+    width: 95px;
 }
 
 /* Add a hover effect (blue shadow) */
@@ -173,7 +172,7 @@ html {
     box-shadow: 0 0 2px 1px #414141;
 }
 
-.hover-over-description{
+/*.hover-over-description{
     background-color: #f4faff;
     width: 400px;
     padding: 1% 3%
@@ -193,7 +192,7 @@ html {
     padding: 2% 0;
     line-height: 25px
     
-}
+}*/
 
 .write-review{
     background-color: #f4faff;
@@ -218,9 +217,9 @@ html {
 
 .enjoyed-books{
     margin-top: 5%;
-    margin-right: 3%;
+    margin-right: 5%;
     height: 120px;
-    padding-left: 1%
+    
 }
 
 .similar-books{
@@ -229,16 +228,21 @@ html {
     padding: 2%;    
 }
 
-.category-books:hover .asin{
-  display: inline-block;
+
+.book_asin{
+    display:inline-block;
+    
 }
 
 .asin{
     border: 1px solid #ccc;
     background-color: #f4faff;
-    display: none;
-    margin-left: -5%;
+    display: inline-block;
     font-size: 60%;
     text-transform: uppercase;
     text-align: center;
+    padding: 2% 7%;
+    margin-bottom: 30%;
 }
+
+

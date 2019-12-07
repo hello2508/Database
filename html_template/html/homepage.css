@@ -110,7 +110,13 @@ html {
     background-color: rgba(230, 230, 230, 0.34);
     height: 900px
 }
-
+.column-left-special{
+    background-color: #d6eceb;
+    height: 750px;
+    border: 2px solid #d6eceb;
+    border-radius: 10px/10px;
+    
+}
 
 /* -----------------------------------------------*/
 /* SEARCH BAR */
@@ -211,9 +217,7 @@ html {
 
 
 .top-picks{
-    font-size: 180%;
     color: #000000;
-    font-weight: 200;
     font-family: 'catalunya';
     margin-left: 30%;
     margin-bottom: 30%;
@@ -236,7 +240,8 @@ html {
 
 .more-toppicks{
     text-align: center;
-    font-size: 90%;
+    font-family: 'catalunya';
+    font-size: 100%;
     text-transform: uppercase;
     font-weight: 400
 }
@@ -262,41 +267,37 @@ html {
     border-radius: 10px;
 }
 
-/* -----------------------------------------------*/
+/*-----------------------------------------------*/
 /* REVIEW PAGE */
 /* -----------------------------------------------*/
 
-.book-details{
-   
-}
-
-.review-rating{
-    float: right;
-}
-
-.specificbook{
-    margin: 2% 5%;
+.book-name{
+    margin-top: 10%;
+    text-align: center;
+    margin-bottom: 10%;
+    font-family: 'catalunya';
+    font-size: 230%;
 }
 
 .book-detail-img{
-    height: 250px;
-
+    height: 200px;
+    margin-left: 20%;
     display:inline
 }
 
-.book-img{
-    margin: 8% 20%;
-    display:inline
-    
+.book-img{   
+    display:inline;
 }
 
 .box {
 
-  text-align: center;
+    margin-top:10%;
+    margin-left:15%;
+    
 }
 
 .button1 {
-  font-size: 1em;
+  font-size: 120%;
 font-family: 'catalunya';
   padding: 10px;
   color: #fff;
@@ -366,6 +367,7 @@ background-color: #9AEAE7;
 .popup .content .rating {
     margin-left: 10px;
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 @media screen and (max-width: 1000px){
@@ -375,3 +377,8 @@ background-color: #9AEAE7;
   .popup{
     width: 90%;
   }
+}
+.reviews{
+    
+    
+}
