@@ -2,8 +2,8 @@ from flask import Flask, render_template, jsonify, url_for, request, redirect
 # from flask_pymongo import PyMongo
 from pymongo import MongoClient
 from bson.json_util import dumps
-from flask_mysqldb import MySQL
-import yaml
+import mysql.connector
+
 
 app = Flask(__name__)  #creates an app
 
@@ -17,16 +17,14 @@ app = Flask(__name__)  #creates an app
 # logs = mongo_store.nezukodb.logs
 # logs = mongo_store.logs
 
-#### mysql side
+#### MYSQL
 # Configure db
-db = yaml.load(open('db.yaml'))
-app.config['MYSQL_HOST'] = db['mysql_host']
-app.config['MYSQL_USER'] = db['mysql_user']
-app.config['MYSQL_PASSWORD'] = db['mysql_password']
-app.config['MYSQL_DB'] = db['mysql_db']
-
-# instantiate an object for MySQL
-mysql = MySQL(app)
+db = mysql.connector.connect(
+    host = '18.141.90.224',
+    user = 'root',
+    password = '',
+    database = 'dbds'
+    )
 
 ### My own local
 # mongo_store = MongoClient("mongodb://localhost:27017")
@@ -49,35 +47,41 @@ def categorypage(categoryname):
     # return render_template('categorypage2.html')
     return render_template('categorypage2.html', categories=categories[:limit], name=categoryname)
 
-@app.route('/book/<asin>')
+@app.route('/book/<asin>', methods=['GET','POST'])
 def book(asin):
 
     ### THIS FUNCTION WILL USE BOTH MYSQL AND MONGO TO FILL UP THE BOOK PAGE 
     reviews = metadata.find({'asin': asin})
 
-    return render_template('review.html', reviews=reviews)
+    # Getting reviews for specific asin
+    cur = db.cursor()
+    bookasin= cur.execute("SELECT asin, reviewerName, reviewText from kindle_reviews where asin='asin'")
+    if bookasin > 0:
+        bookreviews = cur.fetchall()
 
-@app.route('/reviews', methods=['GET','POST'])
-def reviews():
+    # Add new review and update database
     if request.method == 'POST':
         # Fetch form data
         userDetails = request.form
-        name = userDetails['name']
+
         asin = userDetails['asin']
+        overall = userDetails['overall']
         review = userDetails['review']
-        summary = userDetails['summary']
-        overall = request.form.get['overall']
-        reviewTime= request.form.get['reviewTime']
+        reviewTime= userDetails['reviewTime']
+        ID = userDetails['ID']
+        name = userDetails['name']
+        summary = userDetails['summary']        
         unixReviewTime= userDetails ['unixReviewTime']
-        cur = mysql.connection.cursor()
-        # Create a database called test and create necessary tables
-        cur.execute("INSERT INTO test(reviewerName,asin,reviewText,summary,overall,reviewTime,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s)"
-                            ,(name,asin,review,summary,overall,reviewTime,unixReviewTime))
+        cur = db.cursor()
+        cur.execute("INSERT INTO kindle_reviews(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+                            ,(asin,0,overall,review,reviewTime,ID,name,summary,unixReviewTime))
         # Save changes into the database
-        mysql.connection.commit()
+        db.commit()
         cur.close()
-        return 'update successful'
-    return render_template('')
+
+    return render_template('review.html', reviews=reviews, bookreviews = bookreviews)
+
+
 
 
 if __name__ == "__main__":
