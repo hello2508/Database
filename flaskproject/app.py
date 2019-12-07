@@ -55,16 +55,17 @@ def book(asin):
 
     # Getting reviews for specific asin
     cur = db.cursor()
-    bookasin= cur.execute("SELECT asin, reviewerName, reviewText from kindle_reviews where asin='asin'")
-    if bookasin > 0:
-        bookreviews = cur.fetchall()
+    cur.execute("SELECT asin, reviewerName, reviewText from kindle_reviews where asin='asin'")
+    bookasin = cur.fetchall()
+    for bookreviews in bookasin:
+        print(bookreviews)
+
 
     # Add new review and update database
     if request.method == 'POST':
         # Fetch form data
         userDetails = request.form
 
-        asin = userDetails['asin']
         overall = userDetails['overall']
         review = userDetails['review']
         reviewTime= userDetails['reviewTime']
@@ -72,14 +73,13 @@ def book(asin):
         name = userDetails['name']
         summary = userDetails['summary']        
         unixReviewTime= userDetails ['unixReviewTime']
-        cur = db.cursor()
-        cur.execute("INSERT INTO kindle_reviews(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        cur.execute("INSERT INTO test(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                             ,(asin,0,overall,review,reviewTime,ID,name,summary,unixReviewTime))
         # Save changes into the database
         db.commit()
         cur.close()
 
-    return render_template('review.html', reviews=reviews, bookreviews = bookreviews)
+    return render_template('review.html', reviews=reviews)
 
 
 if __name__ == "__main__":

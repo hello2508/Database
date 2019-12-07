@@ -61,36 +61,38 @@
 		                              <a class="close" href="#">&times;</a>
     		                          <div class="content">
     			                             Thank to pop me out of that button, but now i'm done so you can close this window.
-                                             <form method="POST" action="">
-                                                Name: <input type="text" name="name">
-                                                <br>
-                                                Book Asin Number (E.g B000F83SZQ) : <input type="text" name="asin">
-                                                <br>
-                                                Review: <input type="text" name="review">
-                                                <br>
-                                                Summary.: <input type="text" name="summary">
-                                                <br>
-                                                Overall Rating(0-5):<BR>
-                                                <input type="radio" name="overall" value="0">0
-                                                <BR>
-                                                <input type="radio" name="overall" value="1">1<BR>
-                                                <input type="radio" name="overall" value="2">2<BR>
-                                                <input type="radio" name="overall" value="3">3<BR>
-                                                <input type="radio" name="overall" value="4">4<BR>
-                                                <input type="radio" name="overall" value="5">5<BR>
-                                                <input type="hidden" name="reviewTime" id="reviewTime"/>
-                                                <input type="hidden" name="unixReviewTime" id="unixReviewTime"/>
-                                                <input type="hidden" name="ID" id="getID">
-                                                <input type="submit">
-                                            </form>
     		                          </div>
+                                      <!-- Review Form -->
+                                      <form method="POST" action="">
+                                            Name: <input type="text" name="name">
+                                            <br>
+                                            <!-- Book Asin Number (E.g B000F83SZQ) : <input type="text" name="asin">
+                                            <br> -->
+                                            Review: <input type="text" name="review">
+                                            <br>
+                                            Summary.: <input type="text" name="summary">
+                                            <br>
+                                            Overall Rating(0-5):<BR>
+                                            <input type="radio" name="overall" value="0">0
+                                            <BR>
+                                            <input type="radio" name="overall" value="1">1<BR>
+                                            <input type="radio" name="overall" value="2">2<BR>
+                                            <input type="radio" name="overall" value="3">3<BR>
+                                            <input type="radio" name="overall" value="4">4<BR>
+                                            <input type="radio" name="overall" value="5">5<BR>
+                                            <input type="hidden" name="reviewTime" id="reviewTime"/>
+                                            <input type="hidden" name="unixReviewTime" id="unixReviewTime"/>
+                                            <input type="hidden" name="ID" id="getID">
+                                            <input type="submit">
+                                        </form>
 	                               </div>
                                 </div>
 
                                 <!-- Display Reviews for Specific ASIN from MYSQL -->
                                 <div>
+                                    <p>BOOK REVIEW TEST</p>
                                     <table border = 1>
-                                        {% for id in data %}
+                                        {% for id in bookasin %}
                                             <p>Book ASIN: {{ id[0] }}</p>
                                             <li>Reviewer: {{ id[1] }}</li>
                                             <li>{{ id[2] }}</li>
