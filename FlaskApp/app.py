@@ -12,6 +12,7 @@ db = mysql.connector.connect(
 
 @app.route("/", methods=['GET','POST'])
 def index():
+	cur = db.cursor()
 	if request.method == 'POST':
 		# Fetch form data
 		userDetails = request.form
@@ -24,8 +25,7 @@ def index():
 		ID = userDetails['ID']
 		name = userDetails['name']
 		summary = userDetails['summary']		
-		unixReviewTime= userDetails ['unixReviewTime']
-		cur = db.cursor()
+		unixReviewTime= userDetails ['unixReviewTime']		
 		# Create a database called test and create necessary tables
 		# cur.execute("INSERT INTO test(reviewerName,asin,reviewText,summary,overall,reviewTime,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s)"
                             # ,(name,asin,review,summary,overall,reviewTime,unixReviewTime))
@@ -36,7 +36,11 @@ def index():
 		cur.close()
 		# return 'update successful'
 		# return redirect('/users')
-	return render_template('home.html')
+	result = cur.execute('''SELECT asin,reviewerName,reviewText FROM kindle_reviews LIMIT 10''')
+	data = cur.fetchall()
+	return render_template('home.html', data=data)
+
+	# return render_template('home.html')
 
 
 if __name__ == "__main__":

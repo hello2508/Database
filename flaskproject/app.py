@@ -22,7 +22,8 @@ db = mysql.connector.connect(
     host = '18.141.90.224',
     user = 'root',
     password = '',
-    database = 'dbds'
+    database = 'dbds',
+    buffered = True
     )
 
 
@@ -53,33 +54,35 @@ def book(asin):
     ### THIS FUNCTION WILL USE BOTH MYSQL AND MONGO TO FILL UP THE BOOK PAGE
     reviews = metadata.find({'asin': asin})
 
-    # Getting reviews for specific asin
     cur = db.cursor()
-    cur.execute("SELECT asin, reviewerName, reviewText from kindle_reviews where asin='asin'")
-    bookasin = cur.fetchall()
-    for bookreviews in bookasin:
-        print(bookreviews)
-
-
     # Add new review and update database
-    if request.method == 'POST':
-        # Fetch form data
-        userDetails = request.form
+    # if request.method == 'POST':
+    #     # Fetch form data
+    #     userDetails = request.form
 
-        overall = userDetails['overall']
-        review = userDetails['review']
-        reviewTime= userDetails['reviewTime']
-        ID = userDetails['ID']
-        name = userDetails['name']
-        summary = userDetails['summary']        
-        unixReviewTime= userDetails ['unixReviewTime']
-        cur.execute("INSERT INTO test(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
-                            ,(asin,0,overall,review,reviewTime,ID,name,summary,unixReviewTime))
-        # Save changes into the database
-        db.commit()
-        cur.close()
+    #     overall = userDetails['overall']
+    #     review = userDetails['review']
+    #     reviewTime= userDetails['reviewTime']
+    #     ID = userDetails['ID']
+    #     name = userDetails['name']
+    #     summary = userDetails['summary']        
+    #     unixReviewTime= userDetails ['unixReviewTime']
+    #     cur.execute("INSERT INTO test(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+    #                         ,(asin,0,overall,review,reviewTime,ID,name,summary,unixReviewTime))
+    #     # Save changes into the database
+    #     db.commit()
+    #     cur.close()
 
-    return render_template('review.html', reviews=reviews)
+    # Getting reviews for specific asin
+    # cur.execute("SELECT asin, reviewerName, reviewText FROM kindle_reviews WHERE asin='B000F83SZQ' LIMIT 10") --- WORKS LIKE A CHARM
+    reviews_query = "SELECT asin, reviewerName, reviewText FROM kindle_reviews WHERE asin= %s LIMIT 10"
+    cur.execute(reviews_query, (asin,))
+    bookasin = cur.fetchall()
+    # for bookreviews in bookasin:
+    #     print(bookreviews)
+    return render_template('review.html', reviews=reviews, bookasin=bookasin)
+
+    # return render_template('review.html', reviews=reviews)
 
 
 if __name__ == "__main__":
