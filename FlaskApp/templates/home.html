@@ -60,6 +60,8 @@
 				<p>Book ASIN: {{ id[0] }}</p>
 				<li>Reviewer: {{ id[1] }}</li>
 				<li>{{ id[2] }}</li>
+				<p><span id='helpful2'>0</span> found this helpful.</p>
+	            <button onclick="gethelpful2()">Helpful</button>
 			{% endfor %}
 		</table>
 	</div>
@@ -113,6 +115,18 @@
 			helpful.innerHTML = good;
 			console.log(good)
 			return good;			
+		}
+
+		var good2 = 0
+		function gethelpful2(event){
+			var count =  document.getElementById('helpful2').addEventListener('click', function(event){
+				event.preventDefault()
+			});
+
+			good2 ++;
+			helpful2.innerHTML = good2;
+			console.log(good2)
+			return good2;			
 		}
 
 		function makeid(length) {
