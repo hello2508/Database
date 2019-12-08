@@ -36,9 +36,9 @@ def index():
 		cur.close()
 		# return 'update successful'
 		# return redirect('/users')
-	result = cur.execute('''SELECT asin,reviewerName,reviewText FROM kindle_reviews LIMIT 10''')
-	data = cur.fetchall()
-	return render_template('home.html', data=data)
+	result = cur.execute("SELECT asin, reviewerName, reviewText FROM kindle_reviews WHERE asin='B000F83SZQ' LIMIT 10")
+	bookasin = cur.fetchall()
+	return render_template('home.html', bookasin=bookasin)
 
 	# return render_template('home.html')
 

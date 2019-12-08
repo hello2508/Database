@@ -34,8 +34,21 @@
 	</div>
 
 	<!-- For PUT request - Update data  -->
-	<p><span id='helpful'>0</span> found this helpful.</p>
-	<button onclick="gethelpful()">Helpful</button>
+	<!-- <p><span id='helpful'>0</span> found this helpful.</p>
+	<button onclick="gethelpful()">Helpful</button> -->
+
+	<div>
+	    <p>BOOK REVIEW TEST</p>
+	    <table border = 1>
+	        {% for id in bookasin %}
+	            <p>Book ASIN: {{ id[0] }}</p>
+	            <li>Reviewer: {{ id[1] }}</li>
+	            <li>{{ id[2] }}</li>
+	            <p><span id='helpful'>0</span> found this helpful.</p>
+	            <button onclick="gethelpful()">Helpful</button>
+	        {% endfor %}
+	    </table>
+	</div>
 
 	<!-- Displaying reviews -->
 	<div>
@@ -90,7 +103,7 @@
 		// }
 
 		// Since list/tuple cannot be added into MYSQL
-		const good = 0
+		var good = 0
 		function gethelpful(event){
 			var count =  document.getElementById('helpful').addEventListener('click', function(event){
 				event.preventDefault()
