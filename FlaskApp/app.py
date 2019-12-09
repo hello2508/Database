@@ -3,10 +3,11 @@ import mysql.connector
 app = Flask(__name__)
 
 db = mysql.connector.connect(
-	host = 'localhost',
-	user = 'root',
-	password = 'sutd1234',
-	database = 'dbds'
+	host = '18.141.90.224',
+    user = 'root',
+    password = '',
+    database = 'dbds',
+    buffered = True
 	)
 
 
