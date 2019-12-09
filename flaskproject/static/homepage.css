@@ -109,8 +109,13 @@ html {
     background-color: rgba(230, 230, 230, 0.34);
     height: 900px
 }
-
-
+.column-left-special{
+    background-color: #d6eceb;
+    height: 750px;
+    border: 2px solid #d6eceb;
+    border-radius: 10px/10px;
+    
+}
 /* -----------------------------------------------*/
 /* SEARCH BAR */
 /* -----------------------------------------------*/
@@ -210,9 +215,7 @@ html {
 
 
 .top-picks{
-    font-size: 180%;
     color: #000000;
-    font-weight: 200;
     font-family: 'catalunya';
     margin-left: 30%;
     margin-bottom: 30%;
@@ -264,34 +267,6 @@ html {
 /* -----------------------------------------------*/
 /* REVIEW PAGE */
 /* -----------------------------------------------*/
-
-.book-details{
-   
-}
-
-.review-rating{
-    float: right;
-}
-
-.specificbook{
-    margin: 2% 5%;
-}
-
-.book-detail-img{
-    height: 250px;
-    display:inline
-}
-
-.book-img{
-    margin: 8% 20%;
-    display:inline;
-    
-}
-
-.book-description{
-    display: inline
-}
-
 .book-name{
     margin-top: 10%;
     text-align: center;
@@ -300,12 +275,23 @@ html {
     font-size: 230%;
 }
 
+
+
+.book-img{   
+    display:inline;
+    margin-left: 10%;
+
+    height: 200px;
+    width: 170px;
+}
+
 .box {
 
     margin-top:10%;
     margin-left:15%;
     
 }
+
 
 .button1 {
   font-size: 120%;
