@@ -3,10 +3,10 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <head>
-            <link rel="stylesheet" type="text/css" href="homepage.css">
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homepage.css')}}">
             <link href="https://fonts.googleapis.com/css?family=Catalunya&display=swap" rel="stylesheet">
-            <link rel="stylesheet" type="text/css" href="html-css/grid.css">
-            <link rel="stylesheet" type="text/css" href="html-css/normalize.css">
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='grid.css')}}s">
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css')}}">
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
@@ -22,10 +22,11 @@
   
                     <a class="nactive" href="#"><i class="fa fa-fw fa-user"></i> Login</a>
                     <a class="active" href="#"><i class="fa fa-fw fa-search"></i> Search</a> 
-                    <a class="nactive" href="#"><i class="fa fa-fw fa-home"></i> Home</a> 
+                    <a class="nactive" href="/"><i class="fa fa-fw fa-home"></i> Home</a> 
                 </div>
 
-
+            </nav>
+            </header>
                 <div class="row" name="space">
                     <div class="col span-3-of-4 column-left">
                     <!--<img src="res/images/header.jpg" name="header-image" width="90%" height="200px">-->
@@ -33,7 +34,7 @@
                             <p>&nbsp;</p>
                         </div>
                         <div>
-                            <div class="col span-3-of-4">
+                            <div class="">
                                 <div class="book-details">
                                 <p class="specificbook">Book Name: Nudge</p>
                                 <p class="specificbook">Author(s): Cass Sunstein and Richard Thaler</p>
@@ -55,20 +56,57 @@
 	                               <a class="button1" href="#popup1">Let me Pop up</a>
                                 </div>
 
-                                <div id="popup1" class="overlay">
+                                <!--<div id="popup1" class="overlay">
 	                               <div class="popup">
 		                              <h2>Here i am</h2>
 		                              <a class="close" href="#">&times;</a>
-		                          <div class="content">
-			                             Thank to pop me out of that button, but now i'm done so you can close this window.
-		</div>
-	</div>
-</div>
+    		                          <div class="content">
+    			                             Thank to pop me out of that button, but now i'm done so you can close this window.
+    		                          </div>
+                                      <!-- Review Form -->
+                                     <!-- <form method="POST" action="">
+                                            Name: <input type="text" name="name">
+                                            <br>
+                                            <!-- Book Asin Number (E.g B000F83SZQ) : <input type="text" name="asin">
+                                            <br> -->
+                                          <!--  Review: <input type="text" name="review">
+                                            <br>
+                                            Summary.: <input type="text" name="summary">
+                                            <br>
+                                            Overall Rating(0-5):<BR>
+                                            <input type="radio" name="overall" value="0">0
+                                            <BR>
+                                            <input type="radio" name="overall" value="1">1<BR>
+                                            <input type="radio" name="overall" value="2">2<BR>
+                                            <input type="radio" name="overall" value="3">3<BR>
+                                            <input type="radio" name="overall" value="4">4<BR>
+                                            <input type="radio" name="overall" value="5">5<BR>
+                                            <input type="hidden" name="reviewTime" id="reviewTime"/>
+                                            <input type="hidden" name="unixReviewTime" id="unixReviewTime"/>
+                                            <input type="hidden" name="ID" id="getID">
+                                            <input type="submit">
+                                        </form>
+	                               </div>
+                                </div>-->
+
+                                <!-- Display Reviews for Specific ASIN from MYSQL -->
+                                <div>
+                                    <p>BOOK REVIEW TEST</p>
+                                    <table border = 1>
+                                        {% for id in bookasin %}
+                                            <p>Book ASIN: {{ id[0] }}</p>
+                                            <li>Reviewer: {{ id[1] }}</li>
+                                            <li>{{ id[2] }}</li>
+                                            <p><span id='helpful'>0</span> found this helpful.</p>
+                                            <button onclick="gethelpful()">Helpful</button>
+                                        {% endfor %}
+                                    </table>
+                                </div>
                             </div>
-                           
                         </div>
                     </div>
-                     <div class="col span-1-of-4">
+
+                     <div class="col span-1-of-4 top-picks-col">
                         <div name="side-col">
                         <h1 class="top-picks">Top Picks</h1>
                             <div class="">
@@ -98,9 +136,57 @@
                 </div>
                 
                 
-            </nav>
-            </header>
             
 
+            <script type="text/javascript">
+                function getDate()
+                {
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth()+1; //January is 0!
+                    var yyyy = today.getFullYear();
+                    if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm}
+                    reviewDate = dd+" "+mm+", "+yyyy;
+                    console.log(reviewDate)
+
+                    document.getElementById("reviewTime").value = reviewDate;
+                }
+
+                getDate();
+
+                function getUnixTime(){
+                    var ts = Math.round((new Date()).getTime() / 1000);
+                    console.log(ts)
+                    document.getElementById("unixReviewTime").value = ts;
+                    console.log(unixReviewTime)
+                }
+                getUnixTime();
+                
+                // Since list/tuple cannot be added into MYSQL
+                var good = 0
+                function gethelpful(event){
+                    var count =  document.getElementById('helpful').addEventListener('click', function(event){
+                        event.preventDefault()
+                    });
+
+                    good ++;
+                    helpful.innerHTML = good;
+                    console.log(good)
+                    return good;            
+                }
+
+                function makeid(length) {
+                   var result           = 'DBDS2019_';
+                   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                   var charactersLength = characters.length;
+                   for ( var i = 0; i < length; i++ ) {
+                      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                   }
+                   document.getElementById('getID').value = result;
+                   return getID;
+                }
+                console.log(makeid(5)); // Output example: DBDS2019_QRE6L 
+            </script>
         </body>
 </html>
+

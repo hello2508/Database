@@ -279,18 +279,113 @@ html {
 
 .book-detail-img{
     height: 250px;
-
     display:inline
 }
 
 .book-img{
     margin: 8% 20%;
-    display:inline
+    display:inline;
     
 }
 
 .book-description{
     display: inline
+}
+
+.book-name{
+    margin-top: 10%;
+    text-align: center;
+    margin-bottom: 10%;
+    font-family: 'catalunya';
+    font-size: 230%;
+}
+
+.box {
+
+    margin-top:10%;
+    margin-left:15%;
+    
+}
+
+.button1 {
+  font-size: 120%;
+font-family: 'catalunya';
+  padding: 10px;
+  color: #fff;
+background-color: #9AEAE7;
+  border: 2px solid #9AEAE7;
+  border-radius: 20px/50px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
+.button1:hover {
+  background: #9AEAE7;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  transition: opacity 500ms;
+  visibility: hidden;
+  opacity: 0;
+}
+.overlay:target {
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup {
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 60%;
+  position: relative;
+  transition: all 5s ease-in-out;
+}
+
+.popup h2 {
+  margin-top: 0;
+  color: #333;
+  font-family: 'catalunya';
+}
+.popup .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  transition: all 200ms;
+  font-size: 30px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+.popup .close:hover {
+  color: #9AEAE7;
+}
 
 
 
+.popup .content {
+  max-height: 30%;
+  overflow: auto;
+    font-family: sans-serif;
+}
+.popup .content .rating {
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+@media screen and (max-width: 1000px){
+  .box{
+    width: 90%;
+  }
+  .popup{
+    width: 90%;
+  }
+}
