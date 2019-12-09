@@ -65,7 +65,7 @@ def book(asin):
         reviewTime= userDetails['reviewTime']
         ID = userDetails['ID']
         name = userDetails['name']
-        summary = userDetails['summary']        
+        summary = userDetails['summary']
         unixReviewTime= userDetails ['unixReviewTime']
         cur.execute("INSERT INTO test(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                             ,(asin,0,overall,review,reviewTime,ID,name,summary,unixReviewTime))
@@ -83,6 +83,10 @@ def book(asin):
     return render_template('review.html', reviews=reviews, bookasin=bookasin)
 
     # return render_template('review.html', reviews=reviews)
+
+@app.route('/addbook')
+def adminaddbook():
+    return render_template('addBook.html')
 
 
 if __name__ == "__main__":
