@@ -60,7 +60,9 @@
 				<p>Book ASIN: {{ id[0] }}</p>
 				<li>Reviewer: {{ id[1] }}</li>
 				<li>{{ id[2] }}</li>
+<<<<<<< Updated upstream
 				<p><span id='helpful2'>0</span> found this helpful.</p>
+======
 	            <button onclick="gethelpful2()">Helpful</button>
 			{% endfor %}
 		</table>
@@ -116,7 +118,6 @@
 			console.log(good)
 			return good;			
 		}
-
 		var good2 = 0
 		function gethelpful2(event){
 			var count =  document.getElementById('helpful2').addEventListener('click', function(event){
@@ -128,6 +129,7 @@
 			console.log(good2)
 			return good2;			
 		}
+
 
 		function makeid(length) {
 		   var result           = 'DBDS2019_';
