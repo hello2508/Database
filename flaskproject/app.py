@@ -22,8 +22,8 @@ db = mysql.connector.connect(
     host = '18.141.90.224',
     user = 'root',
     password = '',
-    database = 'dbds',
-    buffered = True
+    database = 'dbds'
+    #buffered = True
     )
 
 

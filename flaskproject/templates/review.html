@@ -19,7 +19,7 @@
                     <p class="company-name">
                     Great Reads 
                     </p>
-                    <a class="nactive" href="/addbook"><i class="fa fa-plus"></i> Add Book</a>
+                    <a class="nactive" href="#popup1"><i class="fa fa-plus"></i> Add Book</a>
                     <a class="active" href="categorypage2.html"><i class="fa fa-fw fa-book"></i>Categories</a> 
                     <a class="nactive" href="/"><i class="fa fa-fw fa-home"></i> Home</a> 
                 </div>
@@ -32,7 +32,7 @@
                         <p>&nbsp;</p>
                     </div>
                     <div class="col span-4-of-4">
-                        <div class="col span-1-of-4 column-left column-left-special">
+                        <div class="col span-1-of-4 column-left-special">
                             <div class="book-details">
                                
                                 <p class="book-name">{{ asinforbook }}</p>
@@ -79,43 +79,84 @@
                         <div class="col span-3-of-4">
                             
                                 <!-- Display Reviews for Specific ASIN from MYSQL -->
-                            <div>
-                                <p>BOOK REVIEW TEST</p>
-                                <table border = 1>
-                                    {% for id in bookasin %}
-                                        <p>Book ASIN: {{ id[0] }}</p>
-                                        <li>Reviewer: {{ id[1] }}</li>
-                                        <li>{{ id[2] }}</li>
-                                        <p><span id='helpful'>0</span> found this helpful.</p>
-                                        <button onclick="gethelpful()">Helpful</button>
-                                    {% endfor %}
-                                </table>
+                            <div class="allreviews">
+                                <div class="title">
+                                    <p>All Reviews for {{ asinforbook }}</p>
+                                </div>
+                                <div class="table">
+                                    <table>
+                                        {% for id in bookasin %}
+                                        <div class="reviewername">
+                                            <p>Reviewer: {{ id[1] }}</p>
+                                        </div>
+                                        <div class="reviewcontent">
+                                            <p>{{ id[2] }}</p>
+                                        </div>
+                                        <div class="helpfulbutton">
+                                            
+                                            <p><span id='helpful'>0</span> found this helpful</p>
+                                            <button class="button3" onclick="gethelpful()">Helpful</button>
+              
+                                        </div>
+                                        {% endfor %}
+                                    </table>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col span-1-of-4 top-picks-col">
+                <div class="col span-1-of-4">
                     <div name="side-col">
                     <h1 class="top-picks">Top Picks</h1>
-                        <div class="">
+                        <div class="top-picks-col">
                             <div class="col span-1-of-3 imgcol1">
-                                <img src="static/1713426._SX98_.png" class="book-inbetween">
-                                <img src="UI/43641._SX98_.png" class="book-inbetween">
-                                <img src="UI/1713426._SX98_.png" class="book-inbetween">
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
+                                </a>
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='43641._SX98_.png')}}" class="book-inbetween">
+                                </a>
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
+                                </a>
                             </div>
                         <div class="col span-1-of-3 imgcol1">
-                            <img src="UI/929._SX98_.png" class="book-inbetween">
-                            <img src="UI/39832183._SX98_.png" class="book-inbetween">
-                            <img src="UI/1713426._SX98_.png" class="book-inbetween">
+                            <a href="">
+                                <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="book-inbetween">
+                            </a>
+                            <a href="">
+                                <img src="{{ url_for('static', filename='39832183._SX98_.png')}}" class="book-inbetween">
+                            </a>
+                            <a href="">
+                                <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
+                            </a>
                         </div>
                         <div class="col span-1-of-3 imgcol1">
-                            <img src="UI/43641._SX98_.png" class="book-inbetween">
-                            <img src="UI/929._SX98_.png" class="book-inbetween">
-                            <img src="UI/1713426._SX98_.png" class="book-inbetween">
+                            <a href="">
+                                <img src="{{ url_for('static', filename='43641._SX98_.png')}}" class="book-inbetween">
+                            </a>
+                            <a href="">
+                                <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="book-inbetween">
+                            </a>
+                            <a href="">
+                                <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
+                            </a>
                         </div>
                         <div class="button">
                             <a href="" class="more-button"><span class="more-toppicks">More >>> </span></a>
                         </div>
+                    </div>
+                    <div id="popup1" class="overlay">
+                            <div class="popup1">
+                                <h2>Admin</h2>
+                                <a class="close" href="#">&times;</a>
+                                <div class="content">
+                                    <form method="POST" action="">
+                                        Admin Password: <input type="text" name="name" /><br>
+                                    </form>
+                                </div>
+                                <a class="button3" href="/addbook">Submit</a>
+                            </div>
                     </div>
                     </div>
                 </div>

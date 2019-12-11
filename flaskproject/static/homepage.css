@@ -107,11 +107,11 @@ html {
 
 .column-left{
     background-color: rgba(230, 230, 230, 0.34);
-    height: 900px
+    height: vh;
 }
 .column-left-special{
+    height: 900px;
     background-color: #d6eceb;
-    height: 750px;
     border: 2px solid #d6eceb;
     border-radius: 10px/10px;
     
@@ -272,33 +272,27 @@ html {
     text-align: center;
     margin-bottom: 10%;
     font-family: 'catalunya';
-    font-size: 230%;
+    font-size: 180%;
 }
-
-
 
 .book-img{   
     display:inline;
     margin-left: 10%;
-
     height: 200px;
     width: 170px;
 }
 
 .box {
-
     margin-top:10%;
     margin-left:15%;
-    
 }
-
 
 .button1 {
   font-size: 120%;
-font-family: 'catalunya';
+  font-family: 'catalunya';
   padding: 10px;
   color: #fff;
-background-color: #9AEAE7;
+  background-color: #9AEAE7;
   border: 2px solid #9AEAE7;
   border-radius: 20px/50px;
   text-decoration: none;
@@ -376,10 +370,60 @@ background-color: #9AEAE7;
     width: 90%;
   }
 }
+
+.allreviews{
+  margin-left: 2%;
+  margin-right: 10%;
+  
+}
+.allreviews .title{
+  font-size:150%;
+  font-weight: bolder;
+  font-family: 'catalunya';
+  color: #047777;
+
+}
+
+.allreviews .table .reviewername{
+  font-size: 100%;
+  font-family: 'catalunya';
+  padding-bottom: 1%;
+  padding-top: 3%;
+  text-decoration: #047777;
+  font-style: italic;
+  font-weight: bold;
+
+}
+.allreviews .table .reviewcontent{
+  font-size: 70%;
+  background-color: #f8f4ea;
+  border: 2px solid #9AEAE7;
+  padding: 2% 2% 2% 2%;
+  color: #047777;
+  border-radius: 10px/10px;
+
+}
+.allreviews .table .helpfulbutton{
+  font-size: 70%;
+  padding-top: 1%;
+  padding-bottom: 2%;
+}
+
 /* -----------------------------------------------*/
 /* ADD BOOK PAGE */
 /* -----------------------------------------------*/
-
+.button3 {
+  font-size: 90%;
+  font-family:'arial' ;
+  padding: 1.5% 3% 1.5% 3%;
+  color: rgb(0, 0, 0);
+  background-color: #dbebea;
+  border: 0.5px solid #dbebea;
+  border-radius: 10px/10px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s ease-out;
+}
 .overlay {
 position: fixed;
 top: 0;
@@ -397,13 +441,14 @@ opacity: 1;
 }
 
 .popup1 {
-margin: 70px auto;
-padding: 20px;
-background: #fff;
-border-radius: 5px;
-width: 60%;
-position: relative;
-transition: all 5s ease-in-out;
+  text-align: center;
+  margin: 70px auto;
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  width: 30%;
+  position: relative;
+  transition: all 5s ease-in-out;
 }
 
 .popup1 h2 {
@@ -411,7 +456,7 @@ margin-top: 0;
 color: #333;
 font-family: 'catalunya';
 }
-.popup .close {
+.popup1 .close {
   
   position: absolute;
   top: 20px;
@@ -422,7 +467,7 @@ font-family: 'catalunya';
   text-decoration: none;
   color: #333;
 }
-.popup .close:hover {
+.popup1 .close:hover {
   color: #9AEAE7;
 }
 .popup1 .close2 {
@@ -452,16 +497,13 @@ color: #9AEAE7;
 max-height: 30%;
 overflow: auto;
   font-family: sans-serif;
+  padding: 5% 0% 8% 0%;
 }
-.popup1 .content .rating {
-  margin-left: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
+
 
 @media screen and (max-width: 1000px){
 .popup1{
-  width: 90%;
+  width: 60%;
 }
 }
 /* -----------------------------------------------*/
