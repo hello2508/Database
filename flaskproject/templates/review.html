@@ -7,6 +7,9 @@
             <link href="https://fonts.googleapis.com/css?family=Catalunya&display=swap" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="html-css/grid.css">
             <link rel="stylesheet" type="text/css" href="html-css/normalize.css">
+
+            <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='grid.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css')}}"> -->
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
@@ -24,6 +27,7 @@
                     <a class="active" href="#"><i class="fa fa-fw fa-search"></i> Search</a> 
                     <a class="nactive" href="#"><i class="fa fa-fw fa-home"></i> Home</a> 
                 </div>
+
 
 
                 <div class="row" name="space">
@@ -120,20 +124,38 @@
                                 <img src="UI/39832183._SX98_.png" class="book-inbetween">
                                 <img src="UI/1713426._SX98_.png" class="book-inbetween">
                             </div>
-                            <div class="col span-1-of-3 imgcol1">
-                                <img src="UI/43641._SX98_.png" class="book-inbetween">
-                                <img src="UI/929._SX98_.png" class="book-inbetween">
-                                <img src="UI/1713426._SX98_.png" class="book-inbetween">
-                            </div>
-                            <div class="button">
-                                <a href="" class="more-button"><span class="more-toppicks">More >>> </span></a>
-                            </div>
-                        </div>
                         </div>
                     </div>
+                </div>
+                <div class="col span-1-of-4 top-picks-col">
+                    <div name="side-col">
+                    <h1 class="top-picks">Top Picks</h1>
+                        <div class="">
+                            <div class="col span-1-of-3 imgcol1">
+                                <img src="static/1713426._SX98_.png" class="book-inbetween">
+                                <img src="UI/43641._SX98_.png" class="book-inbetween">
+                                <img src="UI/1713426._SX98_.png" class="book-inbetween">
+                            </div>
+                        <div class="col span-1-of-3 imgcol1">
+                            <img src="UI/929._SX98_.png" class="book-inbetween">
+                            <img src="UI/39832183._SX98_.png" class="book-inbetween">
+                            <img src="UI/1713426._SX98_.png" class="book-inbetween">
+                        </div>
+                        <div class="col span-1-of-3 imgcol1">
+                            <img src="UI/43641._SX98_.png" class="book-inbetween">
+                            <img src="UI/929._SX98_.png" class="book-inbetween">
+                            <img src="UI/1713426._SX98_.png" class="book-inbetween">
+                        </div>
+                        <div class="button">
+                            <a href="" class="more-button"><span class="more-toppicks">More >>> </span></a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
                      
                     
-                </div>
+      
                 
                 
             </nav>
