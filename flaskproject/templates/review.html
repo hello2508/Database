@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <head>
-            <link rel="stylesheet" type="text/css" href="homepage.css">
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homepage.css')}}">
             <link href="https://fonts.googleapis.com/css?family=Catalunya&display=swap" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='grid.css')}}">
             <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css')}}">
@@ -72,20 +72,22 @@
                                             <br> -->
                                             Review: <input type="text" name="review">
                                             <br>
-                                            Summary.: <input type="text" name="summary">
+                                            Summary: <input type="text" name="summary">
                                             <br>
-                                            Overall Rating(0-5):<BR>
-                                            <input type="radio" name="overall" value="0">0
-                                            <BR>
-                                            <input type="radio" name="overall" value="1">1<BR>
-                                            <input type="radio" name="overall" value="2">2<BR>
-                                            <input type="radio" name="overall" value="3">3<BR>
-                                            <input type="radio" name="overall" value="4">4<BR>
-                                            <input type="radio" name="overall" value="5">5<BR>
-                                            <input type="hidden" name="reviewTime" id="reviewTime"/>
-                                            <input type="hidden" name="unixReviewTime" id="unixReviewTime"/>
-                                            <input type="hidden" name="ID" id="getID">
-                                            <input type="submit">
+                                          
+                                             <p class="inputs">Overall Rating (0-5):</p><br>
+                                            <div class="rating">
+                                                <input type="radio" name="overall" value="0" class="rating-no"><p class="rating-val">0</p><br>
+                                                <input type="radio" name="overall" value="1" class="rating-no"><p class="rating-val">1</p><br>
+                                                <input type="radio" name="overall" value="2" class="rating-no"><p class="rating-val">2</p><br>
+                                                <input type="radio" name="overall" value="3" class="rating-no"><p class="rating-val">3</p><br>
+                                                <input type="radio" name="overall" value="4" class="rating-no"><p class="rating-val">4</p><br>
+                                                <input type="radio" name="overall" value="5" class="rating-no"><p class="rating-val">5</p><br>
+                                                <input type="hidden" name="reviewTime" id="reviewTime"/>
+                                                <input type="hidden" name="unixReviewTime" id="unixReviewTime"/>
+                                                <input type="hidden" name="ID" id="getID">
+                                                <input type="submit">
+                                            </div>
                                         </form>
 	                               </div>
                                 </div>

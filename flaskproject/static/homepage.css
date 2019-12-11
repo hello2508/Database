@@ -375,3 +375,20 @@ background-color: #9AEAE7;
     width: 90%;
   }
 }
+
+
+/* -----------------------------------------------*/
+/* ADD REVIEW PAGE */
+/* -----------------------------------------------*/
+.rating-no{
+    display: inline-block;
+}
+
+.rates{
+    display: inline-block;
+    margin:1% 2%;
+}
+
+.rating-val{
+    display: inline-block
+}
