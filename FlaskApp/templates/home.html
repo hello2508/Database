@@ -107,12 +107,13 @@
 		// }
 
 		// Since list/tuple cannot be added into MYSQL
-		var good = 0
 		function gethelpful(event){
+			var good = 0
 			var count =  document.getElementById('helpful').addEventListener('click', function(event){
 				event.preventDefault()
 			});
 
+<<<<<<< HEAD
 			good ++;
 			helpful.innerHTML = good;
 			console.log(good)
@@ -123,11 +124,15 @@
 			var count =  document.getElementById('helpful2').addEventListener('click', function(event){
 				event.preventDefault()
 			});
+=======
+			function counter(){
+>>>>>>> production
 
-			good2 ++;
-			helpful2.innerHTML = good2;
-			console.log(good2)
-			return good2;			
+				good ++;
+				return good;
+			}
+			helpful.innerHTML = good;
+			console.log(good)		
 		}
 
 
