@@ -99,7 +99,7 @@ html {
 
 
 .background-image{
-    background: url(res/images/header.jpg);
+    background: url(header.jpg);
     background-size: cover;
     height: 140px;
     margin-top: -13.5px;
@@ -357,6 +357,14 @@ background-color: #9AEAE7;
   color: #9AEAE7;
 }
 
+.review-heading{
+    margin: 2%;
+}
+
+.inputs{
+    padding: 2%;
+    display: inline-block
+}
 
 
 .popup .content {
@@ -370,6 +378,20 @@ background-color: #9AEAE7;
     margin-bottom: 10px;
 }
 
+.rating-no{
+    display: inline-block;
+}
+
+.rates{
+    display: inline-block;
+    margin:1% 2%;
+}
+
+.rating-val{
+    display: inline-block
+}
+
+
 @media screen and (max-width: 1000px){
   .box{
     width: 90%;
@@ -378,7 +400,18 @@ background-color: #9AEAE7;
     width: 90%;
   }
 }
-.reviews{
+
+.input-form{
+    float:right;
+    padding: 2px;
+    margin-bottom: 2px;
+    margin-top: 15px;
+    margin-right: 52%;
     
-    
+}
+
+.submit-butts{
+    padding: 1% 2%;
+    margin-left: 85%;
+    border-radius: 7px;
 }

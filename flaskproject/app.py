@@ -2,12 +2,13 @@ from flask import Flask, render_template, jsonify, url_for, request, redirect
 # from flask_pymongo import PyMongo
 from pymongo import MongoClient
 from bson.json_util import dumps
+import mysql.connector
 
 app = Flask(__name__)  #creates an app
 
 ### Kenneth's EC2 instance
-# mongo_store = MongoClient("mongodb://18.141.0.98/")
-# metadata = mongo_store.goodread.metadata
+mongo_store = MongoClient("mongodb://18.141.0.98/")
+metadata = mongo_store.goodread.metadata
 
 ### My own local
 # mongo_store = MongoClient("mongodb://localhost:27017")
@@ -15,7 +16,15 @@ app = Flask(__name__)  #creates an app
 # logs = mongo_store.nezukodb.logs
 # logs = mongo_store.logs
 
-#### mysql side
+#### MYSQL
+# Configure db
+db = mysql.connector.connect(
+    host = '18.141.90.224',
+    user = 'root',
+    password = '',
+    database = 'dbds',
+    buffered = True
+    )
 
 
 ### My own local
@@ -35,17 +44,49 @@ def categorypage(categoryname):
 
     categories = [i for i in categories]
     # to set limit to how many you want to add
-    limit = 10
+    limit = 50
     # return render_template('categorypage2.html')
     return render_template('categorypage2.html', categories=categories[:limit], name=categoryname)
 
-@app.route('/book/<asin>')
+@app.route('/book/<asin>', methods=['GET','POST'])
 def book(asin):
 
-    ### THIS FUNCTION WILL USE BOTH MYSQL AND MONGO TO FILL UP THE BOOK PAGE 
+    ### THIS FUNCTION WILL USE BOTH MYSQL AND MONGO TO FILL UP THE BOOK PAGE
     reviews = metadata.find({'asin': asin})
 
-    return render_template('review.html', reviews=reviews)
+    cur = db.cursor()
+    # Add new review and update database
+    if request.method == 'POST':
+        # Fetch form data
+        userDetails = request.form
+
+        overall = userDetails['overall']
+        review = userDetails['review']
+        reviewTime= userDetails['reviewTime']
+        ID = userDetails['ID']
+        name = userDetails['name']
+        summary = userDetails['summary']
+        unixReviewTime= userDetails ['unixReviewTime']
+        cur.execute("INSERT INTO test(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+                            ,(asin,0,overall,review,reviewTime,ID,name,summary,unixReviewTime))
+        # Save changes into the database
+        db.commit()
+        cur.close()
+
+    # Getting reviews for specific asin
+    # cur.execute("SELECT asin, reviewerName, reviewText FROM kindle_reviews WHERE asin='B000F83SZQ' LIMIT 10") --- WORKS LIKE A CHARM
+    reviews_query = "SELECT asin, reviewerName, reviewText FROM kindle_reviews WHERE asin= %s LIMIT 10"
+    cur.execute(reviews_query, (asin,))
+    bookasin = cur.fetchall()
+    # for bookreviews in bookasin:
+    #     print(bookreviews)
+    return render_template('review.html', reviews=reviews, bookasin=bookasin)
+
+    # return render_template('review.html', reviews=reviews)
+
+@app.route('/addbook')
+def adminaddbook():
+    return render_template('addBook.html')
 
 
 if __name__ == "__main__":

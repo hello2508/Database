@@ -179,12 +179,13 @@ html {
 
 .book-img{
     margin: 8% 20%;
-    display:inline
+    display:inline;
     
 }
 
 .book-description{
-    display: inline
+    display: inline;
+    margin-left: 50%;
 }
 
 /* -----------------------------------------------*/

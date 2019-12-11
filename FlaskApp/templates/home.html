@@ -18,43 +18,36 @@
 			Summary.: <input type="text" name="summary">
 			<br>
 			Overall Rating(0-5):<BR>
-			<input type="radio" name="Overall Rating:" value="  0">0<BR>
-			<input type="radio" name="Overall Rating:" value="  1">1<BR>
-			<input type="radio" name="Overall Rating:" value="  2">2<BR>
-			<input type="radio" name="Overall Rating:" value="  3">3<BR>
-			<input type="radio" name="Overall Rating:" value="  4">4<BR>
-			<input type="radio" name="Overall Rating:" value="  5">5<BR>
-			<br>
-			<input type="" name="">
+			<input type="radio" name="overall" value="0">0
+			<BR>
+			<input type="radio" name="overall" value="1">1<BR>
+			<input type="radio" name="overall" value="2">2<BR>
+			<input type="radio" name="overall" value="3">3<BR>
+			<input type="radio" name="overall" value="4">4<BR>
+			<input type="radio" name="overall" value="5">5<BR>
 			<input type="hidden" name="reviewTime" id="reviewTime"/>
-			<script type="text/javascript">
-				function getDate()
-				{
-    				var today = new Date();
-    				var dd = today.getDate();
-    				var mm = today.getMonth()+1; //January is 0!
-    				var yyyy = today.getFullYear();
-    				if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm}
-    				reviewDate = dd+" "+mm+", "+yyyy;
-    				console.log(reviewDate)
-
-    				document.getElementById("reviewTime").value = reviewDate;
-    			}
-
-    			getDate();
-    		</script>
     		<input type="hidden" name="unixReviewTime" id="unixReviewTime"/>
-			<script type="text/javascript">
-				function getUnixTime(){
-					var ts = Math.round((new Date()).getTime() / 1000);
-					console.log(ts)
-					document.getElementById("unixReviewTime").value = ts;
-					console.log(unixReviewTime)
-				}
-				getUnixTime();
-			</script>
+    		<input type="hidden" name="ID" id="getID">
+    		<!-- <span id="ID">0</span> -->
 			<input type="submit">
 		</form>
+	</div>
+
+	<!-- For PUT request - Update data  -->
+	<!-- <p><span id='helpful'>0</span> found this helpful.</p>
+	<button onclick="gethelpful()">Helpful</button> -->
+
+	<div>
+	    <p>BOOK REVIEW TEST</p>
+	    <table border = 1>
+	        {% for id in bookasin %}
+	            <p>Book ASIN: {{ id[0] }}</p>
+	            <li>Reviewer: {{ id[1] }}</li>
+	            <li>{{ id[2] }}</li>
+	            <p><span id='helpful'>0</span> found this helpful.</p>
+	            <button onclick="gethelpful()">Helpful</button>
+	        {% endfor %}
+	    </table>
 	</div>
 
 	<!-- Displaying reviews -->
@@ -67,8 +60,87 @@
 				<p>Book ASIN: {{ id[0] }}</p>
 				<li>Reviewer: {{ id[1] }}</li>
 				<li>{{ id[2] }}</li>
+				<p><span id='helpful2'>0</span> found this helpful.</p>
+	            <button onclick="gethelpful2()">Helpful</button>
 			{% endfor %}
 		</table>
 	</div>
+
+	<script type="text/javascript">
+		function getDate()
+		{
+			var today = new Date();
+			var dd = today.getDate();
+			var mm = today.getMonth()+1; //January is 0!
+			var yyyy = today.getFullYear();
+			if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm}
+			reviewDate = dd+" "+mm+", "+yyyy;
+			console.log(reviewDate)
+
+			document.getElementById("reviewTime").value = reviewDate;
+		}
+
+		getDate();
+
+		function getUnixTime(){
+			var ts = Math.round((new Date()).getTime() / 1000);
+			console.log(ts)
+			document.getElementById("unixReviewTime").value = ts;
+			console.log(unixReviewTime)
+		}
+		getUnixTime();
+
+
+		// Initially for helpful = [0,0]
+		// const good = [0,0]
+		// function gethelpful(event){
+		// 	var count =  document.getElementById('helpful').addEventListener('click', function(event){
+		// 		event.preventDefault()
+		// 	});
+
+		// 	good[0] ++;
+		// 	helpful.innerHTML = good[0];
+		// 	console.log(good)
+		// 	return good;			
+		// }
+
+		// Since list/tuple cannot be added into MYSQL
+		var good = 0
+		function gethelpful(event){
+			var count =  document.getElementById('helpful').addEventListener('click', function(event){
+				event.preventDefault()
+			});
+
+			good ++;
+			helpful.innerHTML = good;
+			console.log(good)
+			return good;			
+		}
+
+		var good2 = 0
+		function gethelpful2(event){
+			var count =  document.getElementById('helpful2').addEventListener('click', function(event){
+				event.preventDefault()
+			});
+
+			good2 ++;
+			helpful2.innerHTML = good2;
+			console.log(good2)
+			return good2;			
+		}
+
+		function makeid(length) {
+		   var result           = 'DBDS2019_';
+		   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+		   var charactersLength = characters.length;
+		   for ( var i = 0; i < length; i++ ) {
+		      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+		   }
+		   document.getElementById('getID').value = result;
+		   return getID;
+		}
+		console.log(makeid(5)); // Output example: DBDS2019_QRE6L 
+	</script>
+
 </body>
 </html>
