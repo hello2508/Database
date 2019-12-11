@@ -289,24 +289,21 @@ html {
     display:inline;
 }
 
-.box {
-
-    margin-top:10%;
-    margin-left:15%;
-    
+.admin-button{
+     
 }
 
-.button1 {
-  font-size: 120%;
-font-family: 'catalunya';
-  padding: 10px;
-  color: #fff;
-background-color: #9AEAE7;
-  border: 2px solid #9AEAE7;
-  border-radius: 20px/50px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease-out;
+/*.button1 {
+    font-size: 120%;
+    font-family: 'catalunya';
+    padding: 10px;
+    color: #fff;
+    background-color: #9AEAE7;
+    border: 2px solid #9AEAE7;
+    border-radius: 20px/50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
 }
 .button1:hover {
   background: #9AEAE7;
@@ -399,19 +396,44 @@ background-color: #9AEAE7;
   .popup{
     width: 90%;
   }
-}
+}*/
 
 .input-form{
     float:right;
     padding: 2px;
-    margin-bottom: 2px;
-    margin-top: 15px;
-    margin-right: 52%;
-    
+    margin-bottom: 15px;
+    margin-top: 17px;
+    margin-right: 40%; 
+    width: 400px;
+}
+
+.inputs{
+    padding: 2% 5%;
+    display: inline-block
 }
 
 .submit-butts{
     padding: 1% 2%;
     margin-left: 85%;
     border-radius: 7px;
+}
+
+.submit-butts:hover{
+    cursor: pointer
+}
+
+/*-----------------------------------------------*/
+/* CREATE A BOOK PAGE */
+/* -----------------------------------------------*/
+
+.create-book-heading{
+    margin-top: 5%;
+    margin-left: 2%;
+    color: #333;
+    font-family: 'catalunya';
+    font-size: 180%;
+}
+
+.content{
+    margin-top: 5%;
 }
