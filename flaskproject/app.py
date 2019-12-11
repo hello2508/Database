@@ -78,9 +78,13 @@ def book(asin):
     reviews_query = "SELECT asin, reviewerName, reviewText FROM kindle_reviews WHERE asin= %s LIMIT 10"
     cur.execute(reviews_query, (asin,))
     bookasin = cur.fetchall()
+
+    searchasin =  "SELECT asin FROM kindle_reviews WHERE asin= %s LIMIT 1"   
+    cur.execute(asinforbook, (asin,))
+    asinforbook = cur.fetchall()
     # for bookreviews in bookasin:
     #     print(bookreviews)
-    return render_template('review.html', reviews=reviews, bookasin=bookasin)
+    return render_template('review.html', reviews=reviews, bookasin=bookasin, asinforbook=asinforbook)
 
     # return render_template('review.html', reviews=reviews)
 
