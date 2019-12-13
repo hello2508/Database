@@ -393,28 +393,30 @@ html {
   .box{
     width: 90%;
   }
+    
   .popup{
     width: 90%;
   }
 }*/
 
-.input-form{
+#input-form{
     float:right;
     padding: 2px;
     margin-bottom: 15px;
     margin-top: 17px;
-    margin-right: 40%; 
+    margin-right: 80%; 
     width: 400px;
 }
 
 .inputs{
     padding: 2% 5%;
-    display: inline-block
+    display: inline-block;
 }
 
 .submit-butts{
     padding: 1% 2%;
-    margin-left: 85%;
+    margin-left: 75%;
+    margin-top: 2%;
     border-radius: 7px;
 }
 
@@ -437,6 +439,14 @@ html {
 .content{
     margin-top: 5%;
 }
+
+.create-book-form{
+    margin-top: 5%;
+}
+
+.post-form{
+    
+}
 /* -----------------------------------------------*/
 /* ADD BOOK PAGE */
 /* -----------------------------------------------*/
@@ -452,20 +462,22 @@ html {
   cursor: pointer;
   transition: all 0.3s ease-out;
 }
+
 .overlay {
-position: fixed;
-top: 0;
-bottom: 0;
-left: 0;
-right: 0;
-background: rgba(0, 0, 0, 0.7);
-transition: opacity 500ms;
-visibility: hidden;
-opacity: 0;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
 }
+
 .overlay:target {
-visibility: visible;
-opacity: 1;
+    visibility: visible;
+    opacity: 1;
 }
 
 .popup1 {
@@ -499,20 +511,20 @@ font-family: 'catalunya';
   color: #9AEAE7;
 }
 .popup1 .close2 {
-position: absolute;
-top: 20px;
-right: 30px;
-font-weight: bold;
-font-size: 120%;
-font-family: 'catalunya';
-  padding: 10px;
-  color: #fff;
-background-color: #9AEAE7;
-  border: 2px solid #9AEAE7;
-  border-radius: 20px/50px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease-out;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-weight: bold;
+    font-size: 120%;
+    font-family: 'catalunya';
+    padding: 10px;
+    color: #fff;
+    background-color: #9AEAE7;
+    border: 2px solid #9AEAE7;
+    border-radius: 20px/50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
 }
 
 .popup1 .close2:hover {
@@ -522,10 +534,10 @@ color: #9AEAE7;
 
 
 .popup1 .content {
-max-height: 30%;
-overflow: auto;
-  font-family: sans-serif;
-  padding: 5% 0% 8% 0%;
+    max-height: 30%;
+    overflow: auto;
+    font-family: sans-serif;
+    padding: 5% 0% 8% 0%;
 }
 
 
