@@ -3,7 +3,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <head>
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='addBook.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homepage.css')}}">
             <link href="https://fonts.googleapis.com/css?family=Catalunya&display=swap" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='grid.css')}}">
             <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css')}}">
@@ -18,50 +18,37 @@
             <nav>
                 <div class="row nav-bar">
                     <p class="company-name">
-                        Great Reads
+                    Great Reads
                     </p>
-                    <a class="active" href="#popup1"><i class="fa fa-plus"></i> Add Book</a>
+                    <a class="nactive" href="#popup1"><i class="fa fa-plus"></i> Add Book</a>
                     <a class="nactive" href="categorypage2.html"><i class="fa fa-fw fa-book"></i>Categories</a> 
-                    <a class="nactive" href="/"><i class="fa fa-fw fa-home"></i> Home</a> 
+                    <a class="active" href="/"><i class="fa fa-fw fa-home"></i> Home</a> 
                 </div>
-            </nav>
+
+                </nav>
             </header>
-            <div class="row" name="space">
-                <div class="col span-3-of-4 column-left">
-                    <div class="background-image">
-                        <p>&nbsp;</p>
-                    </div>
-                    <div class="col span-4-of-4">
-    
-                        <div>
-                            <h2 class="create-book-heading">Create a Book!</h2>
-                                <div class="create-book-form">
-                                    <form method="POST" action="" class="post-form">
-                                        <p class="inputs">ASIN ID:</p><input class="input-box" type="text" name="id"/><br>
-                                        
-                                        <p class="inputs">Book Title:</p> <input class="input-box" type="text" name="book_title"/><br>
-                                        
-                                        <p class="inputs">Description:</p> <input class="input-box" type="text" name="desc" /><br>
-                                        
-                                        <p class="inputs">Image URL:</p><input class="input-box" type="text" name="image" /><br>
-                                        
-                                        <p class="inputs">Price:</p><input class="input-box" type="text" name="price" /><br>
-                                    
-                                        <p class="inputs">Categories:</p><input class="input-box" type="text" name="categories" /><br>
-                                        
-                                    </form>
-                                </div>
-                                <a href="#"><input type="submit" class="submit-butts"></a>
+                <div class="row" name="space">
+                    <div class="col span-3-of-4 column-left-cat">
+                    <!--<img src="res/images/header.jpg" name="header-image" width="90%" height="200px">-->
+                        <div class="background-image">
+                            <!--<img src="{{ url_for('static', filename='header.jpg')}}">-->
+                            <p>&nbsp;</p>
                         </div>
-                
-
+                        
+                        <div class="all-categories-section">
+                            
+                              {% for name in unique_category_names %}
+                                <div class="cat">
+                                    <p class="all-categories-heading">
+                                        {{name}}
+                                    </p>
+                                </div>
+                              {% endfor %}
+                        </div>
+                        
                     </div>
-                </div>
-
-                    
-                
-                <div class="col span-1-of-4">
-                    <div name="side-col">
+                    <div class="col span-1-of-4">
+                        <div name="side-col">
                         <h1 class="top-picks">Top Picks</h1>
                             <div class="top-picks-col">
                                 <div class="col span-1-of-3 imgcol1">
@@ -101,23 +88,22 @@
                                 <a href="" class="more-button"><span class="more-toppicks">More >>> </span></a>
                             </div>
                             <div id="popup1" class="overlay">
-                                    <div class="popup1">
-                                        <h2 class="admin-heading">Admin</h2>
-                                        <a class="close" href="#">&times;</a>
-                                        <div class="content">
-                                            <form method="POST" action="">
-                                                <p class="admin-pass">Admin Password:</p><input type="text" name="name" /><br>
-                                            </form>
-                                        </div>
-                                        <a class="button3" href="/addbook"><span class="admin-submit">Submit</span></a>
+                                <div class="popup1">
+                                    <h2 class="admin-heading">Admin</h2>
+                                    <a class="close" href="#">&times;</a>
+                                    <div class="content">
+                                        <form method="POST" action="">
+                                            <p class="admin-pass">Admin Password:</p><input type="text" name="name" /><br>
+                                        </form>
                                     </div>
+                                    <a class="button3" href="/addbook"><span class="admin-submit">Submit</span></a>
+                                </div>
                             </div>
-                            
                         </div>
                         </div>
-                        
+                    </div>
+
                 </div>
-                </div>
-            
-        </body>
+                
+    </body>
 </html>

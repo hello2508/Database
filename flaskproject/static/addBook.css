@@ -463,17 +463,34 @@ html {
 /* -----------------------------------------------*/
 /* ADD BOOK PAGE */
 /* -----------------------------------------------*/
+.admin-pass{
+    padding-bottom: 3%;
+}
+
 .button3 {
-  font-size: 90%;
-  font-family:'arial' ;
-  padding: 1.5% 3% 1.5% 3%;
-  color: rgb(0, 0, 0);
-  background-color: #dbebea;
-  border: 0.5px solid #dbebea;
-  border-radius: 10px/10px;
-  text-decoration: none;
-  cursor: pointer;
-  transition: all 0.3s ease-out;
+    font-size: 90%;
+    padding: 2% 3%;
+    color: rgba(0, 0, 0);
+    background-color: #dbebea;
+    border: 0.5px solid #dbebea;
+    border-radius: 10px/10px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.button3 a{
+    color: #333;
+}
+
+.button3:hover{
+    background-color: #c5dbda;
+}
+
+.button3 a:link,
+.button3 a:visited{
+    color: #333;
+
 }
 
 .overlay {
@@ -494,14 +511,14 @@ html {
 }
 
 .popup1 {
-  text-align: center;
-  margin: 70px auto;
-  padding: 20px;
-  background: #fff;
-  border-radius: 5px;
-  width: 30%;
-  position: relative;
-  transition: all 5s ease-in-out;
+    text-align: center;
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
 }
 
 .popup1 h2 {
@@ -510,10 +527,9 @@ html {
     font-family: 'catalunya';
 }
 .popup1 .close {
-  
   position: absolute;
-  top: 20px;
-  right: 30px;
+  top: 8px;
+  right: 18px;
   transition: all 200ms;
   font-size: 30px;
   font-weight: bold;
@@ -523,7 +539,7 @@ html {
 .popup1 .close:hover {
   color: #9AEAE7;
 }
-.popup1 .close2 {
+/*.popup1 .close2 {
     position: absolute;
     top: 20px;
     right: 30px;
@@ -538,11 +554,11 @@ html {
     text-decoration: none;
     cursor: pointer;
     transition: all 0.3s ease-out;
-}
+}*/
 
-.popup1 .close2:hover {
+/*.popup1 .close2:hover {
 color: #9AEAE7;
-}
+}*/
 
 
 
