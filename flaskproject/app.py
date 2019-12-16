@@ -3,6 +3,7 @@ from flask import Flask, render_template, jsonify, url_for, request, redirect
 from pymongo import MongoClient
 from bson.json_util import dumps
 import mysql.connector
+import numpy as np
 
 app = Flask(__name__)  #creates an app
 
@@ -22,8 +23,8 @@ db = mysql.connector.connect(
     host = '18.141.90.224',
     user = 'root',
     password = '',
-    database = 'dbds',
-    buffered = True
+    database = 'dbds'
+    #buffered = True
     )
 
 
@@ -79,9 +80,11 @@ def book(asin):
     cur.execute(reviews_query, (asin,))
     bookasin = cur.fetchall()
 
-    searchasin =  "SELECT asin FROM kindle_reviews WHERE asin= %s LIMIT 1"   
-    cur.execute(searchasin, (asin,))
-    asinforbook = cur.fetchall()
+
+    # searchasin =  "SELECT asin FROM kindle_reviews WHERE asin= %s"
+    # cur.execute(searchasin, (asin,))
+    # asinforbook = cur.fetchall()
+    asinforbook = '%s' % (asin)
     # for bookreviews in bookasin:
     #     print(bookreviews)
     return render_template('review.html', reviews=reviews, bookasin=bookasin, asinforbook=asinforbook)
@@ -91,6 +94,25 @@ def book(asin):
 @app.route('/addbook')
 def adminaddbook():
     return render_template('addBook.html')
+
+
+@app.route('/allcategories')
+def allcategories():
+    # categories = metadata.find({'categories': {"$elemMatch": {"$elemMatch": {"$eq": categoryname} } }}, {'imUrl': 1, 'asin': 1, '_id': 0 })
+
+    # get distinct category rows
+    arr1 = metadata.distinct('categories')
+
+    arr2 = []
+
+    # concat items into an array
+    for item in arr1:
+        arr2 += item
+
+    uniques = np.unique(arr2)
+
+    unique_category_names = [i for i in uniques]
+    return render_template('allcategories.html', unique_category_names=unique_category_names)
 
 
 if __name__ == "__main__":

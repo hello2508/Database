@@ -20,10 +20,9 @@
                     <p class="company-name">
                         Great Reads
                     </p>
-
-                    <a class="active" href="addBook.html"><i class="fa fa-fw fa-book"></i> Add Book</a>
-                    <a class="nactive" href="#"><i class="fa fa-fw fa-search"></i> Search</a>
-                    <a class="nactive" href="hompage.html"><i class="fa fa-fw fa-home"></i> Home</a>
+                    <a class="active" href="#popup1"><i class="fa fa-plus"></i> Add Book</a>
+                    <a class="nactive" href="/allcategories"><i class="fa fa-fw fa-book"></i>Categories</a> 
+                    <a class="nactive" href="/"><i class="fa fa-fw fa-home"></i> Home</a> 
                 </div>
             </nav>
             </header>
@@ -33,41 +32,33 @@
                         <p>&nbsp;</p>
                     </div>
                     <div class="col span-4-of-4">
-                        
-                        <div class="box">
-                            <a class="button1" href="#popup1">Admin Unlock</a>
-                        </div>
-                        <div id="popup1" class="overlay">
-                            <div class="popup">
-                                <h2 class="review-heading">Create a Book!</h2>
-                                <div class="content">
-                                    <form method="POST" action="">
-                                        <p class="inputs">Name: </p><input type="text" name="name" class="input-form"/><br>
+    
+                        <div>
+                            <h2 class="create-book-heading">Create a Book!</h2>
+                                <div class="create-book-form">
+                                    <form method="POST" action="" class="post-form">
+                                        <p class="inputs">ASIN ID:</p><input class="input-box" type="text" name="id"/><br>
                                         
-                                        <p class="inputs">Book Title:</p> <input type="text" name="book_title" class="input-form"/><br>
+                                        <p class="inputs">Book Title:</p> <input class="input-box" type="text" name="book_title"/><br>
                                         
-                                        <p class="inputs">Review:</p> <input type="text" name="review" class="input-form"/> <br>
+                                        <p class="inputs">Description:</p> <input class="input-box" type="text" name="desc" /><br>
                                         
-                                        <p class="inputs">Summary: </p><input type="text" name="summary" class="input-form"/>
-                                        <br>
-                                        <p class="inputs">Overall Rating (0-5):</p><br>
-                                            <div class="rating">
-                                                <div class="rates"><input type="radio" name="overall" value="0" class="rating-no" /> <p class="rating-val">0</p></div>
-                                                <div class="rates"><input type="radio" name="overall" value="1" class="rating-no"/> <p class="rating-val">1</p></div>
-                                                <div class="rates"><input type="radio" name="overall" value="2" class="rating-no" /> <p class="rating-val">2</p></div>
-                                                <div class="rates"><input type="radio" name="overall" value="3" class="rating-no" /> <p class="rating-val">3</p></div>
-                                                <div class="rates"><input type="radio" name="overall" value="4" class="rating-no" /> <p class="rating-val">4</p></div>
-                                                <div class="rates"><input type="radio" name="overall" value="5" class="rating-no" /> <p class="rating-val">5</p></div>
-                                                <br>
-                                            </div>    
+                                        <p class="inputs">Image URL:</p><input class="input-box" type="text" name="image" /><br>
+                                        
+                                        <p class="inputs">Price:</p><input class="input-box" type="text" name="price" /><br>
+                                    
+                                        <p class="inputs">Categories:</p><input class="input-box" type="text" name="categories" /><br>
                                         
                                     </form>
                                 </div>
-                                <a class2="close" href="#"><input type="submit" class="submit-butts"></a>
-                            </div>
+                                <a href="#"><input type="submit" class="submit-butts"></a>
+                        </div>
+                
+
                     </div>
-                    </div>
-                    </div>
+                </div>
+
+                    
                 
                 <div class="col span-1-of-4">
                     <div name="side-col">
@@ -109,8 +100,22 @@
                             <div class="button">
                                 <a href="" class="more-button"><span class="more-toppicks">More >>> </span></a>
                             </div>
+                            <div id="popup1" class="overlay">
+                                    <div class="popup1">
+                                        <h2 class="admin-heading">Admin</h2>
+                                        <a class="close" href="#">&times;</a>
+                                        <div class="content">
+                                            <form method="POST" action="">
+                                                <p class="admin-pass">Admin Password:</p><input type="text" name="name" /><br>
+                                            </form>
+                                        </div>
+                                        <a class="button3" href="/addbook"><span class="admin-submit">Submit</span></a>
+                                    </div>
+                            </div>
+                            
                         </div>
                         </div>
+                        
                 </div>
                 </div>
             
