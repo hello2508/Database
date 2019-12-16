@@ -36,12 +36,14 @@
                         </div>
                         
                         <div class="all-categories-section">
-                            
+                            <h1 class="all-cat">All Categories</h1>
                               {% for name in unique_category_names %}
                                 <div class="cat">
-                                    <p class="all-categories-heading">
+                                    <a href="/book/{{category.asin}}">
+                                        <p class="all-categories-heading">
                                         {{name}}
-                                    </p>
+                                        </p>
+                                    </a>
                                 </div>
                               {% endfor %}
                         </div>

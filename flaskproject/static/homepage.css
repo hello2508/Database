@@ -107,7 +107,7 @@ html {
 
 .column-left{
     background-color: rgba(230, 230, 230, 0.34);
-    height: 850px;
+    height: cover;
 }
 
 .column-left-special{
@@ -560,6 +560,11 @@ html {
 }
 
 
+
+/* -----------------------------------------------*/
+/* ALL CATEGORIES PAGE */
+/* -----------------------------------------------*/
+
 .all-categories-heading{
     font-size: 80%;
     display: inline-block;
@@ -579,4 +584,9 @@ html {
     text-overflow: ellipsis;
     display:inline-block;
     padding: 2% 4%;
+}
+
+.all-cat{
+    size: 90%;
+    font-family: 'catalunya';
 }
