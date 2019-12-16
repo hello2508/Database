@@ -3,10 +3,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <head>
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homepage.css')}}">
+            <link rel="stylesheet" type="text/css" href="homepage.css">
             <link href="https://fonts.googleapis.com/css?family=Catalunya&display=swap" rel="stylesheet">
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='grid.css')}}s">
-            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css')}}">
+            <link rel="stylesheet" type="text/css" href="html-css/grid.css">
+            <link rel="stylesheet" type="text/css" href="html-css/normalize.css">
+
+            <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='grid.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css')}}"> -->
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
@@ -22,11 +25,11 @@
   
                     <a class="nactive" href="#"><i class="fa fa-fw fa-user"></i> Login</a>
                     <a class="active" href="#"><i class="fa fa-fw fa-search"></i> Search</a> 
-                    <a class="nactive" href="/"><i class="fa fa-fw fa-home"></i> Home</a> 
+                    <a class="nactive" href="#"><i class="fa fa-fw fa-home"></i> Home</a> 
                 </div>
 
-            </nav>
-            </header>
+
+
                 <div class="row" name="space">
                     <div class="col span-3-of-4 column-left">
                     <!--<img src="res/images/header.jpg" name="header-image" width="90%" height="200px">-->
@@ -34,7 +37,7 @@
                             <p>&nbsp;</p>
                         </div>
                         <div>
-                            <div class="">
+                            <div class="col span-3-of-4">
                                 <div class="book-details">
                                 <p class="specificbook">Book Name: Nudge</p>
                                 <p class="specificbook">Author(s): Cass Sunstein and Richard Thaler</p>
@@ -56,7 +59,7 @@
 	                               <a class="button1" href="#popup1">Let me Pop up</a>
                                 </div>
 
-                                <!--<div id="popup1" class="overlay">
+                                <div id="popup1" class="overlay">
 	                               <div class="popup">
 		                              <h2>Here i am</h2>
 		                              <a class="close" href="#">&times;</a>
@@ -64,12 +67,12 @@
     			                             Thank to pop me out of that button, but now i'm done so you can close this window.
     		                          </div>
                                       <!-- Review Form -->
-                                     <!-- <form method="POST" action="">
+                                      <form method="POST" action="">
                                             Name: <input type="text" name="name">
                                             <br>
                                             <!-- Book Asin Number (E.g B000F83SZQ) : <input type="text" name="asin">
                                             <br> -->
-                                          <!--  Review: <input type="text" name="review">
+                                            Review: <input type="text" name="review">
                                             <br>
                                             Summary.: <input type="text" name="summary">
                                             <br>
@@ -87,10 +90,11 @@
                                             <input type="submit">
                                         </form>
 	                               </div>
-                                </div>-->
+                                </div>
 
                                 <!-- Display Reviews for Specific ASIN from MYSQL -->
                                 <div>
+                                    <p>{{ asinforbook }}</p>
                                     <p>BOOK REVIEW TEST</p>
                                     <table border = 1>
                                         {% for id in bookasin %}
@@ -106,7 +110,7 @@
                         </div>
                     </div>
 
-                     <div class="col span-1-of-4 top-picks-col">
+                     <div class="col span-1-of-4">
                         <div name="side-col">
                         <h1 class="top-picks">Top Picks</h1>
                             <div class="">
@@ -120,23 +124,43 @@
                                 <img src="UI/39832183._SX98_.png" class="book-inbetween">
                                 <img src="UI/1713426._SX98_.png" class="book-inbetween">
                             </div>
-                            <div class="col span-1-of-3 imgcol1">
-                                <img src="UI/43641._SX98_.png" class="book-inbetween">
-                                <img src="UI/929._SX98_.png" class="book-inbetween">
-                                <img src="UI/1713426._SX98_.png" class="book-inbetween">
-                            </div>
-                            <div class="button">
-                                <a href="" class="more-button"><span class="more-toppicks">More >>> </span></a>
-                            </div>
-                        </div>
                         </div>
                     </div>
+                </div>
+                <div class="col span-1-of-4 top-picks-col">
+                    <div name="side-col">
+                    <h1 class="top-picks">Top Picks</h1>
+                        <div class="">
+                            <div class="col span-1-of-3 imgcol1">
+                                <img src="static/1713426._SX98_.png" class="book-inbetween">
+                                <img src="UI/43641._SX98_.png" class="book-inbetween">
+                                <img src="UI/1713426._SX98_.png" class="book-inbetween">
+                            </div>
+                        <div class="col span-1-of-3 imgcol1">
+                            <img src="UI/929._SX98_.png" class="book-inbetween">
+                            <img src="UI/39832183._SX98_.png" class="book-inbetween">
+                            <img src="UI/1713426._SX98_.png" class="book-inbetween">
+                        </div>
+                        <div class="col span-1-of-3 imgcol1">
+                            <img src="UI/43641._SX98_.png" class="book-inbetween">
+                            <img src="UI/929._SX98_.png" class="book-inbetween">
+                            <img src="UI/1713426._SX98_.png" class="book-inbetween">
+                        </div>
+                        <div class="button">
+                            <a href="" class="more-button"><span class="more-toppicks">More >>> </span></a>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
                      
                     
-                </div>
+      
                 
                 
-            
+            </nav>
+
+            </header>
 
             <script type="text/javascript">
                 function getDate()
@@ -163,16 +187,19 @@
                 getUnixTime();
                 
                 // Since list/tuple cannot be added into MYSQL
-                var good = 0
                 function gethelpful(event){
+                    var good = 0
                     var count =  document.getElementById('helpful').addEventListener('click', function(event){
                         event.preventDefault()
                     });
 
-                    good ++;
+                    function counter(){
+
+                        good ++;
+                        return good;
+                    }
                     helpful.innerHTML = good;
-                    console.log(good)
-                    return good;            
+                    console.log(good)       
                 }
 
                 function makeid(length) {
