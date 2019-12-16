@@ -19,7 +19,7 @@ def index():
 		userDetails = request.form
 
 		asin = userDetails['asin']
-		# helpful = '[0,0]'
+		#helpful = userDetails['helpful']
 		overall = userDetails['overall']
 		review = userDetails['review']
 		reviewTime= userDetails['reviewTime']
