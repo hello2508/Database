@@ -80,7 +80,7 @@ def book(asin):
     bookasin = cur.fetchall()
 
     searchasin =  "SELECT asin FROM kindle_reviews WHERE asin= %s LIMIT 1"   
-    cur.execute(asinforbook, (asin,))
+    cur.execute(searchasin, (asin,))
     asinforbook = cur.fetchall()
     # for bookreviews in bookasin:
     #     print(bookreviews)

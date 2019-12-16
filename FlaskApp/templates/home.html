@@ -44,8 +44,12 @@
 	            <p>Book ASIN: {{ id[0] }}</p>
 	            <li>Reviewer: {{ id[1] }}</li>
 	            <li>{{ id[2] }}</li>
-	            <p><span id='helpful'>0</span> found this helpful.</p>
-	            <button onclick="gethelpful()">Helpful</button>
+	            {% for index in range(1,11)}
+		            <p><span id='c ount'>{{ id[3][1] }}</span> found this helpful.</p>
+		            <button onclick="helpful()" id="helpfulbutt">Helpful</button>
+	            {% endfor %}
+	            {% else %}
+	            <p>There are currently  no reviews for this book.</p>
 	        {% endfor %}
 	    </table>
 	</div>
@@ -105,20 +109,19 @@
 		// }
 
 		// Since list/tuple cannot be added into MYSQL
+		
 		function gethelpful(event){
-			var good = 0
-			var count =  document.getElementById('helpful').addEventListener('click', function(event){
+			var count = 0
+			var helpfulbutt =  document.getElementById('helpful').addEventListener('click', function(event){
 				event.preventDefault()
 			});
 
-			function counter(){
-
-				good ++;
-				return good;
-			}
-			helpful.innerHTML = good;
-			console.log(good)		
+			count ++;
+			helpful.innerHTML = count;
+			console.log(count)
+			return count	
 		}
+
 
 		function makeid(length) {
 		   var result           = 'DBDS2019_';
@@ -131,6 +134,8 @@
 		   return getID;
 		}
 		console.log(makeid(5)); // Output example: DBDS2019_QRE6L 
+
+		
 	</script>
 
 </body>
