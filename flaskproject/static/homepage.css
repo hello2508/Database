@@ -590,3 +590,7 @@ html {
     size: 90%;
     font-family: 'catalunya';
 }
+
+.cat-links{
+    text-decoration: none;
+}

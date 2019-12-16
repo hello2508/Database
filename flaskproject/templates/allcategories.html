@@ -39,10 +39,8 @@
                             <h1 class="all-cat">All Categories</h1>
                               {% for name in unique_category_names %}
                                 <div class="cat">
-                                    <a href="/book/{{category.asin}}">
-                                        <p class="all-categories-heading">
-                                        {{name}}
-                                        </p>
+                                    <a href="/categorypage/{{name}}" class="cat-links">
+                                        <p class="all-categories-heading">{{name}}</p>
                                     </a>
                                 </div>
                               {% endfor %}
