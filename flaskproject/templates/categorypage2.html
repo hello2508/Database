@@ -71,14 +71,27 @@
                             <a class="close" href="#">&times;</a>
                             <div class="content">
                                 <form method="POST" action="">
-                                    <p class="admin-pass">Admin Password:</p><input type="text" name="name" /><br>
-                                </form>
+
+                                    <p class="admin-pass">Admin Password:</p>
+                                    <input type="text" name="name" id="adminpwd" /><br>
+                                    </form>
+                                </div>
+                                <a class="button3" onclick= checkPswd()><span class="admin-submit">Submit</span></a>
                             </div>
-                            <a class="button3" href="/addbook"><span class="admin-submit">Submit</span></a>
-                        </div>
                     </div>
             </section>
-            
+            <script>
+            function checkPswd() {
+                var confirmPassword = "admin";
+                var password = document.getElementById("adminpwd").value;
+                if (password == confirmPassword) {
+                    window.location.href = "/addbook";
+                }
+                else{
+                    alert("Passwords do not match.");
+                }
+            }
+            </script>
     </body>
 </html>
 

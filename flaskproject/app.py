@@ -91,21 +91,18 @@ def book(asin):
 
     # return render_template('review.html', reviews=reviews)
 
-@app.route('/addbook', methods = ['POST'])
+@app.route('/addbook', methods = ['GET','POST'])
 def adminaddbook():
     #Insert data
-    ASINID = request.form['ASINid']
-    book_title = request.form['book_title']
-    desc = request.form['desc']
-    image_url = request.form['image']
-    book_price = request.form['price']
-    cat = reqsuest.form['categories']
+    #ASINID = request.form['ASINid']
+    #book_title = request.form['book_title']
+    #desc = request.form['desc']
+    #image_url = request.form['image']
+    #book_price = request.form['price']
+    #cat = reqsuest.form['categories']
 
-    metadata.insert_one({asin: ASINID, imUrl: image_url, price: book_price, categories: cats, description: desc})
-
-
+    #metadata.insert_one({asin: ASINID, imUrl: image_url, price: book_price, categories: cats, description: desc})
     return render_template('addBook.html')
-
 
 @app.route('/allcategories')
 def allcategories():
