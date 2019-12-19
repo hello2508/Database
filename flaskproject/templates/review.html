@@ -66,6 +66,7 @@
                                                     <input type="radio" name="overall" value="5" />  5
                                                     <br>
                                                 </div>
+                                                <input type="hidden" name="checkempty" id="checkempty" />
                                                 <input type="hidden" name="reviewTime" id="reviewTime" />
                                                 <input type="hidden" name="unixReviewTime" id="unixReviewTime" />
                                                 <input type="hidden" name="ID" id="getID">
@@ -267,6 +268,7 @@
                     var f = document.forms["form1"]["overall"].value;
                     if (a == null || a == "", c == null || c == "", e == null || e == "", f == null || f == "") {
                       alert("Please Fill In Required Fields");
+                      document.getElementById('checkempty').value='True';
                       return false;
                     }
                 }
