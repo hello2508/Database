@@ -36,7 +36,17 @@ db = mysql.connector.connect(
 
 @app.route('/')
 def webprint():
-    return render_template('hompage.html')
+    cur = db.cursor();
+    cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    average = cur.fetchall()
+
+    imageurls = []
+    for i in average:
+        url = metadata.find({'asin': { "$elemMatch": { "$eq": i } }}, {'imUrl': 1})
+        print(url)
+        imageurls.append(url)
+    return render_template('hompage.html', average=average, imageurls=imageurls)
 
 
 @app.route('/categorypage/<categoryname>')
@@ -134,9 +144,16 @@ def allcategories():
 @app.route("/average")
 def bookavg():
     cur = db.cursor();
-    cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
     average = cur.fetchall()
-    return render_template('average.html', average=average)
+
+    imageurls = []
+    for i in average:
+        url = metadata.find({'asin': { "$elemMatch": { "$eq": i } }})
+        print(url)
+        imageurls.append(url)
+    return render_template('average.html', average=average, imageurls=imageurls)
 
 
 

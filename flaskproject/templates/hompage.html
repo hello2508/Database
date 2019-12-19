@@ -103,7 +103,15 @@
                         <h1 class="top-picks">Top Picks</h1>
                             <div class="top-picks-col">
                                 <div class="col span-1-of-3 imgcol1">
-                                    <a href="">
+                                    
+                                    <div class="idiot">
+                                        {% for url in imageurls %}
+                                        <div>
+                                            <img src="{{url.imUrl}}">
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    <!--<a href="">
                                         <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
                                     </a>
                                     <a href="">
@@ -111,10 +119,10 @@
                                     </a>
                                     <a href="">
                                         <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
-                                    </a>
+                                    </a>-->
                                 </div>
                             <div class="col span-1-of-3 imgcol1">
-                                <a href="">
+                                <!--<a href="">
                                     <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="book-inbetween">
                                 </a>
                                 <a href="">
@@ -122,10 +130,10 @@
                                 </a>
                                 <a href="">
                                     <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
-                                </a>
+                                </a>-->
                             </div>
                             <div class="col span-1-of-3 imgcol1">
-                                <a href="">
+                                <!---<a href="">
                                     <img src="{{ url_for('static', filename='43641._SX98_.png')}}" class="book-inbetween">
                                 </a>
                                 <a href="">
@@ -133,10 +141,7 @@
                                 </a>
                                 <a href="">
                                     <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
-                                </a>
-                            </div>
-                            <div class="button">
-                                <a href="" class="more-button"><span class="more-toppicks">More >>> </span></a>
+                                </a>--->
                             </div>
                             <div id="popup1" class="overlay">
                                 <div class="popup1">
