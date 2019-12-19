@@ -41,12 +41,19 @@
                             </h2>
                             <div class="wrap">
                                <div class="search">
-                                  <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                                  <button type="submit" class="searchButton">
+                                  <input type="text" class="searchTerm" id= "asinid" placeholder="Enter Book's ASIN number">
+                                  <button type="submit" class="searchButton" onclick="searchfn()">
                                     <i class="fa fa-search"></i>
                                  </button>
                                </div>
                             </div>
+                        
+
+                            <div><a href="" id="camView" target="_blank" ></a></div>    
+
+
+
+
                             <h1 class="top-cat">Top Categories:</h1>
                             <div class="">
                                 <div class="col span-1-of-4">
@@ -148,7 +155,21 @@
                     </div>
 
                 </div>
+        
+                            
             
+
+            <script>
+                function searchfn()
+                {
+                    var asin = document.getElementById('asinid');
+                    document.getElementById('camView').innerHTML = asin.value;
+                    document.getElementById('camView').href="/book/"+asin.value;
+                    //Or to open in new tab on submit button directly 
+                    window.location.href = "/book/"+asin.value;
+                }
+            </script>
+        
             
         </body>
 </html>
