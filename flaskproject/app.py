@@ -111,7 +111,6 @@ def adminaddbook():
 
     return render_template('addBook.html')
 
-
 @app.route('/allcategories')
 def allcategories():
     # categories = metadata.find({'categories': {"$elemMatch": {"$elemMatch": {"$eq": categoryname} } }}, {'imUrl': 1, 'asin': 1, '_id': 0 })
