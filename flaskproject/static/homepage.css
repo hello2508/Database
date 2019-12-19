@@ -245,7 +245,6 @@ html {
 .more-toppicks{
     text-align: center;
     font-size: 90%;
-    text-transform: uppercase;
     font-weight: 400
 }
 
@@ -569,6 +568,7 @@ html {
     font-size: 80%;
     display: inline-block;
     padding: 2% 4%;
+    
 }
 
 .all-categories-section{
@@ -591,6 +591,18 @@ html {
     font-family: 'catalunya';
 }
 
-.cat-links{
+
+.cat a{
     text-decoration: none;
+    color: darkcyan;    
+}
+
+
+.cat a:link,
+.cat a:visited{
+    color: darkcyan;
+
+}
+.cat a:hover{
+    color:#000000;
 }
