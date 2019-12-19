@@ -44,9 +44,9 @@
                               {% endfor %}
                             </div>    
                             <div class="box">
-                                <a class="button1" href="#popup1">Add your Review</a>
+                                <a class="button1" href="#popup">Add your Review</a>
                             </div>
-                            <div id="popup1" class="overlay">
+                            <div id="popup" class="overlay">
                                 <div class="popup">
                                     <h2>Write a Review!</h2>
                                     <a class="close" href="#">&times;</a>
@@ -161,10 +161,13 @@
                             <a class="close" href="#">&times;</a>
                             <div class="content">
                                 <form method="POST" action="">
-                                    <p class="admin-pass">Admin Password:</p><input type="text" name="name" /><br>
+
+                                <p class="admin-pass">Admin Password:</p>
+                                <input type="text" name="name" id="adminpwd" /><br>
                                 </form>
                             </div>
-                            <a class="button3" href="/addbook"><span class="admin-submit">Submit</span></a>
+                            <a class="button3" onclick= checkPswd()><span class="admin-submit">Submit</span></a>
+                            
                         </div>
                     </div>
                     </div>
@@ -224,6 +227,29 @@
                    document.getElementById('getID').value = result;
                    return getID;
                 }
+                function adminauth(){
+                    
+                    var ap = document.getElementById('adminpwd');
+                    if (ap.value =="123"){
+                        document.getElementById('camView').href="/addbook/";
+                        window.location.href = "/addbook"
+                    }
+                    
+                }
+                function checkPswd() {
+                    var confirmPassword = "admin";
+                    var password = document.getElementById("adminpwd").value;
+                    if (password == confirmPassword) {
+                        window.location.href = "/addbook";
+                    }
+                    else{
+                        alert("Passwords do not match.");
+                    }
+                }
+                
+
+
+
                 console.log(makeid(5)); // Output example: DBDS2019_QRE6L 
             </script>
         </body>
