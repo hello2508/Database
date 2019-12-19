@@ -7,7 +7,6 @@
             <link href="https://fonts.googleapis.com/css?family=Catalunya&display=swap" rel="stylesheet">
             <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='grid.css')}}">
             <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css')}}">
-
             <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
             <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
@@ -20,134 +19,155 @@
                     <p class="company-name">
                     Great Reads 
                     </p>
-  
-                    <a class="nactive" href="#"><i class="fa fa-fw fa-user"></i> Login</a>
-                    <a class="active" href="#"><i class="fa fa-fw fa-search"></i> Search</a> 
-                    <a class="nactive" href="#"><i class="fa fa-fw fa-home"></i> Home</a> 
+                    <a class="nactive" href="#popup1"><i class="fa fa-plus"></i> Add Book</a>
+                    <a class="active" href="/allcategories"><i class="fa fa-fw fa-book"></i>Categories</a> 
+                    <a class="nactive" href="/"><i class="fa fa-fw fa-home"></i> Home</a> 
                 </div>
 
+            </nav>
+            </header>
+            <div class="row" name="space">
+                <div class="col span-3-of-4 column-left">
+                    <div class="background-image">
+                        <p>&nbsp;</p>
+                    </div>
+                    <div class="col span-4-of-4">
+                        <div class="col span-1-of-4 column-left-special">
+                            <div class="book-details">
+                               
+                                <p class="book-name">{{ asinforbook }}</p>
+                              
+                            </div>
+                            <div>
+                              {% for review in reviews %}
+                                <img class="book-img" src="{{review.imUrl}}">
+                              {% endfor %}
+                            </div>    
+                            <div class="box">
+                                <a class="button1" href="#popup">Add your Review</a>
+                            </div>
+                            <div id="popup" class="overlay">
+                                <div class="popup">
+                                    <h2>Write a Review!</h2>
+                                    <a class="close" href="#">&times;</a>
+                                    <div class="content">
+                                            <form method="POST" action="">
+                                                    
+                                                <p class="inputs">Name: </p><input class ="inputf" type="text" name="name" /><br>
+                                                <p class="inputs">Book title: </p><input class ="inputf" type="text" name="book_title" /><br>
+                                                <p class="inputsrev">Review: </p><input class ="inputfrev" type="text" name="review" /> <br>
+                                                <p class="inputs">Summary: </p><input class ="inputf" type="text" name="summary" /><br>
+                                                <p class="inputs">Overall Rating(0-5):</p>
+                                                <div class="rating">
+                                                    <input type="radio" name="overall" value="0"> 0
+                                                    <input type="radio" name="overall" value="1" />  1
+                                                    <input type="radio" name="overall" value="2" />  2
+                                                    <input type="radio" name="overall" value="3" />  3
+                                                    <input type="radio" name="overall" value="4" />  4
+                                                    <input type="radio" name="overall" value="5" />  5
+                                                    <br>
+                                                </div>
+                                            <input type="hidden" name="reviewTime" id="reviewTime" />
+                                            <input type="hidden" name="unixReviewTime" id="unixReviewTime" />
+                                                <a class2="close" href="#popup2"><button type="submit">Submit</button></a>
+                                            </form>
+	                                   </div>
+                                        
+                                </div>
+                            </div>
+                            <div id="popup2" class="overlay">
+                                <div class="popup">
+                                    <h2>Your Review has been submitted!</h2>
+                                    <a class="close" href="#">&times;</a>
+                                    <div class="content">
 
-
-                <div class="row" name="space">
-                    <div class="col span-3-of-4 column-left">
-                    <!--<img src="res/images/header.jpg" name="header-image" width="90%" height="200px">-->
-                        <div class="background-image">
-                            <p>&nbsp;</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div>
-                            <div class="col span-3-of-4">
-                                <div class="book-details">
-                                <p class="specificbook">Book Name: Nudge</p>
-                                <p class="specificbook">Author(s): Cass Sunstein and Richard Thaler</p>
-                                <p class="specificbook">Publisher Name: Yale University Press</p>
-                                </div>
-                                <div>
-                                  {% for review in reviews %}
-                                    <img class="book-img" src="{{review.imUrl}}">
-                                  {% endfor %}
-                                </div>
-                                <div class="review-rating">
-                                    <p class="book-description">Rating in Stars</p>
-                                </div>
-                                <div class="book-img">
-                                    <img src="UI/3450744._SX98_.png" class="book-detail-img">
-                                    <p class="book-description">Nudge is a concept in behavioral science, political theory and behavioral economics which proposes positive reinforcement and indirect suggestions as ways to influence the behavior and decision making of groups or individuals.</p>
-                                </div>
-                                <div class="box">
-	                               <a class="button1" href="#popup1">Let me Pop up</a>
-                                </div>
-
-                                <div id="popup1" class="overlay">
-	                               <div class="popup">
-		                              <h2>Here i am</h2>
-		                              <a class="close" href="#">&times;</a>
-    		                          <div class="content">
-    			                             Thank to pop me out of that button, but now i'm done so you can close this window.
-    		                          </div>
-                                      <!-- Review Form -->
-                                      <form method="POST" action="">
-                                            Name: <input type="text" name="name">
-                                            <br>
-                                            <!-- Book Asin Number (E.g B000F83SZQ) : <input type="text" name="asin">
-                                            <br> -->
-                                            Review: <input type="text" name="review">
-                                            <br>
-                                            Summary: <input type="text" name="summary">
-                                            <br>
-                                          
-                                             <p class="inputs">Overall Rating (0-5):</p><br>
-                                            <div class="rating">
-                                                <input type="radio" name="overall" value="0" class="rating-no"><p class="rating-val">0</p><br>
-                                                <input type="radio" name="overall" value="1" class="rating-no"><p class="rating-val">1</p><br>
-                                                <input type="radio" name="overall" value="2" class="rating-no"><p class="rating-val">2</p><br>
-                                                <input type="radio" name="overall" value="3" class="rating-no"><p class="rating-val">3</p><br>
-                                                <input type="radio" name="overall" value="4" class="rating-no"><p class="rating-val">4</p><br>
-                                                <input type="radio" name="overall" value="5" class="rating-no"><p class="rating-val">5</p><br>
-                                                <input type="hidden" name="reviewTime" id="reviewTime"/>
-                                                <input type="hidden" name="unixReviewTime" id="unixReviewTime"/>
-                                                <input type="hidden" name="ID" id="getID">
-                                                <input type="submit">
-                                            </div>
-                                        </form>
-	                               </div>
-                                </div>
-
+                        <div class="col span-3-of-4">
+                            
                                 <!-- Display Reviews for Specific ASIN from MYSQL -->
-                                <div>
-                                    <p>{{ asinforbook }}</p>
-                                    <p>BOOK REVIEW TEST</p>
-                                    <table border = 1>
+                            <div class="allreviews">
+                                <div class="title">
+                                    <p>All Reviews for {{ asinforbook }}</p>
+                                </div>
+                                <div class="table">
+                                    <table>
                                         {% for id in bookasin %}
-                                            <p>Book ASIN: {{ id[0] }}</p>
-                                            <li>Reviewer: {{ id[1] }}</li>
-                                            <li>{{ id[2] }}</li>
-                                            <p><span id='helpful'>0</span> found this helpful.</p>
-                                            <button onclick="gethelpful()">Helpful</button>
+                                        <div class="reviewername">
+                                            <p>Reviewer: {{ id[1] }}</p>
+                                        </div>
+                                        <div class="reviewcontent">
+                                            <p>{{ id[2] }}</p>
+                                        </div>
+                                        <div class="helpfulbutton">
+                                            
+                                            <p><span id='helpful'>0</span> found this helpful</p>
+                                            <button class="button3" onclick="gethelpful()">Helpful</button>
+              
+                                        </div>
                                         {% endfor %}
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-                     <div class="col span-1-of-4">
-                        <div name="side-col">
-                        <h1 class="top-picks">Top Picks</h1>
-                            <div class="">
-                                <div class="col span-1-of-3 imgcol1">
-                                    <img src="UI/1713426._SX98_.png" class="book-inbetween">
-                                    <img src="UI/43641._SX98_.png" class="book-inbetween">
-                                    <img src="UI/1713426._SX98_.png" class="book-inbetween">
-                                </div>
-                            <div class="col span-1-of-3 imgcol1">
-                                <img src="UI/929._SX98_.png" class="book-inbetween">
-                                <img src="UI/39832183._SX98_.png" class="book-inbetween">
-                                <img src="UI/1713426._SX98_.png" class="book-inbetween">
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div class="col span-1-of-4 top-picks-col">
+                <div class="col span-1-of-4">
                     <div name="side-col">
                     <h1 class="top-picks">Top Picks</h1>
-                        <div class="">
+                        <div class="top-picks-col">
                             <div class="col span-1-of-3 imgcol1">
-                                <img src="static/1713426._SX98_.png" class="book-inbetween">
-                                <img src="UI/43641._SX98_.png" class="book-inbetween">
-                                <img src="UI/1713426._SX98_.png" class="book-inbetween">
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
+                                </a>
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='43641._SX98_.png')}}" class="book-inbetween">
+                                </a>
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
+                                </a>
                             </div>
                         <div class="col span-1-of-3 imgcol1">
-                            <img src="UI/929._SX98_.png" class="book-inbetween">
-                            <img src="UI/39832183._SX98_.png" class="book-inbetween">
-                            <img src="UI/1713426._SX98_.png" class="book-inbetween">
+                            <a href="">
+                                <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="book-inbetween">
+                            </a>
+                            <a href="">
+                                <img src="{{ url_for('static', filename='39832183._SX98_.png')}}" class="book-inbetween">
+                            </a>
+                            <a href="">
+                                <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
+                            </a>
                         </div>
                         <div class="col span-1-of-3 imgcol1">
-                            <img src="UI/43641._SX98_.png" class="book-inbetween">
-                            <img src="UI/929._SX98_.png" class="book-inbetween">
-                            <img src="UI/1713426._SX98_.png" class="book-inbetween">
+                            <a href="">
+                                <img src="{{ url_for('static', filename='43641._SX98_.png')}}" class="book-inbetween">
+                            </a>
+                            <a href="">
+                                <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="book-inbetween">
+                            </a>
+                            <a href="">
+                                <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
+                            </a>
                         </div>
                         <div class="button">
                             <a href="" class="more-button"><span class="more-toppicks">More >>> </span></a>
+                        </div>
+                    </div>
+                    <div id="popup1" class="overlay">
+                        <div class="popup1">
+                            <h2 class="admin-heading">Admin</h2>
+                            <a class="close" href="#">&times;</a>
+                            <div class="content">
+                                <form method="POST" action="">
+
+                                <p class="admin-pass">Admin Password:</p>
+                                <input type="text" name="name" id="adminpwd" /><br>
+                                </form>
+                            </div>
+                            <a class="button3" onclick= checkPswd()><span class="admin-submit">Submit</span></a>
+                            
                         </div>
                     </div>
                     </div>
@@ -158,9 +178,7 @@
       
                 
                 
-            </nav>
-
-            </header>
+            
 
             <script type="text/javascript">
                 function getDate()
@@ -187,19 +205,16 @@
                 getUnixTime();
                 
                 // Since list/tuple cannot be added into MYSQL
+                var good = 0
                 function gethelpful(event){
-                    var good = 0
                     var count =  document.getElementById('helpful').addEventListener('click', function(event){
                         event.preventDefault()
                     });
 
-                    function counter(){
-
-                        good ++;
-                        return good;
-                    }
+                    good ++;
                     helpful.innerHTML = good;
-                    console.log(good)       
+                    console.log(good)
+                    return good;            
                 }
 
                 function makeid(length) {
@@ -212,6 +227,21 @@
                    document.getElementById('getID').value = result;
                    return getID;
                 }
+            
+                function checkPswd() {
+                    var confirmPassword = "admin";
+                    var password = document.getElementById("adminpwd").value;
+                    if (password == confirmPassword) {
+                        window.location.href = "/addbook";
+                    }
+                    else{
+                        alert("Passwords do not match.");
+                    }
+                }
+                
+
+
+
                 console.log(makeid(5)); // Output example: DBDS2019_QRE6L 
             </script>
         </body>

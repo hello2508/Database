@@ -20,10 +20,9 @@
                     <p class="company-name">
                     Great Reads
                     </p>
-
-                    <a class="nactive" href="#"><i class="fa fa-fw fa-user"></i> Login</a>
-                    <a class="nactive" href="#"><i class="fa fa-fw fa-search"></i> Search</a>
-                    <a class="active" href="/"><i class="fa fa-fw fa-home"></i> Home</a>
+                    <a class="nactive" href="#popup1"><i class="fa fa-plus"></i> Add Book</a>
+                    <a class="nactive" href="/allcategories"><i class="fa fa-fw fa-book"></i>Categories</a> 
+                    <a class="active" href="/"><i class="fa fa-fw fa-home"></i> Home</a> 
                 </div>
 
                 </nav>
@@ -42,12 +41,19 @@
                             </h2>
                             <div class="wrap">
                                <div class="search">
-                                  <input type="text" class="searchTerm" placeholder="What are you looking for?">
-                                  <button type="submit" class="searchButton">
+                                  <input type="text" class="searchTerm" id= "asinid" placeholder="Enter Book's ASIN number">
+                                  <button type="submit" class="searchButton" onclick="searchfn()">
                                     <i class="fa fa-search"></i>
                                  </button>
                                </div>
                             </div>
+                        
+
+                            <div><a href="" id="camView" target="_blank" ></a></div>    
+
+
+
+
                             <h1 class="top-cat">Top Categories:</h1>
                             <div class="">
                                 <div class="col span-1-of-4">
@@ -87,7 +93,7 @@
                                     <p class="genre-links"><a href="/categorypage/Sports & Outdoors">Sports &#38; Outdoors</a></p>
                                     <p class="genre-links"><a href="/categorypage/Travel">Travel</a></p>
                                     <p class="genre-links"><a href="/categorypage/United States">United States</a></p>
-                                    <p class="genre-links more-genres"><a href="">More Genres...</a></p>
+                                    <p class="genre-links more-genres"><a href="/allcategories">More Genres...</a></p>
                                 </div>
                             </div>
                         </div>
@@ -132,12 +138,49 @@
                             <div class="button">
                                 <a href="" class="more-button"><span class="more-toppicks">More >>> </span></a>
                             </div>
+                            <div id="popup1" class="overlay">
+                                <div class="popup1">
+                                    <h2 class="admin-heading">Admin</h2>
+                                    <a class="close" href="#">&times;</a>
+                                    <div class="content">
+                                        <form method="POST" action="">
+                                            <p class="admin-pass">Admin Password:</p>
+                                            <input type="text" name="name" id="adminpwd"/><br>
+                                        </form>
+                                    </div>
+                                    <a class="button3" onclick= checkPswd()><span class="admin-submit">Submit</span></a>
+                                </div>
+                            </div>
                         </div>
                         </div>
                     </div>
 
                 </div>
+        
+                            
             
+
+            <script>
+                function searchfn()
+                {
+                    var asin = document.getElementById('asinid');
+                    document.getElementById('camView').innerHTML = asin.value;
+                    document.getElementById('camView').href="/book/"+asin.value;
+                    //Or to open in new tab on submit button directly 
+                    window.location.href = "/book/"+asin.value;
+                }
+                function checkPswd() {
+                    var confirmPassword = "admin";
+                    var password = document.getElementById("adminpwd").value;
+                    if (password == confirmPassword) {
+                        window.location.href = "/addbook";
+                    }
+                    else{
+                        alert("Passwords do not match.");
+                    }
+                }
+            </script>
+        
             
         </body>
 </html>

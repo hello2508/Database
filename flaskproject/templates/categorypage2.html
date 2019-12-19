@@ -20,10 +20,9 @@
                     <p class="company-name">
                     Great Reads
                     </p>
-  
-                    <a class="nactive" href="#"><i class="fa fa-fw fa-user"></i> Login</a>
-                    <a class="nactive" href="#"><i class="fa fa-fw fa-search"></i> Search</a> 
-                    <a class="active" href="/"><i class="fa fa-fw fa-home"></i> Home</a> 
+                    <a class="nactive" href="#popup1"><i class="fa fa-plus"></i> Add Book</a>
+                    <a class="active" href="/allcategories"><i class="fa fa-fw fa-book"></i>Categories</a> 
+                    <a class="nactive" href="/"><i class="fa fa-fw fa-home"></i> Home</a> 
                 </div>
                 </nav>
             </header>
@@ -66,8 +65,33 @@
                     </div>
 
                     </div>
+                    <div id="popup1" class="overlay">
+                        <div class="popup1">
+                            <h2 class="admin-heading">Admin</h2>
+                            <a class="close" href="#">&times;</a>
+                            <div class="content">
+                                <form method="POST" action="">
+
+                                    <p class="admin-pass">Admin Password:</p>
+                                    <input type="text" name="name" id="adminpwd" /><br>
+                                    </form>
+                                </div>
+                                <a class="button3" onclick= checkPswd()><span class="admin-submit">Submit</span></a>
+                            </div>
+                    </div>
             </section>
-            
+            <script>
+            function checkPswd() {
+                var confirmPassword = "admin";
+                var password = document.getElementById("adminpwd").value;
+                if (password == confirmPassword) {
+                    window.location.href = "/addbook";
+                }
+                else{
+                    alert("Passwords do not match.");
+                }
+            }
+            </script>
     </body>
 </html>
 
