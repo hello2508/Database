@@ -4,6 +4,7 @@ from pymongo import MongoClient
 from bson.json_util import dumps
 import mysql.connector
 import numpy as np
+from werkzeug.serving import run_simple
 
 app = Flask(__name__)  #creates an app
 
@@ -58,6 +59,7 @@ def book(asin):
     cur = db.cursor()
     # Add new review and update database
     if request.method == 'POST':
+        
         # Fetch form data
         userDetails = request.form
 
@@ -69,7 +71,10 @@ def book(asin):
         name = userDetails['name']
         summary = userDetails['summary']
         unixReviewTime= userDetails ['unixReviewTime']
-        cur.execute("INSERT INTO test(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        if userDetails["overall"] == "" or userDetails["name"] == "" or userDetails["summary"] == "" or userDetails["review"] == "":
+            print("Required fields not filled in.")
+        else:
+            cur.execute("INSERT INTO test(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                             ,(asin,0,overall,review,reviewTime,ID,name,summary,unixReviewTime))
         # Save changes into the database
         db.commit()
