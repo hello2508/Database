@@ -61,6 +61,7 @@ def book(asin):
         # Fetch form data
         userDetails = request.form
 
+        asin = '%s' % asin
         overall = userDetails['overall']
         review = userDetails['review']
         reviewTime= userDetails['reviewTime']
@@ -72,7 +73,7 @@ def book(asin):
                             ,(asin,0,overall,review,reviewTime,ID,name,summary,unixReviewTime))
         # Save changes into the database
         db.commit()
-        cur.close()
+        # cur.close()
 
     # Getting reviews for specific asin
     # cur.execute("SELECT asin, reviewerName, reviewText FROM kindle_reviews WHERE asin='B000F83SZQ' LIMIT 10") --- WORKS LIKE A CHARM
@@ -96,7 +97,6 @@ def adminaddbook():
     #Insert data
     print('hello')
     if request.method == 'POST':
-        print("posted!")
         createbookfunct = request.form
         print(createbookfunct)
         ASINID = createbookfunct["ASINid"]
@@ -106,8 +106,11 @@ def adminaddbook():
         book_price = createbookfunct["price"]
         cat = createbookfunct["categories"]
 
-        if metadata.insert_one({'asin': ASINID, 'imUrl': image_url, 'price': book_price, 'categories': cat, 'description': desc}):
-            print('success post to MongoDB!')
+        if createbookfunct["ASINid"] == "" or createbookfunct["desc"] == "" or createbookfunct["price"] == "" or createbookfunct["categories"] == "":
+            print("Required fields not filled in.")
+        else:
+            if metadata.insert_one({'asin': ASINID, 'imUrl': image_url, 'price': book_price, 'categories': cat, 'description': desc}):
+                print('success post to MongoDB!')
 
     return render_template('addBook.html')
 

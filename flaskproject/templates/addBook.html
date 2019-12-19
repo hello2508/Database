@@ -36,18 +36,20 @@
                         <div>
                             <h2 class="create-book-heading">Create a Book!</h2>
                                 <div class="create-book-form">
-                                    <form method="POST" action="" class="post-form">
-                                        <p class="inputs">ASIN ID:</p><input class="input-box" type="text" name="ASINid"/><br>
+                                    <form method="POST" action="" class="post-form" onsubmit="validateForm()" name="form1">
+                                        <p class="inputs">ASIN ID:*</p><input class="input-box" type="text" name="ASINid"/><br>
                                         
                                         <p class="inputs">Book Title:</p> <input class="input-box" type="text" name="book_title"/><br>
                                         
-                                        <p class="inputs">Description:</p> <input class="input-box" type="text" name="desc" /><br>
+                                        <p class="inputs">Description:*</p> <input class="input-box" type="text" name="desc" /><br>
                                         
                                         <p class="inputs">Image URL:</p><input class="input-box" type="text" name="image" /><br>
                                         
-                                        <p class="inputs">Price:</p><input class="input-box" type="text" name="price" /><br>
+                                        <p class="inputs">Price:*</p><input class="input-box" type="text" name="price" /><br>
                                     
-                                        <p class="inputs">Categories:</p><input class="input-box" type="text" name="categories" /><br>
+                                        <p class="inputs">Categories:*</p><input class="input-box" type="text" name="categories" /><br>
+                                        
+                                        <p class="inputs">* This is a required field</p>
                                         
                                         
                                         <a href="#"><button type="submit" class="submit-butts">Submit</button></a>
@@ -120,6 +122,17 @@
                         
                 </div>
                 </div>
-            
+            <script type="text/javascript">
+                function validateForm() {
+                    var a = document.forms["form1"]["ASINid"].value;
+                    var c = document.forms["form1"]["desc"].value;
+                    var e = document.forms["form1"]["price"].value;
+                    var f = document.forms["form1"]["categories"].value;
+                    if (a == null || a == "", c == null || c == "", e == null || e == "", f == null || f == "") {
+                      alert("Please Fill In Required Fields");
+                      return false;
+                    }
+                }
+            </script>
         </body>
 </html>

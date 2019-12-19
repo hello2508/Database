@@ -542,6 +542,17 @@ html {
     width: 60%;
 }
 }
+
+.review-submit-butts{
+    display: block;
+    text-decoration: none;
+}
+
+.submit-butts{
+    padding: 2% 4%;
+    display: block;
+
+}
 /* -----------------------------------------------*/
 /* ADD REVIEW PAGE */
 /* -----------------------------------------------*/
