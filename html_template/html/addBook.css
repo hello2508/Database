@@ -99,7 +99,8 @@ html {
 
 
 .background-image{
-    background-image: url(header.jpg);
+    background: url(res/images/header.jpg);
+    background-size: cover;
     height: 140px;
     margin-top: -13.5px;
     
@@ -116,6 +117,7 @@ html {
     border-radius: 10px/10px;
     
 }
+
 /* -----------------------------------------------*/
 /* SEARCH BAR */
 /* -----------------------------------------------*/
@@ -238,7 +240,8 @@ html {
 
 .more-toppicks{
     text-align: center;
-    font-size: 90%;
+    font-family: 'catalunya';
+    font-size: 100%;
     text-transform: uppercase;
     font-weight: 400
 }
@@ -264,9 +267,10 @@ html {
     border-radius: 10px;
 }
 
-/* -----------------------------------------------*/
+/*-----------------------------------------------*/
 /* REVIEW PAGE */
 /* -----------------------------------------------*/
+
 .book-name{
     margin-top: 10%;
     text-align: center;
@@ -275,14 +279,14 @@ html {
     font-size: 230%;
 }
 
-
+.book-detail-img{
+    height: 200px;
+    margin-left: 20%;
+    display:inline
+}
 
 .book-img{   
     display:inline;
-    margin-left: 10%;
-
-    height: 200px;
-    width: 170px;
 }
 
 .box {
@@ -291,7 +295,6 @@ html {
     margin-left:15%;
     
 }
-
 
 .button1 {
   font-size: 120%;
@@ -375,20 +378,7 @@ background-color: #9AEAE7;
     width: 90%;
   }
 }
-
-
-/* -----------------------------------------------*/
-/* ADD REVIEW PAGE */
-/* -----------------------------------------------*/
-.rating-no{
-    display: inline-block;
-}
-
-.rates{
-    display: inline-block;
-    margin:1% 2%;
-}
-
-.rating-val{
-    display: inline-block
+.reviews{
+    
+    
 }
