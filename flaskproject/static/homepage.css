@@ -225,7 +225,7 @@ html {
     margin-bottom: 5%;
     height: 100px;
     width: 95px;
-    display: inline-block;
+    
 }
 
 /* Add a hover effect (blue shadow) */
@@ -233,17 +233,17 @@ html {
     box-shadow: 0 0 2px 1px #414141;
 }
 
-.top-img{
-    display:inline-block;
-}
 
 .top-picks{
     color: #000000;
     font-family: 'catalunya';
     margin-left: 30%;
-    margin-bottom: 30%;
+    margin-bottom: 20%;
 }
 
+.top-picks-img{
+    display: inline;
+}
 
 .book-inbetween{
     height: 130px;

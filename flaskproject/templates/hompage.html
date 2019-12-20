@@ -94,16 +94,15 @@
                     <div class="col span-1-of-4">
                         <div name="side-col">
                         <h1 class="top-picks">Top Picks</h1>
-                            <div class="top-picks-col">
-                                <div class="col span-1-of-3 imgcol1">
-                                    
-                                    <div class="top-img">
-                                        {% for url in imageurls %}
-                                        <div class="">
-                                            <img src="{{url['imUrl']}}" class="image-url">
-                                        </div>
-                                        {% endfor %}
-                                    </div>
+                        <div class="col span-3-of-3">
+                            {% for url in imageurls %}
+                            <div class="top-picks-img">
+                                <img src="{{url['imUrl']}}" class="image-url">
+                            </div>
+                            {% endfor %}
+                        </div>
+                                
+                        
                                     <!--<a href="">
                                         <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
                                     </a>
@@ -113,8 +112,8 @@
                                     <a href="">
                                         <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
                                     </a>-->
-                                </div>
-                            <div class="col span-1-of-3 imgcol1">
+                                
+                                <!--<div class="col span-1-of-3 imgcol1">-->
                                 <!--<a href="">
                                     <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="book-inbetween">
                                 </a>
@@ -124,8 +123,8 @@
                                 <a href="">
                                     <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
                                 </a>-->
-                            </div>
-                            <div class="col span-1-of-3 imgcol1">
+                                <!--</div>-->
+                                <!--<div class="col span-1-of-3 imgcol1">-->
                                 <!---<a href="">
                                     <img src="{{ url_for('static', filename='43641._SX98_.png')}}" class="book-inbetween">
                                 </a>
@@ -135,7 +134,7 @@
                                 <a href="">
                                     <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
                                 </a>--->
-                            </div>
+                            <!--</div>-->
                             <div id="popup1" class="overlay">
                                 <div class="popup1">
                                     <h2 class="admin-heading">Admin</h2>
@@ -151,8 +150,8 @@
                             </div>
                         </div>
                     </div>
-                    </div>
                 </div>
+                
         
                             
             
