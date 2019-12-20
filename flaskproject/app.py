@@ -40,38 +40,32 @@ db = mysql.connector.connect(
 def webprint():
     # Search bar function
     cur = db.cursor()
-    if request.method == 'POST':
-        srchasin = request.form['srchasin']
-        srchquery = "SELECT distinct(asin) FROM kindle_reviews WHERE asin=%s"
-        search = cur.execute(srchquery, (srchasin,))
-        foundasin = cur.fetchall()
-        print(foundasin)
 
-        if len(foundasin) == 0:
-            return ('inavalid asin')
-        else:
-            return redirect('/book/'+ srchasin)
 
 
     cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
     print('after cursor execute')
     #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
     average = cur.fetchall()
-    print('asin', average)
+    #print('asin', average)
 
     imageurls = []
     for i in average:
         url = metadata.find({'asin': i[0] })
-        print(url[0])
+        #print(url[0])
         imageurls.append(url[0])
 
-    #if request.method == 'POST':
-        # Fetch form data
-        #searchbookasin = request.form
-        #srchbookasin = searchbookasin["srchasin"]
+    if request.method == 'POST':
+        srchasin = request.form['srchasin']
+        srchquery = "SELECT distinct(asin) FROM kindle_reviews WHERE asin=%s"
+        search = cur.execute(srchquery, (srchasin,))
+        foundasin = cur.fetchall()
+        #print(foundasin)
 
-        #if searchbookasin["srchasin"] == "" or searchbookasin["srchasin"] != asinnum:
-            #print("Required fields not filled in.")
+        if len(foundasin) == 0:
+            print("Invalid ASIN ID entered")
+        else:
+            return redirect('/book/'+ srchasin)
 
     return render_template('hompage.html', average=average, imageurls=imageurls)
 
