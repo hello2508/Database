@@ -4,6 +4,7 @@ from pymongo import MongoClient
 from bson.json_util import dumps
 import mysql.connector
 import numpy as np
+from werkzeug.serving import run_simple
 
 
 app = Flask(__name__)  #creates an app
@@ -37,6 +38,7 @@ db = mysql.connector.connect(
 
 @app.route('/', methods=['GET','POST'])
 def webprint():
+    # Search bar function
     cur = db.cursor()
     if request.method == 'POST':
         srchasin = request.form['srchasin']
@@ -49,10 +51,30 @@ def webprint():
             return ('inavalid asin')
         else:
             return redirect('/book/'+ srchasin)
-        cur.close()
-        
 
-    return render_template('hompage.html')
+
+    cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    print('after cursor execute')
+    #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    average = cur.fetchall()
+    print('asin', average)
+
+    imageurls = []
+    for i in average:
+        url = metadata.find({'asin': i[0] })
+        print(url[0])
+        imageurls.append(url[0])
+
+    #if request.method == 'POST':
+        # Fetch form data
+        #searchbookasin = request.form
+        #srchbookasin = searchbookasin["srchasin"]
+
+        #if searchbookasin["srchasin"] == "" or searchbookasin["srchasin"] != asinnum:
+            #print("Required fields not filled in.")
+
+    return render_template('hompage.html', average=average, imageurls=imageurls)
+
 
 
 @app.route('/categorypage/<categoryname>')
@@ -74,21 +96,27 @@ def book(asin):
     cur = db.cursor()
     # Add new review and update database
     if request.method == 'POST':
+
         # Fetch form data
         userDetails = request.form
-
-        overall = userDetails['overall']
-        review = userDetails['review']
-        reviewTime= userDetails['reviewTime']
-        ID = userDetails['ID']
-        name = userDetails['name']
-        summary = userDetails['summary']
-        unixReviewTime= userDetails ['unixReviewTime']
-        cur.execute("INSERT INTO test(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        if userDetails['checkempty'] != 'True':
+            asin = '%s' % asin
+            overall = userDetails['overall']
+            review = userDetails['review']
+            reviewTime= userDetails['reviewTime']
+            ID = userDetails['ID']
+            name = userDetails['name']
+            summary = userDetails['summary']
+            unixReviewTime= userDetails ['unixReviewTime']
+            cur.execute("INSERT INTO test(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                             ,(asin,0,overall,review,reviewTime,ID,name,summary,unixReviewTime))
-        # Save changes into the database
+
+        else:
+            print("Required fields not filled in.")
+            # Save changes into the database
+
         db.commit()
-        cur.close()
+            # cur.close()
 
     # Getting reviews for specific asin
     # cur.execute("SELECT asin, reviewerName, reviewText FROM kindle_reviews WHERE asin='B000F83SZQ' LIMIT 10") --- WORKS LIKE A CHARM
@@ -110,11 +138,9 @@ def book(asin):
 @app.route('/addbook', methods=['GET','POST'])
 def adminaddbook():
     #Insert data
-    print('hello')
     if request.method == 'POST':
-        print("posted!")
         createbookfunct = request.form
-        print(createbookfunct)
+        #print(createbookfunct)
         ASINID = createbookfunct["ASINid"]
         book_title = createbookfunct["book_title"]
         desc = createbookfunct["desc"]
@@ -122,8 +148,12 @@ def adminaddbook():
         book_price = createbookfunct["price"]
         cat = createbookfunct["categories"]
 
-        if metadata.insert_one({'asin': ASINID, 'imUrl': image_url, 'price': book_price, 'categories': cat, 'description': desc}):
-            print('success post to MongoDB!')
+        if createbookfunct["ASINid"] == "" or createbookfunct["desc"] == "" or createbookfunct["price"] == "" or createbookfunct["categories"] == "":
+            print("Required fields not filled in.")
+        else:
+            if metadata.insert_one({'asin': ASINID, 'imUrl': image_url, 'price': book_price, 'categories': cat, 'description': desc}):
+                print('success post to MongoDB!')
+
 
     return render_template('addBook.html')
 
@@ -150,9 +180,17 @@ def allcategories():
 @app.route("/average")
 def bookavg():
     cur = db.cursor();
-    cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
     average = cur.fetchall()
-    return render_template('average.html', average=average)
+    print('asin', average)
+
+    imageurls = []
+    for i in average:
+        url = metadata.find({'asin': i })
+        print(url[0])
+        imageurls.append(url[0])
+    return render_template('average.html', average=average, imageurls=imageurls)
 
 
 

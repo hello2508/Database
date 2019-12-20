@@ -12,7 +12,7 @@
             <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
 
         </head>
-
+<!---hello-->
         <body>
             <header name="header">
             <nav>
@@ -25,18 +25,15 @@
                     <a class="active" href="/"><i class="fa fa-fw fa-home"></i> Home</a> 
                 </div>
 
-                </nav>
+            </nav>
             </header>
-                <div class="row" name="space">
-                    <div class="col span-3-of-4 column-left">
-                    <!--<img src="res/images/header.jpg" name="header-image" width="90%" height="200px">-->
-                        <div class="background-image">
-                            <!--<img src="{{ url_for('static', filename='header.jpg')}}">-->
-                            <p>&nbsp;</p>
-                        </div>
-
-                        <div class="searchbar">
-                            <h2 class="search-font">
+            <div class="row" name="space">
+                <div class="col span-3-of-4 column-left">
+                    <div class="background-image">
+                        <p>&nbsp;</p>
+                    </div>
+                    <div class="searchbar">
+                        <h2 class="search-font">
                             Search and browse books
                             </h2>
                             <div class="wrap">
@@ -55,6 +52,17 @@
 
 
                             <h1 class="top-cat">Top Categories:</h1>
+
+                               <div class="search">
+                                        <input type="text" class="searchTerm" id= "asinid" placeholder="Enter Book's ASIN number" name="srchasin">
+                                       <button type="submit" class="searchButton" onclick="searchfn()" method="POST">
+                                            <i class="fa fa-search"></i>
+                                        </button>
+                               </div>
+                            </div>
+                        
+                            <div><a href="" id="camView" target="_blank" ></a></div>  
+                        <h1 class="top-cat">Top Categories:</h1>
                             <div class="">
                                 <div class="col span-1-of-4">
                                     <p class="genre-links"><a href="/categorypage/Arts & Photography">Arts &#38; Photography</a></p>
@@ -97,13 +105,21 @@
                                 </div>
                             </div>
                         </div>
+                        
                     </div>
                     <div class="col span-1-of-4">
                         <div name="side-col">
                         <h1 class="top-picks">Top Picks</h1>
-                            <div class="top-picks-col">
-                                <div class="col span-1-of-3 imgcol1">
-                                    <a href="">
+                        <div class="col span-3-of-3">
+                            {% for url in imageurls %}
+                            <div class="top-picks-img">
+                                <img src="{{url['imUrl']}}" class="image-url">
+                            </div>
+                            {% endfor %}
+                        </div>
+                                
+                        
+                                    <!--<a href="">
                                         <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
                                     </a>
                                     <a href="">
@@ -111,10 +127,10 @@
                                     </a>
                                     <a href="">
                                         <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
-                                    </a>
-                                </div>
-                            <div class="col span-1-of-3 imgcol1">
-                                <a href="">
+                                    </a>-->
+                                
+                                <!--<div class="col span-1-of-3 imgcol1">-->
+                                <!--<a href="">
                                     <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="book-inbetween">
                                 </a>
                                 <a href="">
@@ -122,10 +138,10 @@
                                 </a>
                                 <a href="">
                                     <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
-                                </a>
-                            </div>
-                            <div class="col span-1-of-3 imgcol1">
-                                <a href="">
+                                </a>-->
+                                <!--</div>-->
+                                <!--<div class="col span-1-of-3 imgcol1">-->
+                                <!---<a href="">
                                     <img src="{{ url_for('static', filename='43641._SX98_.png')}}" class="book-inbetween">
                                 </a>
                                 <a href="">
@@ -133,11 +149,8 @@
                                 </a>
                                 <a href="">
                                     <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
-                                </a>
-                            </div>
-                            <div class="button">
-                                <a href="" class="more-button"><span class="more-toppicks">More >>> </span></a>
-                            </div>
+                                </a>--->
+                            <!--</div>-->
                             <div id="popup1" class="overlay">
                                 <div class="popup1">
                                     <h2 class="admin-heading">Admin</h2>
@@ -148,39 +161,51 @@
                                             <input type="text" name="name" id="adminpwd"/><br>
                                         </form>
                                     </div>
-                                    <a class="button3" onclick= checkPswd()><span class="admin-submit">Submit</span></a>
+                                    <a class="button3" onclick= checkPswd() id="submb"><span class="admin-submit">Submit</span></a>
                                 </div>
                             </div>
                         </div>
-                        </div>
                     </div>
-
                 </div>
+                
         
                             
             
 
-            <script>
-                // function searchfn()
-                // {
-                //     var asin = document.getElementById('asinid');
-                //     document.getElementById('camView').innerHTML = asin.value;
-                //     document.getElementById('camView').href="/book/"+asin.value;
-                //     //Or to open in new tab on submit button directly 
-                //     window.location.href = "/book/"+asin.value;
-                // }
-                function checkPswd() {
-                    var confirmPassword = "admin";
-                    var password = document.getElementById("adminpwd").value;
-                    if (password == confirmPassword) {
-                        window.location.href = "/addbook";
+
+                <script type="text/javascript">
+                    window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
+                    //var input = document.getElementById("adminpwd");
+                        //input.addEventListener("keyup", function(event) {
+                        //if (event.keyCode == 13) {
+                            //event.preventDefault();
+                            //document.getElementById("submb").click();
+                            //}
+                        //});
+                        
+                    // function searchfn(){
+                    // var asin = document.getElementById('asinid');
+                    // document.getElementById('camView').innerHTML = asin.value;
+                    // document.getElementById('camView').href="/book/"+asin.value;
+                    // //Or to open in new tab on submit button directly 
+                    // window.location.href = "/book/"+asin.value;
+                        
+                    // //var a = document.forms["form1"]["name"].value;
+                    // }
+
+                    function checkPswd() {
+                        var confirmPassword = "admin";
+                        var password = document.getElementById("adminpwd").value;
+                        if (password == confirmPassword) {
+                            window.location.href = "/addbook";
+                        }
+                        else{
+                            alert("Passwords do not match.");
+                        }
+
                     }
-                    else{
-                        alert("Passwords do not match.");
-                    }
-                }
             </script>
-        
+
             
         </body>
 </html>

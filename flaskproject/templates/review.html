@@ -51,13 +51,12 @@
                                     <h2>Write a Review!</h2>
                                     <a class="close" href="#">&times;</a>
                                     <div class="content">
-                                            <form method="POST" action="">
+                                            <form method="POST" action="" onsubmit="validateForm()" name="form1">
                                                     
-                                                <p class="inputs">Name: </p><input class ="inputf" type="text" name="name" /><br>
-                                                <p class="inputs">Book title: </p><input class ="inputf" type="text" name="book_title" /><br>
-                                                <p class="inputsrev">Review: </p><input class ="inputfrev" type="text" name="review" /> <br>
-                                                <p class="inputs">Summary: </p><input class ="inputf" type="text" name="summary" /><br>
-                                                <p class="inputs">Overall Rating(0-5):</p>
+                                                <p class="inputs">Name:* </p><input class ="inputf" type="text" name="name" /><br>
+                                                <p class="inputsrev">Review:* </p><input class ="inputfrev" type="text" name="review" /> <br>
+                                                <p class="inputs">Summary:* </p><input class ="inputf" type="text" name="summary" /><br>
+                                                <p class="inputs">Overall Rating(0-5):*</p>
                                                 <div class="rating">
                                                     <input type="radio" name="overall" value="0"> 0
                                                     <input type="radio" name="overall" value="1" />  1
@@ -67,9 +66,13 @@
                                                     <input type="radio" name="overall" value="5" />  5
                                                     <br>
                                                 </div>
-                                            <input type="hidden" name="reviewTime" id="reviewTime" />
-                                            <input type="hidden" name="unixReviewTime" id="unixReviewTime" />
-                                                <a class2="close" href="#popup2"><button type="submit">Submit</button></a>
+                                                <input type="hidden" name="checkempty" id="checkempty" />
+                                                <input type="hidden" name="reviewTime" id="reviewTime" />
+                                                <input type="hidden" name="unixReviewTime" id="unixReviewTime" />
+                                                <input type="hidden" name="ID" id="getID">
+                                                <p class="inputs">* This is a required field</p>
+                                                
+                                                <a href="#popup2"><button type="submit" class="submit-butts">Submit</button></a>
                                             </form>
 	                                   </div>
                                         
@@ -95,18 +98,18 @@
                                 <div class="table">
                                     <table>
                                         {% for id in bookasin %}
-                                        <div class="reviewername">
-                                            <p>Reviewer: {{ id[1] }}</p>
-                                        </div>
-                                        <div class="reviewcontent">
-                                            <p>{{ id[2] }}</p>
-                                        </div>
-                                        <div class="helpfulbutton">
-                                            
-                                            <p><span id='helpful'>0</span> found this helpful</p>
-                                            <button class="button3" onclick="gethelpful()">Helpful</button>
-              
-                                        </div>
+                                            <div class="reviewername">
+                                                <p>Reviewer: {{ id[1] }}</p>
+                                            </div>
+                                            <div class="reviewcontent">
+                                                <p>{{ id[2] }}</p>
+                                            </div>
+                                            <div class="helpfulbutton">
+
+                                                <p><span>0</span> found this helpful</p>
+                                                <button class="button3" onclick="gethelpful()" id="clickme">Helpful : 0</button>
+
+                                            </div>
                                         {% endfor %}
                                     </table>
                                 </div>
@@ -151,9 +154,7 @@
                                 <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
                             </a>
                         </div>
-                        <div class="button">
-                            <a href="" class="more-button"><span class="more-toppicks">More >>> </span></a>
-                        </div>
+                        
                     </div>
                     <div id="popup1" class="overlay">
                         <div class="popup1">
@@ -161,12 +162,11 @@
                             <a class="close" href="#">&times;</a>
                             <div class="content">
                                 <form method="POST" action="">
-
-                                <p class="admin-pass">Admin Password:</p>
-                                <input type="text" name="name" id="adminpwd" /><br>
+                                    <p class="admin-pass">Admin Password:</p>
+                                    <input type="text" name="name" id="adminpwd" /><br>
                                 </form>
                             </div>
-                            <a class="button3" onclick= checkPswd()><span class="admin-submit">Submit</span></a>
+                            <a class="button3" onclick= checkPswd() id="submb"><span class="admin-submit">Submit</span></a>
                             
                         </div>
                     </div>
@@ -181,6 +181,15 @@
             
 
             <script type="text/javascript">
+                window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
+                //var input = document.getElementById("adminpwd");
+                    //input.addEventListener("keyup", function(event) {
+                    //if (event.keyCode == 13) {
+                       // event.preventDefault();
+                       // document.getElementById("submb").click();
+                       // }
+                
+                   // });
                 function getDate()
                 {
                     var today = new Date();
@@ -204,18 +213,24 @@
                 }
                 getUnixTime();
                 
+                
+                var button = document.getElementById("clickme"), count = 0;
+                    button.onclick = function() {
+                      count += 1;
+                      button.innerHTML = "Helpful: " + count;
+                    }
                 // Since list/tuple cannot be added into MYSQL
-                var good = 0
-                function gethelpful(event){
-                    var count =  document.getElementById('helpful').addEventListener('click', function(event){
-                        event.preventDefault()
-                    });
+                //var good = 0
+                //function gethelpful(event){
+                    //var count =  document.getElementById('helpful').addEventListener('click', function(event){
+                       // event.preventDefault()
+                   // });
 
-                    good ++;
-                    helpful.innerHTML = good;
-                    console.log(good)
-                    return good;            
-                }
+                   // good ++;
+                  //  helpful.innerHTML = good;
+                   // console.log(good)
+                   // return good;            
+               // }
 
                 function makeid(length) {
                    var result           = 'DBDS2019_';
@@ -227,6 +242,8 @@
                    document.getElementById('getID').value = result;
                    return getID;
                 }
+                console.log(makeid(5)); // Output example: DBDS2019_QRE6L 
+                
             
                 function checkPswd() {
                     var confirmPassword = "admin";
@@ -240,9 +257,22 @@
                 }
                 
 
+                function validateForm() {
+                    var a = document.forms["form1"]["name"].value;
+                    var c = document.forms["form1"]["review"].value;
+                    var e = document.forms["form1"]["summary"].value;
+                    var f = document.forms["form1"]["overall"].value;
+                    if (a == null || a == "", c == null || c == "", e == null || e == "", f == null || f == "") {
+                      alert("Please Fill In Required Fields");
+                      document.getElementById('checkempty').value='True';
+                      return false;
+                    }
+                }
+                
+                
+                
 
-
-                console.log(makeid(5)); // Output example: DBDS2019_QRE6L 
+                
             </script>
         </body>
 </html>

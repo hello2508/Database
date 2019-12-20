@@ -26,61 +26,101 @@
                 </div>
                 </nav>
             </header>
-            <section class="section-space">
-                <!--<img src="res/images/header.jpg" name="header-image" width="90%" height="200px">-->
+            <div class="row" name="space">
+                <div class="col span-3-of-4 column-left">
                     <div class="background-image">
-                            <!--<img src="{{ url_for('static', filename='header.jpg')}}">-->
-                            <p>&nbsp;</p>
-                        </div>
-                    <!--<div class="">
-                        <img src="{{ url_for('static', filename='header.jpg')}}" class="background-image" width="1440px">
-                        </div>-->
-                <div class="row">
-                    <div class="category-portion">
-                        <h1 class="category-heading">{{name}}</h1>
-                        <div class="category-book-row">
-                                <div class="category-books">
+                        <p>&nbsp;</p>
+                    </div>
+                    <div class="col span-4-of-4">
+                        <div class="category-portion">
+                            <h1 class="category-heading">{{name}}</h1>
+                            <div class="category-book-row">
+                            <div class="category-books">
                                   {% for category in categories %}
                                     <div class="book_asin">
-                                    <a href="/book/{{category.asin}}" onClick="console.log('{{category.asin}}')">
+                                        <a href="/book/{{category.asin}}" onClick="console.log('{{category.asin}}')">
                                         <img class="book-img" src="{{category.imUrl}}">
-                                    </a>
+                                        </a>
                                     <span class="asin">{{category.asin}}</span>
                                     </div>
                                   {% endfor %}
                                 </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="side-panel">
-                        <div class="enjoyed-books-section">
-                            <h2 class="reader-enjoy-heading">Readers also enjoyed:</h2>
-                            <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="enjoyed-books">
-                            <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="enjoyed-books">
-                            <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="enjoyed-books">
+                </div>
+                 <div class="col span-1-of-4">
+                    <div name="side-col">
+                    <h1 class="top-picks">Top Picks</h1>
+                        <div class="top-picks-col">
+                            <div class="col span-1-of-3 imgcol1">
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
+                                </a>
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='43641._SX98_.png')}}" class="book-inbetween">
+                                </a>
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
+                                </a>
+                            </div>
+                            <div class="col span-1-of-3 imgcol1">
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="book-inbetween">
+                                </a>
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='39832183._SX98_.png')}}" class="book-inbetween">
+                                </a>
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
+                                </a>
+                            </div>
+                            <div class="col span-1-of-3 imgcol1">
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='43641._SX98_.png')}}" class="book-inbetween">
+                                </a>
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="book-inbetween">
+                                </a>
+                                <a href="">
+                                    <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
+                                </a>
+                            </div>
+                            <!--<div class="button">
+                                <a href="" class="more-button"><span class="more-toppicks">More >>> </span></a>
+                            </div>-->
                         </div>
-                        <div class="write-review">
-                            <h1 class="review-heading">Want to write a review?</h1>
-                            <p>click here!</p>
-                        </div>
-                    </div>
-
-                    </div>
-                    <div id="popup1" class="overlay">
-                        <div class="popup1">
-                            <h2 class="admin-heading">Admin</h2>
-                            <a class="close" href="#">&times;</a>
-                            <div class="content">
-                                <form method="POST" action="">
-
+                        <div id="popup1" class="overlay">
+                            <div class="popup1">
+                                <h2 class="admin-heading">Admin</h2>
+                                <a class="close" href="#">&times;</a>
+                                <div class="content">
+                                    <form method="POST" action="">
+    
                                     <p class="admin-pass">Admin Password:</p>
                                     <input type="text" name="name" id="adminpwd" /><br>
                                     </form>
                                 </div>
-                                <a class="button3" onclick= checkPswd()><span class="admin-submit">Submit</span></a>
+                                <a class="button3" onclick= checkPswd() id="submb"><span class="admin-submit">Submit</span></a>  
                             </div>
+                        </div>
+                            
+            
                     </div>
-            </section>
-            <script>
+                    </div>
+                </div>
+            
+        
+                    
+            <script type="text/javascript">
+                window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);  
+            //var input = document.getElementById("adminpwd");
+                //input.addEventListener("keyup", function(event) {
+               // if (event.keyCode == 13) {
+                    //event.preventDefault();
+                    //document.getElementById("submb").click();
+                   // }
+                //});
             function checkPswd() {
                 var confirmPassword = "admin";
                 var password = document.getElementById("adminpwd").value;
@@ -91,21 +131,10 @@
                     alert("Passwords do not match.");
                 }
             }
+
             </script>
     </body>
 </html>
 
 
 
-
-
-<!--                            <a href=""><img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-img"></a>-->
-<!--                            <a href=""><img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-img"></a><a href=""><img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-img"></a><a href=""><img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-img"></a><a href=""><img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-img"></a><a href=""><img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-img"></a><a href=""><img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-img"></a>-->
-                            <!--- HOVER OVER DESCRIPTION ONLY SUPPOSED TO APPEAR BY HOVERING OVER BOOK IMAGE --->
-                            <!--<div class="hover-over-description">
-                            
-                            
-                                <h1 class="bookname">Predictably Irrational</h1>
-                                <h2 class="author">by Dan &amp; Ariely</h2>
-                                <p class="book-des">Predictably Irrational: The Hidden Forces That Shape Our Decisions is a 2008 book by Dan Ariely, in which he challenges readers' assumptions about making decisions based on rational thought.</p>
-                            </div>-->
