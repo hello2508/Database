@@ -86,9 +86,9 @@
                                     <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
                                 </a>
                             </div>
-                            <div class="button">
+                            <!--<div class="button">
                                 <a href="" class="more-button"><span class="more-toppicks">More >>> </span></a>
-                            </div>
+                            </div>-->
                         </div>
                         <div id="popup1" class="overlay">
                             <div class="popup1">
@@ -113,14 +113,14 @@
         
                     
             <script type="text/javascript">
-                
-            var input = document.getElementById("adminpwd");
-                input.addEventListener("keyup", function(event) {
-                if (event.keyCode == 13) {
-                    event.preventDefault();
-                    document.getElementById("submb").click();
-                    }
-                });
+                window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);  
+            //var input = document.getElementById("adminpwd");
+                //input.addEventListener("keyup", function(event) {
+               // if (event.keyCode == 13) {
+                    //event.preventDefault();
+                    //document.getElementById("submb").click();
+                   // }
+                //});
             function checkPswd() {
                 var confirmPassword = "admin";
                 var password = document.getElementById("adminpwd").value;
