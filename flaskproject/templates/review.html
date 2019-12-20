@@ -181,14 +181,15 @@
             
 
             <script type="text/javascript">
-                var input = document.getElementById("adminpwd");
-                    input.addEventListener("keyup", function(event) {
-                    if (event.keyCode == 13) {
-                        event.preventDefault();
-                        document.getElementById("submb").click();
-                        }
+                window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
+                //var input = document.getElementById("adminpwd");
+                    //input.addEventListener("keyup", function(event) {
+                    //if (event.keyCode == 13) {
+                       // event.preventDefault();
+                       // document.getElementById("submb").click();
+                       // }
                 
-                    });
+                   // });
                 function getDate()
                 {
                     var today = new Date();
