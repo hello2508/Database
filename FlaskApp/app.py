@@ -43,6 +43,15 @@ def index():
 
 	# return render_template('home.html')
 
+@app.route("/average")
+def bookavg():
+	cur = db.cursor();
+	# cur.execute("SELECT asin, AVG(overall) FROM kindle_reviews HAVING 'count(asin)>1' GROUP BY asin LIMIT 9")
+	cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+	average = cur.fetchall()
+	return render_template('average.html', average=average)
+
+
 
 if __name__ == "__main__":
 	app.run(debug=True)

@@ -37,7 +37,19 @@ db = mysql.connector.connect(
 
 @app.route('/')
 def webprint():
-    return render_template('hompage.html')
+    cur = db.cursor();
+    cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    print('after cursor execute')
+    #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    average = cur.fetchall()
+    print('asin', average)
+
+    imageurls = []
+    for i in average:
+        url = metadata.find({'asin': i[0] })
+        print(url[0])
+        imageurls.append(url[0])
+    return render_template('hompage.html', average=average, imageurls=imageurls)
 
 
 @app.route('/categorypage/<categoryname>')
@@ -73,7 +85,7 @@ def book(asin):
             unixReviewTime= userDetails ['unixReviewTime']
             cur.execute("INSERT INTO test(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                             ,(asin,0,overall,review,reviewTime,ID,name,summary,unixReviewTime))
-            
+
         else:
             print("Required fields not filled in.")
             # Save changes into the database
@@ -138,6 +150,24 @@ def allcategories():
 
     unique_category_names = [i for i in uniques]
     return render_template('allcategories.html', unique_category_names=unique_category_names)
+
+
+# Top picks based on average reviews
+@app.route("/average")
+def bookavg():
+    cur = db.cursor();
+    cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    average = cur.fetchall()
+    print('asin', average)
+
+    imageurls = []
+    for i in average:
+        url = metadata.find({'asin': i })
+        print(url[0])
+        imageurls.append(url[0])
+    return render_template('average.html', average=average, imageurls=imageurls)
+
 
 
 if __name__ == "__main__":

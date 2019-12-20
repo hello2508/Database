@@ -218,7 +218,23 @@ html {
 /* -----------------------------------------------*/
 /* RIGHT COLUMN */
 /* -----------------------------------------------*/
+.image-url{
+    border: 1px solid #acacac; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    margin-bottom: 5%;
+    height: 100px;
+    width: 95px;
+    display: inline-block;
+}
 
+/* Add a hover effect (blue shadow) */
+.image-url:hover {
+    box-shadow: 0 0 2px 1px #414141;
+}
+
+.top-img{
+    display:inline-block;
+}
 
 .top-picks{
     color: #000000;
