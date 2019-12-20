@@ -95,7 +95,7 @@
                     <div class="col span-1-of-4">
                         <div name="side-col">
                         <h1 class="top-picks">Top Picks</h1>
-                            <div class="col span-3-of-3">
+                            <div class="col span-3-of-3 add-margin">
                                 {% for url in imageurls %}
                                 <div class="top-picks-img">
                                     <img src="{{url['imUrl']}}" class="image-url">
@@ -109,7 +109,7 @@
                                     <div class="content">
                                         <form method="POST" action="">
                                             <p class="admin-pass">Admin Password:</p>
-                                            <input type="password" name="name" id="adminpwd"/><br>
+                                            <input type="text" name="name" id="adminpwd"/><br>
                                         </form>
                                     </div>
                                     <a class="button3" onclick= checkPswd() id="submb"><span class="admin-submit">Submit</span></a>
@@ -125,14 +125,8 @@
 
 
                 <script type="text/javascript">
+                    
                     window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
-                    //var input = document.getElementById("adminpwd");
-                        //input.addEventListener("keyup", function(event) {
-                        //if (event.keyCode == 13) {
-                            //event.preventDefault();
-                            //document.getElementById("submb").click();
-                            //}
-                        //});
                         
                     // function searchfn(){
                     // var asin = document.getElementById('asinid');

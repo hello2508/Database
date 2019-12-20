@@ -64,7 +64,7 @@
                                     <div class="content">
                                         <form method="POST" action="">
                                             <p class="admin-pass">Admin Password:</p>
-                                            <input type="password" name="name" id="adminpwd" /><br>
+                                            <input type="text" name="name" id="adminpwd" /><br>
                                         </form>
                                     </div>
                                     <a class="button3" onclick= checkPswd()><span class="admin-submit">Submit</span></a>
@@ -74,7 +74,6 @@
                         </div>
                     </div>
 
-                </div>
         <script>
             window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
             

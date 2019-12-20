@@ -73,21 +73,47 @@ def webprint():
 
 @app.route('/categorypage/<categoryname>')
 def categorypage(categoryname):
+    cur = db.cursor()
+    cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    print('after cursor execute')
+    #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    average = cur.fetchall()
+    #print('asin', average)
+
+    imageurls = []
+    for i in average:
+        url = metadata.find({'asin': i[0] })
+        #print(url[0])
+        imageurls.append(url[0])
+
     categories = metadata.find({'categories': {"$elemMatch": {"$elemMatch": {"$eq": categoryname} } }}, {'imUrl': 1, 'asin': 1, '_id': 0 })
 
     categories = [i for i in categories]
     # to set limit to how many you want to add
     limit = 50
     # return render_template('categorypage2.html')
-    return render_template('categorypage2.html', categories=categories[:limit], name=categoryname)
+    return render_template('categorypage2.html', categories=categories[:limit], name=categoryname, average=average, imageurls=imageurls)
 
 @app.route('/book/<asin>', methods=['GET','POST'])
 def book(asin):
+
 
     ### THIS FUNCTION WILL USE BOTH MYSQL AND MONGO TO FILL UP THE BOOK PAGE
     reviews = metadata.find({'asin': asin})
 
     cur = db.cursor()
+
+    cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    print('after cursor execute')
+    #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    average = cur.fetchall()
+    #print('asin', average)
+
+    imageurls = []
+    for i in average:
+        url = metadata.find({'asin': i[0] })
+        #print(url[0])
+        imageurls.append(url[0])
     # Add new review and update database
     if request.method == 'POST':
 
@@ -125,12 +151,26 @@ def book(asin):
     asinforbook = '%s' % (asin)
     # for bookreviews in bookasin:
     #     print(bookreviews)
-    return render_template('review.html', reviews=reviews, bookasin=bookasin, asinforbook=asinforbook)
+    return render_template('review.html', reviews=reviews, bookasin=bookasin, asinforbook=asinforbook, average=average, imageurls=imageurls)
 
     # return render_template('review.html', reviews=reviews)
 
 @app.route('/addbook', methods=['GET','POST'])
 def adminaddbook():
+
+    cur = db.cursor()
+    cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    print('after cursor execute')
+    #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    average = cur.fetchall()
+    #print('asin', average)
+
+    imageurls = []
+    for i in average:
+        url = metadata.find({'asin': i[0] })
+        #print(url[0])
+        imageurls.append(url[0])
+
     #Insert data
     if request.method == 'POST':
         createbookfunct = request.form
@@ -149,10 +189,24 @@ def adminaddbook():
                 print('success post to MongoDB!')
 
 
-    return render_template('addBook.html')
+    return render_template('addBook.html', average=average, imageurls=imageurls)
 
 @app.route('/allcategories')
 def allcategories():
+
+    cur = db.cursor()
+    cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    print('after cursor execute')
+    #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    average = cur.fetchall()
+    #print('asin', average)
+
+    imageurls = []
+    for i in average:
+        url = metadata.find({'asin': i[0] })
+        #print(url[0])
+        imageurls.append(url[0])
+
     # categories = metadata.find({'categories': {"$elemMatch": {"$elemMatch": {"$eq": categoryname} } }}, {'imUrl': 1, 'asin': 1, '_id': 0 })
 
     # get distinct category rows
@@ -167,7 +221,7 @@ def allcategories():
     uniques = np.unique(arr2)
 
     unique_category_names = [i for i in uniques]
-    return render_template('allcategories.html', unique_category_names=unique_category_names)
+    return render_template('allcategories.html', unique_category_names=unique_category_names, average=average, imageurls=imageurls)
 
 
 # Top picks based on average reviews
