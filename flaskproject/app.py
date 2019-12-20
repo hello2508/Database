@@ -5,6 +5,7 @@ from bson.json_util import dumps
 import mysql.connector
 import numpy as np
 
+
 app = Flask(__name__)  #creates an app
 
 ### Kenneth's EC2 instance
@@ -23,8 +24,8 @@ db = mysql.connector.connect(
     host = '18.141.90.224',
     user = 'root',
     password = '',
-    database = 'dbds'
-    #buffered = True
+    database = 'dbds',
+    buffered = 'True'
     )
 
 
@@ -34,8 +35,23 @@ db = mysql.connector.connect(
 # logs = mongo_store.nezukodb.logs
 # logs = mongo_store.logs
 
-@app.route('/')
+@app.route('/', methods=['GET','POST'])
 def webprint():
+    cur = db.cursor()
+    if request.method == 'POST':
+        srchasin = request.form['srchasin']
+        srchquery = "SELECT distinct(asin) FROM kindle_reviews WHERE asin=%s"
+        search = cur.execute(srchquery, (srchasin,))
+        foundasin = cur.fetchall()
+        print(foundasin)
+
+        if len(foundasin) == 0:
+            return ('inavalid asin')
+        else:
+            return redirect('/book/'+ srchasin)
+        cur.close()
+        
+
     return render_template('hompage.html')
 
 
