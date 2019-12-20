@@ -126,10 +126,9 @@ def book(asin):
 @app.route('/addbook', methods=['GET','POST'])
 def adminaddbook():
     #Insert data
-    print('hello')
     if request.method == 'POST':
         createbookfunct = request.form
-        print(createbookfunct)
+        #print(createbookfunct)
         ASINID = createbookfunct["ASINid"]
         book_title = createbookfunct["book_title"]
         desc = createbookfunct["desc"]
@@ -142,7 +141,7 @@ def adminaddbook():
         else:
             if metadata.insert_one({'asin': ASINID, 'imUrl': image_url, 'price': book_price, 'categories': cat, 'description': desc}):
                 print('success post to MongoDB!')
-  
+
 
     return render_template('addBook.html')
 
