@@ -223,7 +223,9 @@ html {
     margin-bottom: 30%;
 }
 
-
+.top-picks-img{
+    display: inline;
+}
 .book-inbetween{
     height: 130px;
     margin-bottom: 70%;

@@ -49,46 +49,15 @@
                         </div>
                     </div>
                 </div>
-                 <div class="col span-1-of-4">
+                <div class="col span-1-of-4">
                     <div name="side-col">
                     <h1 class="top-picks">Top Picks</h1>
-                        <div class="top-picks-col">
-                            <div class="col span-1-of-3 imgcol1">
-                                <a href="">
-                                    <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
-                                </a>
-                                <a href="">
-                                    <img src="{{ url_for('static', filename='43641._SX98_.png')}}" class="book-inbetween">
-                                </a>
-                                <a href="">
-                                    <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
-                                </a>
+                        <div class="col span-3-of-3">
+                            {% for url in imageurls %}
+                            <div class="top-picks-img">
+                                <img src="{{url['imUrl']}}" class="image-url">
                             </div>
-                            <div class="col span-1-of-3 imgcol1">
-                                <a href="">
-                                    <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="book-inbetween">
-                                </a>
-                                <a href="">
-                                    <img src="{{ url_for('static', filename='39832183._SX98_.png')}}" class="book-inbetween">
-                                </a>
-                                <a href="">
-                                    <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
-                                </a>
-                            </div>
-                            <div class="col span-1-of-3 imgcol1">
-                                <a href="">
-                                    <img src="{{ url_for('static', filename='43641._SX98_.png')}}" class="book-inbetween">
-                                </a>
-                                <a href="">
-                                    <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="book-inbetween">
-                                </a>
-                                <a href="">
-                                    <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
-                                </a>
-                            </div>
-                            <!--<div class="button">
-                                <a href="" class="more-button"><span class="more-toppicks">More >>> </span></a>
-                            </div>-->
+                            {% endfor %}
                         </div>
                         <div id="popup1" class="overlay">
                             <div class="popup1">
@@ -98,7 +67,7 @@
                                     <form method="POST" action="">
     
                                     <p class="admin-pass">Admin Password:</p>
-                                    <input type="password"  name="name" id="adminpwd" /><br>
+                                    <input type="password" name="name" id="adminpwd" /><br>
                                     </form>
                                 </div>
                                 <a class="button3" onclick= checkPswd() id="submb"><span class="admin-submit">Submit</span></a>  
@@ -113,14 +82,14 @@
         
                     
             <script type="text/javascript">
-                window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);  
-            //var input = document.getElementById("adminpwd");
-                //input.addEventListener("keyup", function(event) {
-               // if (event.keyCode == 13) {
-                    //event.preventDefault();
-                    //document.getElementById("submb").click();
-                   // }
-                //});
+                
+            var input = document.getElementById("adminpwd");
+                input.addEventListener("keyup", function(event) {
+                if (event.keyCode == 13) {
+                    event.preventDefault();
+                    document.getElementById("submb").click();
+                    }
+                });
             function checkPswd() {
                 var confirmPassword = "admin";
                 var password = document.getElementById("adminpwd").value;

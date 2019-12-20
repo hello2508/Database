@@ -185,7 +185,9 @@ html {
 /* RIGHT COLUMN */
 /* -----------------------------------------------*/
 
-
+.top-picks-img{
+    display: inline;
+}
 .top-picks{
     color: #000000;
     font-family: 'catalunya';
