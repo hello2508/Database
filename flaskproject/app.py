@@ -39,14 +39,16 @@ db = mysql.connector.connect(
 def webprint():
     cur = db.cursor();
     cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
+    print('after cursor execute')
     #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
     average = cur.fetchall()
+    print('asin', average)
 
     imageurls = []
     for i in average:
-        url = metadata.find({'asin': { "$elemMatch": { "$eq": i } }}, {'imUrl': 1})
-        print(url)
-        imageurls.append(url)
+        url = metadata.find({'asin': i[0] })
+        print(url[0])
+        imageurls.append(url[0])
     return render_template('hompage.html', average=average, imageurls=imageurls)
 
 
@@ -83,7 +85,7 @@ def book(asin):
             unixReviewTime= userDetails ['unixReviewTime']
             cur.execute("INSERT INTO test(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                             ,(asin,0,overall,review,reviewTime,ID,name,summary,unixReviewTime))
-            
+
         else:
             print("Required fields not filled in.")
             # Save changes into the database
@@ -156,12 +158,13 @@ def bookavg():
     cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
     #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
     average = cur.fetchall()
+    print('asin', average)
 
     imageurls = []
     for i in average:
-        url = metadata.find({'asin': { "$elemMatch": { "$eq": i } }})
-        print(url)
-        imageurls.append(url)
+        url = metadata.find({'asin': i })
+        print(url[0])
+        imageurls.append(url[0])
     return render_template('average.html', average=average, imageurls=imageurls)
 
 

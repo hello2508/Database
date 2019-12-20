@@ -104,10 +104,10 @@
                             <div class="top-picks-col">
                                 <div class="col span-1-of-3 imgcol1">
                                     
-                                    <div class="idiot">
+                                    <div class="top-img">
                                         {% for url in imageurls %}
-                                        <div>
-                                            <img src="{{url.imUrl}}">
+                                        <div class="">
+                                            <img src="{{url['imUrl']}}" class="image-url">
                                         </div>
                                         {% endfor %}
                                     </div>
