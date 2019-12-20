@@ -37,7 +37,11 @@ db = mysql.connector.connect(
 
 @app.route('/')
 def webprint():
+
+    ##find asin number asinnum
+
     cur = db.cursor();
+
     cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
     print('after cursor execute')
     #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
@@ -49,6 +53,15 @@ def webprint():
         url = metadata.find({'asin': i[0] })
         print(url[0])
         imageurls.append(url[0])
+
+    #if request.method == 'POST':
+        # Fetch form data
+        #searchbookasin = request.form
+        #srchbookasin = searchbookasin["srchasin"]
+
+        #if searchbookasin["srchasin"] == "" or searchbookasin["srchasin"] != asinnum:
+            #print("Required fields not filled in.")
+
     return render_template('hompage.html', average=average, imageurls=imageurls)
 
 

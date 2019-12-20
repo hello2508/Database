@@ -41,10 +41,10 @@
                             </h2>
                             <div class="wrap">
                                <div class="search">
-                                  <input type="text" class="searchTerm" id= "asinid" placeholder="Enter Book's ASIN number">
-                                  <button type="submit" class="searchButton" onclick="searchfn()">
-                                    <i class="fa fa-search"></i>
-                                 </button>
+                                        <input type="text" class="searchTerm" id= "asinid" placeholder="Enter Book's ASIN number" name="srchasin">
+                                       <button type="submit" class="searchButton" onclick="searchfn()" method="POST">
+                                            <i class="fa fa-search"></i>
+                                        </button>
                                </div>
                             </div>
                         
@@ -174,13 +174,14 @@
                             document.getElementById("submb").click();
                             }
                         });
-                    function searchfn()
-        {
+                    function searchfn(){
                     var asin = document.getElementById('asinid');
                     document.getElementById('camView').innerHTML = asin.value;
                     document.getElementById('camView').href="/book/"+asin.value;
                     //Or to open in new tab on submit button directly 
                     window.location.href = "/book/"+asin.value;
+                        
+                    //var a = document.forms["form1"]["name"].value;
                 }
                 function checkPswd() {
                     var confirmPassword = "admin";
