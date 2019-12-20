@@ -164,14 +164,10 @@
                             <a class="close" href="#">&times;</a>
                             <div class="content">
                                 <form method="POST" action="">
-
-                                <p class="admin-pass">Admin Password:</p>
-                                <input type="text" name="name" id="adminpwd" /><br>
-                                
+                                    <p class="admin-pass">Admin Password:</p>
+                                    <input type="text" name="name" id="adminpwd" /><br>
                                 </form>
                             </div>
-                            
-                            
                             <a class="button3" onclick= checkPswd() id="submb"><span class="admin-submit">Submit</span></a>
                             
                         </div>
@@ -189,10 +185,11 @@
             <script type="text/javascript">
                 var input = document.getElementById("adminpwd");
                     input.addEventListener("keyup", function(event) {
-                    if (event.keyCode === 13) {
+                    if (event.keyCode == 13) {
                         event.preventDefault();
                         document.getElementById("submb").click();
                         }
+                
                     });
                 function getDate()
                 {
