@@ -153,7 +153,7 @@
                                             <input type="text" name="name" id="adminpwd"/><br>
                                         </form>
                                     </div>
-                                    <a class="button3" onclick= checkPswd()><span class="admin-submit">Submit</span></a>
+                                    <a class="button3" onclick= checkPswd() id="submb"><span class="admin-submit">Submit</span></a>
                                 </div>
                             </div>
                         </div>
@@ -165,9 +165,17 @@
                             
             
 
-            <script>
-                function searchfn()
-                {
+                <script type="text/javascript">
+                
+                    var input = document.getElementById("adminpwd");
+                        input.addEventListener("keyup", function(event) {
+                        if (event.keyCode === 13) {
+                            event.preventDefault();
+                            document.getElementById("submb").click();
+                            }
+                        });
+                    function searchfn()
+        {
                     var asin = document.getElementById('asinid');
                     document.getElementById('camView').innerHTML = asin.value;
                     document.getElementById('camView').href="/book/"+asin.value;
@@ -183,6 +191,7 @@
                     else{
                         alert("Passwords do not match.");
                     }
+                    
                 }
             </script>
         

@@ -4,6 +4,7 @@ from pymongo import MongoClient
 from bson.json_util import dumps
 import mysql.connector
 import numpy as np
+from werkzeug.serving import run_simple
 
 app = Flask(__name__)  #creates an app
 
@@ -68,21 +69,27 @@ def book(asin):
     cur = db.cursor()
     # Add new review and update database
     if request.method == 'POST':
+
         # Fetch form data
         userDetails = request.form
-
-        overall = userDetails['overall']
-        review = userDetails['review']
-        reviewTime= userDetails['reviewTime']
-        ID = userDetails['ID']
-        name = userDetails['name']
-        summary = userDetails['summary']
-        unixReviewTime= userDetails ['unixReviewTime']
-        cur.execute("INSERT INTO test(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+        if userDetails['checkempty'] != 'True':
+            asin = '%s' % asin
+            overall = userDetails['overall']
+            review = userDetails['review']
+            reviewTime= userDetails['reviewTime']
+            ID = userDetails['ID']
+            name = userDetails['name']
+            summary = userDetails['summary']
+            unixReviewTime= userDetails ['unixReviewTime']
+            cur.execute("INSERT INTO test(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                             ,(asin,0,overall,review,reviewTime,ID,name,summary,unixReviewTime))
-        # Save changes into the database
+            
+        else:
+            print("Required fields not filled in.")
+            # Save changes into the database
+
         db.commit()
-        cur.close()
+            # cur.close()
 
     # Getting reviews for specific asin
     # cur.execute("SELECT asin, reviewerName, reviewText FROM kindle_reviews WHERE asin='B000F83SZQ' LIMIT 10") --- WORKS LIKE A CHARM
@@ -106,7 +113,6 @@ def adminaddbook():
     #Insert data
     print('hello')
     if request.method == 'POST':
-        print("posted!")
         createbookfunct = request.form
         print(createbookfunct)
         ASINID = createbookfunct["ASINid"]
@@ -116,8 +122,11 @@ def adminaddbook():
         book_price = createbookfunct["price"]
         cat = createbookfunct["categories"]
 
-        if metadata.insert_one({'asin': ASINID, 'imUrl': image_url, 'price': book_price, 'categories': cat, 'description': desc}):
-            print('success post to MongoDB!')
+        if createbookfunct["ASINid"] == "" or createbookfunct["desc"] == "" or createbookfunct["price"] == "" or createbookfunct["categories"] == "":
+            print("Required fields not filled in.")
+        else:
+            if metadata.insert_one({'asin': ASINID, 'imUrl': image_url, 'price': book_price, 'categories': cat, 'description': desc}):
+                print('success post to MongoDB!')
 
     return render_template('addBook.html')
 
