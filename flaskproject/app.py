@@ -26,7 +26,7 @@ db = mysql.connector.connect(
     user = 'root',
     password = '',
     database = 'dbds',
-    buffered = 'True'
+    buffered = True
     )
 
 
@@ -74,7 +74,7 @@ def webprint():
             #print("Required fields not filled in.")
 
     return render_template('hompage.html', average=average, imageurls=imageurls)
-
+ 
 
 
 @app.route('/categorypage/<categoryname>')
