@@ -185,12 +185,15 @@ html {
 /* RIGHT COLUMN */
 /* -----------------------------------------------*/
 
+.top-picks-img{
+    display: inline;
+}
 
 .top-picks{
     color: #000000;
     font-family: 'catalunya';
     margin-left: 30%;
-    margin-bottom: 30%;
+    margin-bottom: 20%;
 }
 
 
@@ -355,3 +358,19 @@ html {
     width: 60%;
 }
 }
+
+.image-url{
+    border: 1px solid #acacac; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    margin-bottom: 5%;
+    height: 100px;
+    width: 95px;
+    padding: 2%;
+    
+}
+
+/* Add a hover effect (blue shadow) */
+.image-url:hover {
+    box-shadow: 0 0 2px 1px #414141;
+}
+

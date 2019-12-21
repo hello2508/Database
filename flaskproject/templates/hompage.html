@@ -12,7 +12,7 @@
             <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
 
         </head>
-<!---hello-->
+
         <body>
             <header name="header">
             <nav>
@@ -39,28 +39,11 @@
                             <div class="wrap">
                                <form class="search" method='POST' action="">
                                   <input type="text" class="searchTerm" id= "asinid" name='srchasin' placeholder="Enter Book's ASIN number">
-                                  <button type="submit" class="searchButton" >
-                                    <i class="fa fa-search"></i>
+                                  <button type="submit" class="searchButton" onclick="validateForm()">
+                                <i class="fa fa-search"></i>
                                  </button>
                                </form>
                             </div>
-                        
-
-                            <!-- <div><a href="" id="camView" target="_blank"></a></div>     -->
-
-
-
-
-                            <h1 class="top-cat">Top Categories:</h1>
-
-                               <div class="search">
-                                        <input type="text" class="searchTerm" id= "asinid" placeholder="Enter Book's ASIN number" name="srchasin">
-                                       <button type="submit" class="searchButton" onclick="searchfn()" method="POST">
-                                            <i class="fa fa-search"></i>
-                                        </button>
-                               </div>
-                            </div>
-                        
                             <div><a href="" id="camView" target="_blank" ></a></div>  
                         <h1 class="top-cat">Top Categories:</h1>
                             <div class="">
@@ -105,52 +88,20 @@
                                 </div>
                             </div>
                         </div>
-                        
                     </div>
+                        
+                        
+                    
                     <div class="col span-1-of-4">
                         <div name="side-col">
                         <h1 class="top-picks">Top Picks</h1>
-                        <div class="col span-3-of-3">
-                            {% for url in imageurls %}
-                            <div class="top-picks-img">
-                                <img src="{{url['imUrl']}}" class="image-url">
+                            <div class="col span-3-of-3 add-margin">
+                                {% for url in imageurls %}
+                                <div class="top-picks-img">
+                                    <img src="{{url['imUrl']}}" class="image-url">
+                                </div>
+                                {% endfor %}
                             </div>
-                            {% endfor %}
-                        </div>
-                                
-                        
-                                    <!--<a href="">
-                                        <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
-                                    </a>
-                                    <a href="">
-                                        <img src="{{ url_for('static', filename='43641._SX98_.png')}}" class="book-inbetween">
-                                    </a>
-                                    <a href="">
-                                        <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
-                                    </a>-->
-                                
-                                <!--<div class="col span-1-of-3 imgcol1">-->
-                                <!--<a href="">
-                                    <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="book-inbetween">
-                                </a>
-                                <a href="">
-                                    <img src="{{ url_for('static', filename='39832183._SX98_.png')}}" class="book-inbetween">
-                                </a>
-                                <a href="">
-                                    <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
-                                </a>-->
-                                <!--</div>-->
-                                <!--<div class="col span-1-of-3 imgcol1">-->
-                                <!---<a href="">
-                                    <img src="{{ url_for('static', filename='43641._SX98_.png')}}" class="book-inbetween">
-                                </a>
-                                <a href="">
-                                    <img src="{{ url_for('static', filename='929._SX98_.png')}}" class="book-inbetween">
-                                </a>
-                                <a href="">
-                                    <img src="{{ url_for('static', filename='1713426._SX98_.png')}}" class="book-inbetween">
-                                </a>--->
-                            <!--</div>-->
                             <div id="popup1" class="overlay">
                                 <div class="popup1">
                                     <h2 class="admin-heading">Admin</h2>
@@ -174,14 +125,8 @@
 
 
                 <script type="text/javascript">
+                    
                     window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
-                    //var input = document.getElementById("adminpwd");
-                        //input.addEventListener("keyup", function(event) {
-                        //if (event.keyCode == 13) {
-                            //event.preventDefault();
-                            //document.getElementById("submb").click();
-                            //}
-                        //});
                         
                     // function searchfn(){
                     // var asin = document.getElementById('asinid');
@@ -203,7 +148,14 @@
                             alert("Passwords do not match.");
                         }
 
+                    };
+                    
+                    function validateForm() {
+                        var a = document.getElementById("asinid").value;
+                        if (a == null || a == "") {
+                          alert("Please Fill In Required Fields");
                     }
+                }
             </script>
 
             

@@ -225,6 +225,7 @@ html {
     margin-bottom: 5%;
     height: 100px;
     width: 95px;
+    padding: 2%;
     
 }
 
@@ -243,6 +244,8 @@ html {
 
 .top-picks-img{
     display: inline;
+    margin-right: 2%;
+    
 }
 
 .book-inbetween{
