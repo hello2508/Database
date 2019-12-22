@@ -41,8 +41,6 @@ def webprint():
     # Search bar function
     cur = db.cursor()
 
-
-
     cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
     print('after cursor execute')
     #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
@@ -56,16 +54,19 @@ def webprint():
         imageurls.append(url[0])
 
     if request.method == 'POST':
-        srchasin = request.form['srchasin']
-        srchquery = "SELECT distinct(asin) FROM kindle_reviews WHERE asin=%s"
-        search = cur.execute(srchquery, (srchasin,))
-        foundasin = cur.fetchall()
+        check = request.form
+        srchasin = check['srchasin']
+        if check['checkempty'] != 'True':
+            srchquery = "SELECT distinct(asin) FROM kindle_reviews WHERE asin=%s"
+            search = cur.execute(srchquery, (srchasin,))
+            foundasin = cur.fetchall()
         #print(foundasin)
-
-        if len(foundasin) == 0:
-            print("Invalid ASIN ID entered")
+            if len(foundasin) == 0:
+                print("Invalid ASIN ID entered")
+            else:
+                return redirect('/book/'+ srchasin)
         else:
-            return redirect('/book/'+ srchasin)
+            print("Required field not filled in.")
 
     return render_template('hompage.html', average=average, imageurls=imageurls)
 
