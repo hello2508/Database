@@ -151,7 +151,7 @@
                             window.location.href = "/addbook";
                         }
                         else{
-                            alert("Passwords do not match.");
+                            alert("Passwors do not match.");
                         }
 
                     }
@@ -160,11 +160,11 @@
                         var a = document.getElementById("asinid").value;
                         if (a == null || a == "") {
                             document.getElementById('checkempty').value='True';
-                            window.location.href = "#popup4";
+                            location.href = "#popup4";
                             return false;
                         }
                         else if ( a.length<10 || a.length>10) {
-                            window.location.href = "#popup3";
+                            location.href = "#popup3";
                             return false;
                         }
                         return false;

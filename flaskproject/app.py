@@ -41,6 +41,8 @@ def webprint():
     # Search bar function
     cur = db.cursor()
 
+
+
     cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
     print('after cursor execute')
     #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
@@ -52,22 +54,18 @@ def webprint():
         url = metadata.find({'asin': i[0] })
         #print(url[0])
         imageurls.append(url[0])
-    #print(imageurls)
 
     if request.method == 'POST':
-        check = request.form
-        srchasin = check['srchasin']
-        if check['checkempty'] != 'True':
-            srchquery = "SELECT distinct(asin) FROM kindle_reviews WHERE asin=%s"
-            search = cur.execute(srchquery, (srchasin,))
-            foundasin = cur.fetchall()
+        srchasin = request.form['srchasin']
+        srchquery = "SELECT distinct(asin) FROM kindle_reviews WHERE asin=%s"
+        search = cur.execute(srchquery, (srchasin,))
+        foundasin = cur.fetchall()
         #print(foundasin)
-            if len(foundasin) == 0:
-                print("Invalid ASIN ID entered")
-            else:
-                return redirect('/book/'+ srchasin)
+
+        if len(foundasin) == 0:
+            print("Invalid ASIN ID entered")
         else:
-            print("Required field not filled in.")
+            return redirect('/book/'+ srchasin)
 
     return render_template('hompage.html', average=average, imageurls=imageurls)
 
@@ -224,24 +222,6 @@ def allcategories():
 
     unique_category_names = [i for i in uniques]
     return render_template('allcategories.html', unique_category_names=unique_category_names, average=average, imageurls=imageurls)
-
-
-# Top picks based on average reviews
-@app.route("/average")
-def bookavg():
-    cur = db.cursor();
-    cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
-    #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
-    average = cur.fetchall()
-    print('asin', average)
-
-    imageurls = []
-    for i in average:
-        url = metadata.find({'asin': i })
-        print(url[0])
-        imageurls.append(url[0])
-    return render_template('average.html', average=average, imageurls=imageurls)
-
 
 
 if __name__ == "__main__":
