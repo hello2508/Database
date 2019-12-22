@@ -61,11 +61,7 @@ def webprint():
         search = cur.execute(srchquery, (srchasin,))
         foundasin = cur.fetchall()
         #print(foundasin)
-
-        if len(foundasin) == 0:
-            print("Invalid ASIN ID entered")
-        else:
-            return redirect('/book/'+ srchasin)
+        return redirect('/book/'+ srchasin)
 
     return render_template('hompage.html', average=average, imageurls=imageurls)
 
@@ -222,7 +218,6 @@ def allcategories():
 
     unique_category_names = [i for i in uniques]
     return render_template('allcategories.html', unique_category_names=unique_category_names, average=average, imageurls=imageurls)
-
 
 if __name__ == "__main__":
     app.run(debug=True)
