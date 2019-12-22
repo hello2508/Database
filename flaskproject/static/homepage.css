@@ -343,6 +343,7 @@ html {
   color: #333;
   font-family: 'catalunya';
 }
+
 .popup .close {
   position: absolute;
   top: 20px;
@@ -526,7 +527,9 @@ html {
     color: #333;
     font-family: 'catalunya';
 }
-
+.popup1 h3 {
+    font-size: 20px;
+}
 .popup1 .close {
     position: absolute;
     top: 20px;
@@ -542,22 +545,18 @@ html {
     color: #9AEAE7;
 }
 
-/*.popup1 .close2 {
-    position: absolute;
-    top: 20px;
-    right: 30px;
+.popup1 .close2 {
+    
+    float: right;
+    transition: all 200ms;
+    font-size: 30px;
     font-weight: bold;
-    font-size: 120%;
-    font-family: 'catalunya';
-    padding: 10px;
-    color: #fff;
-    background-color: #9AEAE7;
-    border: 2px solid #9AEAE7;
-    border-radius: 20px/50px;
     text-decoration: none;
-    cursor: pointer;
-    transition: all 0.3s ease-out;
-}*/
+    color: #333;
+    margin-top: -5%;
+    
+    right: -10px;
+}
 
 .popup1 .close2:hover {
     color: #9AEAE7;
