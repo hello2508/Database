@@ -22,13 +22,12 @@ metadata = mongo_store.goodread.metadata
 #### MYSQL
 # Configure db
 db = mysql.connector.connect(
-    host = '18.141.90.224',
+    # host = '18.141.90.224',
+    host = '18.141.68.51',
     user = 'root',
     password = '',
-    database = 'dbds',
-    buffered = True,
-    use_pure=True,
-    **db_conn
+    database = 'dbds'
+    # buffered = True
     )
 
 
