@@ -26,9 +26,7 @@ db = mysql.connector.connect(
     user = 'root',
     password = '',
     database = 'dbds',
-    buffered = True,
-    use_pure=True,
-    **db_conn
+    buffered = True
     )
 
 
@@ -70,7 +68,7 @@ def webprint():
             return redirect('/book/'+ srchasin)
 
     return render_template('hompage.html', average=average, imageurls=imageurls)
- 
+
 
 
 @app.route('/categorypage/<categoryname>')
