@@ -141,7 +141,7 @@ def book(asin):
 
     # Getting reviews for specific asin
     # cur.execute("SELECT asin, reviewerName, reviewText FROM kindle_reviews WHERE asin='B000F83SZQ' LIMIT 10") --- WORKS LIKE A CHARM
-    reviews_query = "SELECT asin, reviewerName, reviewText FROM kindle_reviews WHERE asin= %s LIMIT 10"
+    reviews_query = "SELECT asin, reviewerName, reviewText, overall FROM kindle_reviews WHERE asin= %s LIMIT 10"
     cur.execute(reviews_query, (asin,))
     bookasin = cur.fetchall()
 
