@@ -1,0 +1,376 @@
+/* -----------------------------------------------*/
+/* BASIC SETUP */
+/* -----------------------------------------------*/
+* {
+    margin : 0; 
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lato', 'Arial', sans-serif;
+}
+
+html {
+    background-color: #FFF;
+    color: #414141;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    text-rendering: optimizeLegibility;
+}
+
+/* -----------------------------------------------*/
+/* REUSABLE COMPONENTS */
+/* -----------------------------------------------*/
+.row{
+    max-width: 100%;
+    margin: 0 auto;
+    position: relative; 
+}
+
+
+@font-face {
+    font-family: catalunya;
+    src: url(catalunya.ttf);
+            }
+
+.small-heading {
+    font-size: 100%;
+    color: #000000;
+    margin-left: 2%;
+    margin: 1.5%;
+    display: inline-block;
+}
+
+.text{
+    font-family: sans-serif;
+}
+
+/* -----------------------------------------------*/
+/* NAVIGATION BAR */
+/* -----------------------------------------------*/
+
+
+.nav-bar{
+    height: 100%;
+    vertical-align: top;
+    background-color: rgba(72, 217, 212, 0.56);
+}
+
+.nav-bar a {
+  float: right;
+  padding: 1% 1%;
+  
+    height: auto;
+  text-decoration: none;
+  font-size: 110%;
+    font-family: 'catalunya';
+        
+}
+.nactive{
+    color: #FFF;
+}
+.nav-bar a:hover {
+  background-color: #FFF;
+  color: #000;
+}
+
+.active {
+  color: darkcyan;
+}
+
+@media screen and (max-width: 500px) {
+  .navbar a {
+    float: none;
+    display: block;
+  }
+    
+}
+
+.company-name{
+    font-weight: 40;
+    padding: 0.5% 2%;
+    color:#FFF;
+    font-size: 170%;
+    font-family: 'catalunya';
+    float:left;
+}
+
+/* -----------------------------------------------*/
+/* LEFT COLUMN */
+/* -----------------------------------------------*/
+
+
+.background-image{
+    background-image: url(header.jpg);
+    height: 140px;
+    margin-top: -13.5px;
+    
+}
+
+.column-left{
+    background-color: rgba(230, 230, 230, 0.34);
+    height: cover;
+}
+
+.column-left-special{
+    height: 900px;
+    background-color: #d6eceb;
+    border: 2px solid #d6eceb;
+    border-radius: 10px/10px;
+    
+}
+
+.column-left-cat{
+    background-color: rgba(230, 230, 230, 0.34);
+    height: cover;
+}
+
+
+/* -----------------------------------------------*/
+/* CATEGORIES */
+/* -----------------------------------------------*/
+
+.category-portion{
+    display: inline-block;
+    width: 100%;
+}
+
+.category-heading{
+    font-weight: 200;
+    font-family: 'catalunya';
+    margin-left: 40%;
+    margin-bottom: 5%;
+}
+ 
+
+.category-book-row{
+    margin-left: 10%;
+    width: 120%;
+}
+
+.category-books{
+    width: 75%;
+}
+
+.book-img{
+    border: 1px solid #acacac; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    margin-bottom: 5%;
+    height: 100px;
+    width: 95px;
+}
+
+/* Add a hover effect (blue shadow) */
+.book-img:hover {
+    box-shadow: 0 0 2px 1px #414141;
+}
+
+
+.book_asin{
+    display:inline-block;
+    margin-right:10%;
+    
+}
+
+.asin{
+   
+    display: inline-block;
+    width: 10px;
+    font-size: 60%;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 2% 7%;
+    margin-bottom: 30%;
+}
+/* -----------------------------------------------*/
+/* RIGHT COLUMN */
+/* -----------------------------------------------*/
+
+.top-picks-img{
+    display: inline;
+}
+
+.top-picks{
+    color: #000000;
+    font-family: 'catalunya';
+    margin-left: 30%;
+    margin-bottom: 20%;
+}
+
+
+.book-inbetween{
+    height: 130px;
+    margin-bottom: 70%;
+    padding: 2px;
+    border: 1px solid #acacac; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+}
+
+/* Add a hover effect (blue shadow) */
+.book-inbetween:hover {
+    box-shadow: 0 0 2px 1px #585858;
+}
+
+
+.more-toppicks{
+    text-align: center;
+    font-size: 90%;
+    font-weight: 400
+}
+
+.button{
+    margin-left: 32%
+}
+
+.button a:link,
+.button a:visited{
+    color: rgb(0, 0, 0);
+
+}
+.button a:hover{
+    background-color: rgba(72, 217, 212, 0.77);
+}
+
+
+.more-button{
+    background-color: rgba(72, 217, 212, 0.56);
+    padding: 3%;
+    text-decoration: none;
+    border-radius: 10px;
+}
+
+
+
+/* -----------------------------------------------*/
+/* ADD BOOK PAGE */
+/* -----------------------------------------------*/
+
+.admin-pass{
+    padding-bottom: 3%;
+}
+
+.button3 {
+    font-size: 90%;
+    padding: 2% 3%;
+    color: rgba(0, 0, 0);
+    background-color: #dbebea;
+    border: 0.5px solid #dbebea;
+    border-radius: 10px/10px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.button3 a{
+    color: #333;
+}
+
+.button3:hover{
+    background-color: #c5dbda;
+}
+
+.button3 a:link,
+.button3 a:visited{
+    color: #333;
+
+}
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup1 {
+    text-align: center;
+    margin: 70px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    width: 30%;
+    position: relative;
+    transition: all 5s ease-in-out;
+}
+
+.popup1 h2 {
+    margin-top: 0;
+    color: #333;
+    font-family: 'catalunya';
+}
+
+.popup1 .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #333;
+}
+
+.popup1 .close:hover {
+    color: #9AEAE7;
+}
+
+/*.popup1 .close2 {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-weight: bold;
+    font-size: 120%;
+    font-family: 'catalunya';
+    padding: 10px;
+    color: #fff;
+    background-color: #9AEAE7;
+    border: 2px solid #9AEAE7;
+    border-radius: 20px/50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-out;
+}*/
+
+.popup1 .close2:hover {
+    color: #9AEAE7;
+}
+
+
+
+.popup1 .content {
+    max-height: 30%;
+    overflow: auto;
+    font-family: sans-serif;
+    padding: 5% 0% 8% 0%;
+}
+
+
+@media screen and (max-width: 1000px){
+.popup1{
+    width: 60%;
+}
+}
+
+.image-url{
+    border: 1px solid #acacac; /* Gray border */
+    border-radius: 4px;  /* Rounded border */
+    margin-bottom: 5%;
+    height: 100px;
+    width: 95px;
+    padding: 2%;
+    
+}
+
+/* Add a hover effect (blue shadow) */
+.image-url:hover {
+    box-shadow: 0 0 2px 1px #414141;
+}
+
