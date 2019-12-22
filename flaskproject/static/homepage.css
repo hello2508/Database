@@ -301,7 +301,7 @@ html {
 
 .book-img{   
     display:inline;
-    margin-left: 10%;
+    margin-left: 15%;
     height: 200px;
     width: 170px;
 }
@@ -322,6 +322,7 @@ html {
   text-decoration: none;
   cursor: pointer;
   transition: all 0.3s ease-out;
+  margin-left: 2%;
 }
 .button1:hover {
   background: #9AEAE7;
@@ -460,6 +461,14 @@ html {
   margin-bottom: 100px;
 }
 
+
+.rating-no{
+    margin-left: 4%;
+}
+
+.rating-no1{
+    margin-left: 8%;
+}
 /* -----------------------------------------------*/
 /* ADD BOOK PAGE */
 /* -----------------------------------------------*/
