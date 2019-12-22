@@ -38,8 +38,8 @@
                             </h2>
                             <div class="wrap">
                                <form class="search" method='POST' action="">
-                                  <input type="text" class="searchTerm" id= "asinid" name='srchasin' placeholder="Enter Book's ASIN number">
-                                   <input type="hidden" name="checkempty" id="checkempty" />
+                                   <input type="text" class="searchTerm" id= "asinid" name='srchasin' placeholder="Enter Book's ASIN number">
+                                    <input type="hidden" name="checkempty" id="checkempty" />
                                   <button type="submit" class="searchButton" onclick="validateForm()">
                                 <i class="fa fa-search"></i>
                                  </button>
@@ -152,7 +152,7 @@
                             window.location.href = "/addbook";
                         }
                         else{
-                            alert("Passwords do not match.");
+                            alert("Passwors do not match.");
                         }
 
                     }
@@ -161,11 +161,11 @@
                         var a = document.getElementById("asinid").value;
                         if (a == null || a == "") {
                             document.getElementById('checkempty').value='True';
-                            window.location.href = "#popup4";
+                            location.href = "#popup4";
                             return false;
                         }
                         else if ( a.length<10 || a.length>10) {
-                            window.location.href = "#popup3";
+                            location.href = "#popup3";
                             return false;
                         }
                         return false;
