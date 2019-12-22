@@ -1,8 +1,0 @@
-mysql_host: 'localhost'
-# mysql_host: '18.141.90.224'
-mysql_user: 'root'
-# mysql_password: 'S9802991e!'
-# mysql_db: 'kindle'
-mysql_password: 'sutd1234'
-# mysql_password: ''
-mysql_db: 'dbds'
