@@ -99,7 +99,7 @@
                             <div class="col span-3-of-3 add-margin">
                                 {% for url in imageurls %}
                                 <div class="top-picks-img">
-                                    <img src="{{url['imUrl']}}" class="image-url">
+                                    <a href="/book/{{url['asin']}}"><img src="{{url['imUrl']}}" class="image-url"></a>
                                 </div>
                                 {% endfor %}
                             </div>

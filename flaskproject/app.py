@@ -52,6 +52,7 @@ def webprint():
         url = metadata.find({'asin': i[0] })
         #print(url[0])
         imageurls.append(url[0])
+    #print(imageurls)
 
     if request.method == 'POST':
         check = request.form
