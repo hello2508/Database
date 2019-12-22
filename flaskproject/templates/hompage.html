@@ -39,6 +39,7 @@
                             <div class="wrap">
                                <form class="search" method='POST' action="">
                                   <input type="text" class="searchTerm" id= "asinid" name='srchasin' placeholder="Enter Book's ASIN number">
+                                   <input type="hidden" name="checkempty" id="checkempty" />
                                   <button type="submit" class="searchButton" onclick="validateForm()">
                                 <i class="fa fa-search"></i>
                                  </button>
@@ -153,9 +154,10 @@
                     function validateForm() {
                         var a = document.getElementById("asinid").value;
                         if (a == null || a == "") {
-                          alert("Please Fill In Required Fields");
+                            document.getElementById('checkempty').value='True';
+                            alert("Please Fill In Required Fields");
                         }
-                        return false;
+                        
                     }
             </script>
 
