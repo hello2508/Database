@@ -148,15 +148,19 @@
                             alert("Passwords do not match.");
                         }
 
-                    };
+                    }
                     
                     function validateForm() {
                         var a = document.getElementById("asinid").value;
                         if (a == null || a == "") {
                           alert("Please Fill In Required Fields");
                         }
+                        else if ( a.length<10 || a.length>10) {
+                            window.location.href = "/addbook";
+                            return false;
+                        }
                         return false;
-                    }
+                    };
             </script>
 
             

@@ -435,17 +435,18 @@ html {
 }
 
 .allreviews .table .reviewername{
-  font-size: 100%;
+  font-size: 20px;
   font-family: 'catalunya';
   padding-bottom: 1%;
   padding-top: 3%;
   text-decoration: #047777;
   font-style: italic;
   font-weight: bold;
+  margin-top: 10px;
 
 }
 .allreviews .table .reviewcontent{
-  font-size: 70%;
+  font-size: 15px;
   background-color: #f8f4ea;
   border: 2px solid #9AEAE7;
   padding: 2% 2% 2% 2%;
@@ -454,9 +455,9 @@ html {
 
 }
 .allreviews .table .helpfulbutton{
-  font-size: 70%;
+  font-size: 12px;
   padding-top: 1%;
-  padding-bottom: 2%;
+  margin-bottom: 100px;
 }
 
 /* -----------------------------------------------*/

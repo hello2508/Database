@@ -128,7 +128,7 @@ def book(asin):
             name = userDetails['name']
             summary = userDetails['summary']
             unixReviewTime= userDetails ['unixReviewTime']
-            cur.execute("INSERT INTO test(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            cur.execute("INSERT INTO kindle_reviews(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                             ,(asin,0,overall,review,reviewTime,ID,name,summary,unixReviewTime))
 
         else:
@@ -140,7 +140,7 @@ def book(asin):
 
     # Getting reviews for specific asin
     # cur.execute("SELECT asin, reviewerName, reviewText FROM kindle_reviews WHERE asin='B000F83SZQ' LIMIT 10") --- WORKS LIKE A CHARM
-    reviews_query = "SELECT asin, reviewerName, reviewText FROM kindle_reviews WHERE asin= %s LIMIT 10"
+    reviews_query = "SELECT asin, reviewerName, reviewText, helpful FROM kindle_reviews WHERE asin= %s LIMIT 10"
     cur.execute(reviews_query, (asin,))
     bookasin = cur.fetchall()
 
