@@ -38,9 +38,7 @@ db = mysql.connector.connect(
     host = str(os.getenv("host")),
     user = 'root',
     password = '',
-    database = 'dbds',
-    # port ='3306',
-    buffered = True
+    database = 'dbds'
     )
 
 
