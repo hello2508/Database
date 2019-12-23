@@ -35,11 +35,11 @@ metadata = mongo_store.dbname.metadata
 #     )
 
 db = mysql.connector.connect(
-    host = os.getenv("host"),
+    host = str(os.getenv("host")),
     user = 'root',
     password = '',
     database = 'dbds',
-    port ='3306',
+    # port ='3306',
     buffered = True
     )
 
