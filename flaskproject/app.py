@@ -9,6 +9,7 @@ import os
 from dotenv import load_dotenv
 
 app = Flask(__name__)  #creates an app
+load_dotenv()
 
 ### Kenneth's EC2 instance
 mongo_store = MongoClient("mongodb://18.141.0.98/")
@@ -22,14 +23,23 @@ metadata = mongo_store.goodread.metadata
 
 #### MYSQL
 # Configure db
+# db = mysql.connector.connect(
+#     host = '18.141.90.224',
+#     user = 'root',
+#     password = '',
+#     database = 'dbds',
+#     buffered = True
+#     )
+
 db = mysql.connector.connect(
-    # host = '18.141.90.224',
-    host = '',
-    user = 'root',
-    password = '',
-    database = 'dbds',
-    buffered = True
+    host = os.getenv("host"),
+    user = os.getenv("root"),
+    password = os.getenv("password"),
+    database = os.getenv("database"),
+    buffered = os.getenv("buffered")
     )
+
+
 
 
 ### My own local
