@@ -39,6 +39,7 @@ db = mysql.connector.connect(
     user = 'root',
     password = '',
     database = 'dbds',
+    port ='3306',
     buffered = True
     )
 
