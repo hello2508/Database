@@ -15,6 +15,7 @@ Library Package requirements:
 3.  export FLASK_ENV=development  
 4.  flask run   
 5.  Output:
+
 ![](https://lh4.googleusercontent.com/pc2SQ9ICydlDLhdpNKSKGjF0CdpfiJyOVikWMNmBpo_cE9GgFS6P9iK3q4Olf-VX7CDPVyc53SjgQ5S7_tJ2Q_OaWP5II1i9_fdUxUFPqohaym5Y1tQJAx9t1oOdfNskwQHg-Bd7)
 
 ### Webpages and Components:
