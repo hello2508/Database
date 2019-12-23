@@ -12,8 +12,11 @@ app = Flask(__name__)  #creates an app
 load_dotenv()
 
 ### Kenneth's EC2 instance
-mongo_store = MongoClient("mongodb://18.141.0.98/")
-metadata = mongo_store.goodread.metadata
+# mongo_store = MongoClient("mongodb://18.141.0.98/")
+mongo_url = os.getenv("mongo_url")
+dbname = os.getenv("database_name")
+mongo_store = MongoClient(mongo_url)
+metadata = mongo_store.dbname.metadata
 
 ### My own local
 # mongo_store = MongoClient("mongodb://localhost:27017")
@@ -33,10 +36,10 @@ metadata = mongo_store.goodread.metadata
 
 db = mysql.connector.connect(
     host = os.getenv("host"),
-    user = os.getenv("root"),
-    password = os.getenv("password"),
-    database = os.getenv("database"),
-    buffered = os.getenv("buffered")
+    user = 'root',
+    password = '',
+    database = 'dbds',
+    buffered = True
     )
 
 
