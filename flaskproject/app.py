@@ -67,7 +67,7 @@ def webprint():
 
 
 
-@app.route('/categorypage/<categoryname>')
+@app.route('/categorypage/<categoryname>', methods=['GET','POST'])
 def categorypage(categoryname):
     cur = db.cursor()
     cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")

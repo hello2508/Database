@@ -60,19 +60,18 @@
                             {% endfor %}
                         </div>
                         <div id="popup1" class="overlay">
-                            <div class="popup1">
-                                <h2 class="admin-heading">Admin</h2>
-                                <a class="close" href="#">&times;</a>
-                                <div class="content">
-                                    <form method="POST" action="">
-    
-                                    <p class="admin-pass">Admin Password:</p>
-                                    <input type="password" name="name" id="adminpwd" /><br>
-                                    </form>
+                                <div class="popup1">
+                                    <h2 class="admin-heading">Admin</h2>
+                                    <a class="close" href="#">&times;</a>
+                                    <div class="content">
+                                        <form method="POST" action="">
+                                            <p class="admin-pass">Admin Password:</p>
+                                            <input type="text" name="name" id="adminpwd" /><br>
+                                        </form>
+                                    </div>
+                                    <a class="button3" onclick= checkPswd()><span class="admin-submit">Submit</span></a>
                                 </div>
-                                <a class="button3" onclick= checkPswd() id="submb"><span class="admin-submit">Submit</span></a>  
                             </div>
-                        </div>
                             
             
                     </div>
@@ -82,24 +81,18 @@
         
                     
             <script type="text/javascript">
-                //window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);   
-            //var input = document.getElementById("adminpwd");
-                //input.addEventListener("keyup", function(event) {
-                //if (event.keyCode == 13) {
-                    //event.preventDefault();
-                    //document.getElementById("submb").click();
-                    //}
-               // });
-            function checkPswd() {
-                var confirmPassword = "admin";
-                var password = document.getElementById("adminpwd").value;
-                if (password == confirmPassword) {
-                    window.location.href = "/addbook";
+                window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
+                
+                function checkPswd() {
+                        var confirmPassword = "admin";
+                        var password = document.getElementById("adminpwd").value;
+                        if (password == confirmPassword) {
+                            window.location.href = "/addbook";
+                        }
+                        else{
+                            alert("Passwords do not match.");
+                        }
                 }
-                else{
-                    alert("Passwords do not match.");
-                }
-            }
 
             </script>
     </body>

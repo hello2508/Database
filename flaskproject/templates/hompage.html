@@ -133,18 +133,8 @@
                 </div>
                 <script type="text/javascript">
                     
-                    //window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
-                        
-                    // function searchfn(){
-                    // var asin = document.getElementById('asinid');
-                    // document.getElementById('camView').innerHTML = asin.value;
-                    // document.getElementById('camView').href="/book/"+asin.value;
-                    // //Or to open in new tab on submit button directly 
-                    // window.location.href = "/book/"+asin.value;
-                        
-                    // //var a = document.forms["form1"]["name"].value;
-                    // }
-
+                    window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
+                    
                     function checkPswd() {
                         var confirmPassword = "admin";
                         var password = document.getElementById("adminpwd").value;
