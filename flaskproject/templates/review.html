@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <head>
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='homepage.css')}}">
+            <link href="https://fonts.googleapis.com/css?family=Catalunya&display=swap" rel="stylesheet">
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='grid.css')}}">
+            <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='normalize.css')}}">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+            <link href="https://fonts.googleapis.com/css?family=Lato:100,300,300i,400" rel="stylesheet">
+        </head>
+
+        <body>
+            <header name="header">
+            <nav>
+                <div class="row nav-bar">
+                    <p class="company-name">
+                    Great Reads 
+                    </p>
+                    <a class="nactive" href="#popup1"><i class="fa fa-plus"></i> Add Book</a>
+                    <a class="active" href="/allcategories"><i class="fa fa-fw fa-book"></i>Categories</a> 
+                    <a class="nactive" href="/"><i class="fa fa-fw fa-home"></i> Home</a> 
+                </div>
+
+            </nav>
+            </header>
+            <div class="row" name="space">
+                <div class="col span-3-of-4 column-left">
+                    <div class="background-image">
+                        <p>&nbsp;</p>
+                    </div>
+                    <div class="col span-4-of-4">
+                        <div class="col span-1-of-4 column-left-special">
+                            <div class="book-details">
+                               
+                                <p class="book-name">{{ asinforbook }}</p>
+                              
+                            </div>
+                            <div>
+                              {% for review in reviews %}
+                                <img class="book-img" src="{{review.imUrl}}">
+                              {% endfor %}
+                            </div>    
+                            <div class="box">
+                                <a class="button1" href="#popup">Add your Review</a>
+                            </div>
+                            <div id="popup" class="overlay">
+                                <div class="popup">
+                                    <h2>Write a Review!</h2>
+                                    <a class="close" href="#">&times;</a>
+                                    <div class="content">
+                                            <form method="POST" action="" onsubmit="validateForm()" name="form1">
+                                                    
+                                                <p class="inputs">Name:* </p>
+                                                <input class ="inputf" type="text" name="name" /><br>
+                                                <p class="inputsrev">Review:* </p>
+                                                <textarea rows="2" cols="25" placeholder="Enter review here!" class ="inputfrev" type="text" name="review"></textarea> <br>
+                                                <p class="inputs">Summary:* </p>
+                                                <input class ="inputf" type="text" name="summary" /><br>
+                                                <p class="inputs">Overall Rating (0-5):*</p>
+                                               
+                                                <div class="rating">
+                                                    <input type="radio" name="overall" value="0" class="rating-no1"/> 0
+                                                    <input type="radio" name="overall" value="1" class="rating-no"/>  1
+                                                    <input type="radio" name="overall" value="2" class="rating-no"/>  2
+                                                    <input type="radio" name="overall" value="3" class="rating-no"/>  3
+                                                    <input type="radio" name="overall" value="4" class="rating-no"/>  4
+                                                    <input type="radio" name="overall" value="5" class="rating-no"/>  5
+                                                    <br>
+                                                </div>
+                                                <input type="hidden" name="checkempty" id="checkempty" />
+                                                <input type="hidden" name="reviewTime" id="reviewTime" />
+                                                <input type="hidden" name="unixReviewTime" id="unixReviewTime" />
+                                                <input type="hidden" name="ID" id="getID">
+                                                <p class="inputs">* This is a required field</p>
+                                                
+                                                <a href="#popup2"><button type="submit" class="submit-butts">Submit</button></a>
+                                            </form>
+	                                   </div>
+                                        
+                                </div>
+                            </div>
+                            <div id="popup2" class="overlay">
+                                <div class="popup">
+                                    <h2>Your Review has been submitted!</h2>
+                                    <a class="close" href="#">&times;</a>
+                                    <div class="content">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col span-3-of-4">
+                            
+                                <!-- Display Reviews for Specific ASIN from MYSQL -->
+                            <div class="allreviews">
+                                <div class="title">
+                                    <p>All Reviews for {{ asinforbook }}</p>
+                                </div>
+                                <div class="table">
+                                    <table>
+                                        {% for id in bookasin %}
+                                            <div class="reviewername">
+                                                <p>Reviewer: {{ id[1] }}</p>
+                                            </div>
+                                            <div class="reviewcontent">
+                                                <p>{{ id[2] }}</p>
+                                            </div>
+                                            <div class="helpfulbutton">
+                                                
+                                                    <p><span id='count'>{{ id[3][1] }}</span> found this helpful.</p>
+                                                
+                                                {% else %}
+                                                <p>There are currently  no reviews for this book.</p>
+                                                <!--<button class="button3" onclick="gethelpful()" id="clickme">Helpful : 0</button>-->
+
+                                            </div>
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col span-1-of-4">
+                    <div name="side-col">
+                    <h1 class="top-picks">Top Picks</h1>
+                        <div class="col span-3-of-3">
+                            {% for url in imageurls %}
+                            <div class="top-picks-img">
+                                <a href="/book/{{url['asin']}}"><img src="{{url['imUrl']}}" class="image-url"></a>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    <div id="popup1" class="overlay">
+                        <div class="popup1">
+                            <h2 class="admin-heading">Admin</h2>
+                            <a class="close" href="#">&times;</a>
+                            <div class="content">
+                                <form method="POST" action="">
+                                    <p class="admin-pass">Admin Password:</p>
+                                    <input type="text" name="name" id="adminpwd" /><br>
+                                </form>
+                            </div>
+                            <a class="button3" onclick= checkPswd() id="submb"><span class="admin-submit">Submit</span></a>
+                            
+                        </div>
+                    </div>
+                    
+                    </div>
+                </div>
+            </div>
+                     
+                    
+      
+                
+                
+            
+
+            <script type="text/javascript">
+                
+                window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
+                //var input = document.getElementById("adminpwd");
+                    //input.addEventListener("keyup", function(event) {
+                    //if (event.keyCode == 13) {
+                       // event.preventDefault();
+                       // document.getElementById("submb").click();
+                       // }
+                
+                   // });
+                function getDate()
+                {
+                    var today = new Date();
+                    var dd = today.getDate();
+                    var mm = today.getMonth()+1; //January is 0!
+                    var yyyy = today.getFullYear();
+                    if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm}
+                    reviewDate = dd+" "+mm+", "+yyyy;
+                    console.log(reviewDate)
+
+                    document.getElementById("reviewTime").value = reviewDate;
+                }
+
+                getDate();
+
+                function getUnixTime(){
+                    var ts = Math.round((new Date()).getTime() / 1000);
+                    console.log(ts)
+                    document.getElementById("unixReviewTime").value = ts;
+                    console.log(unixReviewTime)
+                }
+                getUnixTime();
+                
+                
+                var button = document.getElementById("clickme"), count = 0;
+                    button.onclick = function() {
+                      count += 1;
+                      button.innerHTML = "Helpful: " + count;
+                    }
+                // Since list/tuple cannot be added into MYSQL
+                //var good = 0
+                //function gethelpful(event){
+                    //var count =  document.getElementById('helpful').addEventListener('click', function(event){
+                       // event.preventDefault()
+                   // });
+
+                   // good ++;
+                  //  helpful.innerHTML = good;
+                   // console.log(good)
+                   // return good;            
+               // }
+
+                function makeid(length) {
+                   var result           = 'DBDS2019_';
+                   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+                   var charactersLength = characters.length;
+                   for ( var i = 0; i < length; i++ ) {
+                      result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                   }
+                   document.getElementById('getID').value = result;
+                   return getID;
+                }
+                console.log(makeid(5)); // Output example: DBDS2019_QRE6L 
+                
+            
+                function checkPswd() {
+                    var confirmPassword = "admin";
+                    var password = document.getElementById("adminpwd").value;
+                    if (password == confirmPassword) {
+                        window.location.href = "/addbook";
+                    }
+                    else{
+                        alert("Passwords do not match.");
+                    }
+                }
+                
+
+                function validateForm() {
+                    var a = document.forms["form1"]["name"].value;
+                    var c = document.forms["form1"]["review"].value;
+                    var e = document.forms["form1"]["summary"].value;
+                    var f = document.forms["form1"]["overall"].value;
+                    if (a == null || a == "", c == null || c == "", e == null || e == "", f == null || f == "") {
+                      alert("Please Fill In Required Fields");
+                      document.getElementById('checkempty').value='True';
+                      return false;
+                    }
+                }
+                
+                
+                
+
+                
+            </script>
+        </body>
+</html>
+
