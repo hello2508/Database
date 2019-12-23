@@ -39,6 +39,7 @@
                             <div class="wrap">
                                <form class="search" method='POST' action="">
                                   <input type="text" class="searchTerm" id= "asinid" name='srchasin' placeholder="Enter Book's ASIN number">
+                                   <input type="hidden" name="checkempty" id="checkempty" />
                                   <button type="submit" class="searchButton" onclick="validateForm()">
                                 <i class="fa fa-search"></i>
                                  </button>
@@ -98,7 +99,7 @@
                             <div class="col span-3-of-3 add-margin">
                                 {% for url in imageurls %}
                                 <div class="top-picks-img">
-                                    <img src="{{url['imUrl']}}" class="image-url">
+                                    <a href="/book/{{url['asin']}}"><img src="{{url['imUrl']}}" class="image-url"></a>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -115,29 +116,25 @@
                                     <a class="button3" onclick= checkPswd() id="submb"><span class="admin-submit">Submit</span></a>
                                 </div>
                             </div>
+                            <div id="popup3" class="overlay">
+                                <div class="popup1">
+                                    <a class="close2" href="#">&times;</a>
+                                    <h3>Please enter a Valid ASIN id!</h3>
+                                </div>
+                            </div>
+                            <div id="popup4" class="overlay">
+                                <div class="popup1">
+                                    <a class="close2" href="#">&times;</a>
+                                    <h3>"Please Fill In Required Fields"</h3>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                
-        
-                            
-            
-
-
                 <script type="text/javascript">
                     
                     window.addEventListener('keydown',function(e){if(e.keyIdentifier=='U+000A'||e.keyIdentifier=='Enter'||e.keyCode==13){if(e.target.nodeName=='INPUT'&&e.target.type=='text'){e.preventDefault();return false;}}},true);
-                        
-                    // function searchfn(){
-                    // var asin = document.getElementById('asinid');
-                    // document.getElementById('camView').innerHTML = asin.value;
-                    // document.getElementById('camView').href="/book/"+asin.value;
-                    // //Or to open in new tab on submit button directly 
-                    // window.location.href = "/book/"+asin.value;
-                        
-                    // //var a = document.forms["form1"]["name"].value;
-                    // }
-
+                    
                     function checkPswd() {
                         var confirmPassword = "admin";
                         var password = document.getElementById("adminpwd").value;
@@ -145,17 +142,23 @@
                             window.location.href = "/addbook";
                         }
                         else{
-                            alert("Passwords do not match.");
+                            alert("Passwors do not match.");
                         }
-
-                    };
+                    }
                     
                     function validateForm() {
                         var a = document.getElementById("asinid").value;
                         if (a == null || a == "") {
-                          alert("Please Fill In Required Fields");
-                    }
-                }
+                            document.getElementById('checkempty').value='True';
+                            location.href = "#popup4";
+                            return false;
+                        }
+                        else if ( a.length<10 || a.length>10) {
+                            location.href = "#popup3";
+                            return false;
+                        }
+                        return false;
+                    };
             </script>
 
             

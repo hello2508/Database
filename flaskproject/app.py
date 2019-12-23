@@ -62,17 +62,13 @@ def webprint():
         search = cur.execute(srchquery, (srchasin,))
         foundasin = cur.fetchall()
         #print(foundasin)
-
-        if len(foundasin) == 0:
-            print("Invalid ASIN ID entered")
-        else:
-            return redirect('/book/'+ srchasin)
+        return redirect('/book/'+ srchasin)
 
     return render_template('hompage.html', average=average, imageurls=imageurls)
- 
 
 
-@app.route('/categorypage/<categoryname>')
+
+@app.route('/categorypage/<categoryname>', methods=['GET','POST'])
 def categorypage(categoryname):
     cur = db.cursor()
     cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
@@ -129,7 +125,7 @@ def book(asin):
             name = userDetails['name']
             summary = userDetails['summary']
             unixReviewTime= userDetails ['unixReviewTime']
-            cur.execute("INSERT INTO test(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
+            cur.execute("INSERT INTO kindle_reviews(asin,helpful,overall,reviewText,reviewTime,reviewerID,reviewerName,summary,unixReviewTime) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s)"
                             ,(asin,0,overall,review,reviewTime,ID,name,summary,unixReviewTime))
 
         else:
@@ -141,7 +137,7 @@ def book(asin):
 
     # Getting reviews for specific asin
     # cur.execute("SELECT asin, reviewerName, reviewText FROM kindle_reviews WHERE asin='B000F83SZQ' LIMIT 10") --- WORKS LIKE A CHARM
-    reviews_query = "SELECT asin, reviewerName, reviewText FROM kindle_reviews WHERE asin= %s LIMIT 10"
+    reviews_query = "SELECT asin, reviewerName, reviewText, helpful FROM kindle_reviews WHERE asin= %s LIMIT 10"
     cur.execute(reviews_query, (asin,))
     bookasin = cur.fetchall()
 
@@ -223,25 +219,6 @@ def allcategories():
 
     unique_category_names = [i for i in uniques]
     return render_template('allcategories.html', unique_category_names=unique_category_names, average=average, imageurls=imageurls)
-
-
-# Top picks based on average reviews
-@app.route("/average")
-def bookavg():
-    cur = db.cursor();
-    cur.execute("SELECT asin from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
-    #cur.execute("SELECT asin, avg(overall) from kindle_reviews group by asin order by avg(overall) desc limit 9 ")
-    average = cur.fetchall()
-    print('asin', average)
-
-    imageurls = []
-    for i in average:
-        url = metadata.find({'asin': i })
-        print(url[0])
-        imageurls.append(url[0])
-    return render_template('average.html', average=average, imageurls=imageurls)
-
-
 
 if __name__ == "__main__":
     app.run(debug=True)

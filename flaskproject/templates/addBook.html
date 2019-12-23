@@ -70,7 +70,7 @@
                         <div class="col span-3-of-3">
                             {% for url in imageurls %}
                             <div class="top-picks-img">
-                                <img src="{{url['imUrl']}}" class="image-url">
+                                <a href="/book/{{url['asin']}}"><img src="{{url['imUrl']}}" class="image-url"></a>
                             </div>
                             {% endfor %}
                         </div>
@@ -106,7 +106,8 @@
                       alert("Please Fill In Required Fields");
                       return false;
                     }
-                }
+                };
+                
             </script>
         </body>
 </html>
